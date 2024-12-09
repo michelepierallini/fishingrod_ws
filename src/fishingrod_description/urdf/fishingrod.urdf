@@ -272,9 +272,9 @@ spring stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.028" friction="1.4875"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>1.4875</spring_stiffness>
     </gazebo>
   </joint>
     <!-- Link 7 -->
@@ -334,8 +334,6 @@ spring stiffness: Controls the force exerted by the spring based on displacement
       <material name="Orange"/>
     </visual>
   </link>
-
-
   <!-- Joint 9 -->
   <joint name="Joint_9" type="revolute">
     <parent link="Link_8"/>
@@ -820,7 +818,6 @@ spring stiffness: Controls the force exerted by the spring based on displacement
       <material name="Grey"/>
     </visual>
   </link> 
-
   <gazebo reference="Tip">
   <sensor name="br_imu" type="imu">
       <always_on>true</always_on>

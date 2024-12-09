@@ -57,11 +57,11 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <origin rpy="1.5708 0 0" xyz="0 0 0.09"/>
     <limit effort="10" velocity="1.0" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
+    <!-- <gazebo>
       <dynamics damping="0.1" friction="0.2"/>
       <spring_reference>0.0</spring_reference>
       <spring_stiffness>100.0</spring_stiffness>
-    </gazebo>
+    </gazebo> -->
   </joint>
   
   <!-- Link 1 -->
@@ -97,9 +97,9 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1.0" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.0955" friction="4.3262"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>4.3262</spring_stiffness>
     </gazebo>
   </joint>
 
@@ -136,10 +136,10 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
   <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
   <axis xyz="0 0 1"/>
   <gazebo>
-    <dynamics damping="0.1" friction="0.2"/>
-    <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
-  </gazebo>
+      <dynamics damping="0.082" friction="3.8263"/>
+      <spring_reference>0.0</spring_reference>
+      <spring_stiffness>3.8263</spring_stiffness>
+    </gazebo>
 </joint>
 
 <!-- Link 3 -->
@@ -175,10 +175,10 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
   <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
   <axis xyz="0 0 1"/>
   <gazebo>
-    <dynamics damping="0.1" friction="0.2"/>
-    <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
-  </gazebo>
+      <dynamics damping="0.0635" friction="3.355"/>
+      <spring_reference>0.0</spring_reference>
+      <spring_stiffness>3.355</spring_stiffness>
+    </gazebo>
 </joint>
 
 <!-- Link 4 -->
@@ -205,7 +205,6 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     </visual>
   </link>
 </xacro:macro>
-
 <!-- Joint 5 -->
 <joint name="Joint_5" type="revolute">
   <parent link="Link_4"/>
@@ -214,12 +213,11 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
   <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
   <axis xyz="0 0 1"/>
   <gazebo>
-    <dynamics damping="0.1" friction="0.2"/>
-    <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
-  </gazebo>
+      <dynamics damping="0.041" friction="2.1504"/>
+      <spring_reference>0.0</spring_reference>
+      <spring_stiffness>2.1504</spring_stiffness>
+    </gazebo>
 </joint>
-
 <!-- Link 5 -->
 <xacro:macro name="link_5">
   <link name="Link_5">
@@ -244,7 +242,6 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     </visual>
   </link>
 </xacro:macro>
-
 <!-- Joint 6 -->
 <joint name="Joint_6" type="revolute">
   <parent link="Link_5"/>
@@ -253,12 +250,11 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
   <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
   <axis xyz="0 0 1"/>
   <gazebo>
-    <dynamics damping="0.1" friction="0.2"/>
-    <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
-  </gazebo>
+      <dynamics damping="0.028" friction="1.4875"/>
+      <spring_reference>0.0</spring_reference>
+      <spring_stiffness>1.4875</spring_stiffness>
+    </gazebo>
 </joint>
-
 <!-- Link 6 -->
 <xacro:macro name="link_6">
   <link name="Link_6">
@@ -283,7 +279,6 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     </visual>
   </link>
 </xacro:macro>
-
 <!-- Joint 7 -->
 <joint name="Joint_7" type="revolute">
   <parent link="Link_6"/>
@@ -292,12 +287,11 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
   <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
   <axis xyz="0 0 1"/>
   <gazebo>
-    <dynamics damping="0.1" friction="0.2"/>
-    <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
-  </gazebo>
+      <dynamics damping="0.028" friction="1.4875"/>
+      <spring_reference>0.0</spring_reference>
+      <spring_stiffness>1.4875</spring_stiffness>
+    </gazebo>
 </joint>
-
 <!-- Link 7 -->
 <xacro:macro name="link_7">
   <link name="Link_7">
@@ -322,7 +316,6 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     </visual>
   </link>
 </xacro:macro>
-
 <!-- Joint 8 -->
 <joint name="Joint_8" type="revolute">
   <parent link="Link_7"/>
@@ -331,12 +324,11 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
   <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
   <axis xyz="0 0 1"/>
   <gazebo>
-    <dynamics damping="0.1" friction="0.2"/>
+    <dynamics damping="0.028" friction="1.4875"/>
     <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+    <spring_stiffness>1.4875</spring_stiffness>
   </gazebo>
 </joint>
-
 <!-- Link 8 -->
 <xacro:macro name="link_8">
   <link name="Link_8">
@@ -361,7 +353,6 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     </visual>
   </link>
 </xacro:macro>
-
 <!-- Joint 9 -->
 <joint name="Joint_9" type="revolute">
   <parent link="Link_8"/>
@@ -370,12 +361,11 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
   <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
   <axis xyz="0 0 1"/>
   <gazebo>
-    <dynamics damping="0.1" friction="0.2"/>
-    <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
-  </gazebo>
+      <dynamics damping="0.028" friction="1.4875"/>
+      <spring_reference>0.0</spring_reference>
+      <spring_stiffness>1.4875</spring_stiffness>
+    </gazebo>
 </joint>
-
 <!-- Link 9 -->
 <xacro:macro name="link_9">
   <link name="Link_9">
@@ -400,7 +390,6 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     </visual>
   </link>
 </xacro:macro>
-
 <!-- Joint 10 -->
 <joint name="Joint_10" type="revolute">
   <parent link="Link_9"/>
@@ -409,12 +398,11 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
   <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
   <axis xyz="0 0 1"/>
   <gazebo>
-    <dynamics damping="0.1" friction="0.2"/>
-    <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
-  </gazebo>
+      <dynamics damping="0.021" friction="1.11"/>
+      <spring_reference>0.0</spring_reference>
+      <spring_stiffness>1.11</spring_stiffness>
+    </gazebo>
 </joint>
-
 <!-- Link 10 -->
 <xacro:macro name="link_10">
   <link name="Link_10">
@@ -439,7 +427,6 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     </visual>
   </link>
 </xacro:macro>
-
 <!-- Joint 11 -->
 <joint name="Joint_11" type="revolute">
   <parent link="Link_10"/>
@@ -448,12 +435,11 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
   <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
   <axis xyz="0 0 1"/>
   <gazebo>
-    <dynamics damping="0.1" friction="0.2"/>
+    <dynamics damping="0.001" friction="0.505"/>
     <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+    <spring_stiffness>0.505</spring_stiffness>
   </gazebo>
 </joint>
-
 <!-- Link 11 -->
 <xacro:macro name="link_11">
   <link name="Link_11">
@@ -478,8 +464,7 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     </visual>
   </link>
 </xacro:macro>
-
-    <!-- Joint 12 -->
+<!-- Joint 12 -->
 <joint name="Joint_12" type="revolute">
   <parent link="Link_11"/>
   <child link="Link_12"/>
@@ -487,12 +472,11 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
   <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
   <axis xyz="0 0 1"/>
   <gazebo>
-    <dynamics damping="0.1" friction="0.2"/>
+    <dynamics damping="0.001" friction="0.4563"/>
     <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+    <spring_stiffness>0.4563</spring_stiffness>
   </gazebo>
 </joint>
-
 <!-- Link 12 -->
 <xacro:macro name="link_12">
   <link name="Link_12">
@@ -517,7 +501,6 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     </visual>
   </link>
 </xacro:macro>
-
 <!-- Joint 13 -->
 <joint name="Joint_13" type="revolute">
   <parent link="Link_12"/>
@@ -526,12 +509,11 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
   <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
   <axis xyz="0 0 1"/>
   <gazebo>
-    <dynamics damping="0.1" friction="0.2"/>
+    <dynamics damping="0.0075" friction="0.3812"/>
     <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+    <spring_stiffness>0.3812</spring_stiffness>
   </gazebo>
 </joint>
-
 <!-- Link 13 -->
 <xacro:macro name="link_13">
   <link name="Link_13">
@@ -556,7 +538,6 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     </visual>
   </link>
 </xacro:macro>
-
 <!-- Joint 14 -->
 <joint name="Joint_14" type="revolute">
   <parent link="Link_13"/>
@@ -565,12 +546,11 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
   <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
   <axis xyz="0 0 1"/>
   <gazebo>
-    <dynamics damping="0.1" friction="0.2"/>
+    <dynamics damping="0.01" friction="0.6750"/>
     <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+    <spring_stiffness>0.6750</spring_stiffness>
   </gazebo>
 </joint>
-
 <!-- Link 14 -->
 <xacro:macro name="link_14">
   <link name="Link_14">
@@ -595,7 +575,6 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     </visual>
   </link>
 </xacro:macro>
-
 <!-- Joint 15 -->
 <joint name="Joint_15" type="revolute">
   <parent link="Link_14"/>
@@ -604,12 +583,11 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
   <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
   <axis xyz="0 0 1"/>
   <gazebo>
-    <dynamics damping="0.1" friction="0.2"/>
+    <dynamics damping="0.0085" friction="0.4588"/>
     <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+    <spring_stiffness>0.4588</spring_stiffness>
   </gazebo>
 </joint>
-
 <!-- Link 15 -->
 <xacro:macro name="link_15">
   <link name="Link_15">
@@ -634,7 +612,6 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     </visual>
   </link>
 </xacro:macro>
-
 <!-- Joint 16 -->
 <joint name="Joint_16" type="revolute">
   <parent link="Link_15"/>
@@ -643,12 +620,11 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
   <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
   <axis xyz="0 0 1"/>
   <gazebo>
-    <dynamics damping="0.1" friction="0.2"/>
+    <dynamics damping="0.007" friction="0.3625"/>
     <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+    <spring_stiffness>0.3625</spring_stiffness>
   </gazebo>
 </joint>
-
 <!-- Link 16 -->
 <xacro:macro name="link_16">
   <link name="Link_16">
@@ -673,7 +649,6 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     </visual>
   </link>
 </xacro:macro>
-
 <!-- Joint 17 -->
 <joint name="Joint_17" type="revolute">
   <parent link="Link_16"/>
@@ -682,12 +657,11 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
   <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
   <axis xyz="0 0 1"/>
   <gazebo>
-    <dynamics damping="0.1" friction="0.2"/>
+    <dynamics damping="0.006" friction="0.3625"/>
     <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+    <spring_stiffness>0.3625</spring_stiffness>
   </gazebo>
 </joint>
-
 <!-- Link 17 -->
 <xacro:macro name="link_17">
   <link name="Link_17">
@@ -725,7 +699,6 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
       <spring_stiffness>100.0</spring_stiffness>
   </gazebo>
 </joint>
-
 <!-- Link 18 -->
 <xacro:macro name="link_18">
   <link name="Link_18">
@@ -750,7 +723,6 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     </visual>
   </link>
 </xacro:macro>
-
 <!-- Joint 19 -->
 <joint name="Joint_19" type="revolute">
   <parent link="Link_18"/>
@@ -759,12 +731,11 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
   <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
   <axis xyz="0 0 1"/>
   <gazebo>
-    <dynamics damping="0.1" friction="0.2"/>
+    <dynamics damping="0.0045" friction="0.2663"/>
     <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+    <spring_stiffness>0.2663</spring_stiffness>
   </gazebo>
 </joint>
-
 <!-- Link 19 -->
 <xacro:macro name="link_19">
   <link name="Link_19">
@@ -789,7 +760,6 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     </visual>
   </link>
 </xacro:macro>
-
 <!-- Joint 20 -->
 <joint name="Joint_20" type="revolute">
   <parent link="Link_19"/>
@@ -798,12 +768,11 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
   <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
   <axis xyz="0 0 1"/>
   <gazebo>
-    <dynamics damping="0.1" friction="0.2"/>
+    <dynamics damping="0.003" friction="0.2"/>
     <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+    <spring_stiffness>0.2</spring_stiffness>
   </gazebo>
 </joint>
-
 <!-- Link 20 -->
 <xacro:macro name="link_20">
   <link name="Link_20">
@@ -828,7 +797,6 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     </visual>
   </link>
 </xacro:macro>
-
 <!-- Joint 21 -->
 <joint name="Joint_21" type="revolute">
   <parent link="Link_20"/>
@@ -837,12 +805,11 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
   <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
   <axis xyz="0 0 1"/>
   <gazebo>
-    <dynamics damping="0.1" friction="0.2"/>
+    <dynamics damping="0.002" friction="0.15"/>
     <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+    <spring_stiffness>0.15</spring_stiffness>
   </gazebo>
 </joint>
-
 <!-- Link 21 -->
 <xacro:macro name="link_21">
   <link name="Link_21">
@@ -867,7 +834,6 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     </visual>
   </link>
 </xacro:macro>
-
 <!-- EE -->
 <joint name="Link_EE" type="fixed">
   <origin xyz="0 0 0" rpy="0.033333333333333 0 0"/>

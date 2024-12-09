@@ -89,9 +89,6 @@ class InferenceController(Node):
         self.err_pos = self.pos_des[0] - self.tip_pos[0]
         self.err_pos = [self.pos_des[0] - self.tip_pos[0]]
         self.err_vel = [self.vel_des[0] - self.tip_vel_lin[0]]
-        
-        # self.err_pos = [0.0 for _ in range(self.njoint)]
-        # self.err_vel = [0.0 for _ in range(self.njoint)]
 
         # Load PyTorch model and create timer
         rclpy.logging.get_logger('rclpy.node').info('Loading model from {}'.format(self.model_path))
@@ -180,7 +177,8 @@ class InferenceController(Node):
                 joint_msg.position = self._avg_default_dof
             else:
                 rclpy.logging.get_logger('rclpy.node').info(colored('Policy starts working ...', 'cyan'))                 
-                joint_msg.position = [float(action[0, 0] * self.action_scale)]            
+                joint_msg.position = [float(action[0, 0] * self.action_scale)]     
+                       
         if not self.simulation:
             joint_msg.kp_scale = self.joint_kp.tolist()
             joint_msg.kd_scale = self.joint_kd.tolist()
