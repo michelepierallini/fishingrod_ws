@@ -14,7 +14,7 @@ import launch
 
 def generate_launch_description():
 
-    use_sim_time = LaunchConfiguration('use_sim_time', default='true')
+    # use_sim_time = LaunchConfiguration('use_sim_time', default='true')
 
     urdf = os.path.join(
         get_package_share_directory('fishingrod_description'),
@@ -31,22 +31,14 @@ def generate_launch_description():
             launch_arguments={"pause": "true", "verbose": "false"}.items(),
     )
 
-    # default_dof = (
-    #     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 
-    #     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 
-    #     0.0)
-    
-    # joint_names = (
-    #     'Joint_1', 'Joint_2', 'Joint_3', 'Joint_4', 'Joint_5', 'Joint_6', 
+    # default_dof = ( 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 
+    #               0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    # joint_names = ('Joint_1', 'Joint_2', 'Joint_3', 'Joint_4', 'Joint_5', 'Joint_6', 
     #     'Joint_7', 'Joint_8', 'Joint_9', 'Joint_10', 'Joint_11', 'Joint_12', 
-    #     'Joint_13', 'Joint_14', 'Joint_15', 'Joint_16', 'Joint_17', 'Joint_18', 
-    #     'Joint_19', 'Joint_20', 'Joint_21')
+    #     'Joint_13', 'Joint_14', 'Joint_15', 'Joint_16', 'Joint_17', 'Joint_18', 'Joint_19', 'Joint_20', 'Joint_21')
     
-    ## only the first joint is actuated
     default_dof = (0.0,)
-    
     joint_names = ('Joint_1',)
-    
     default_dict = dict(zip(joint_names, default_dof))
 
     default_joint_args = ""
@@ -101,14 +93,11 @@ def generate_launch_description():
     return LaunchDescription([
         
         launch_ros.actions.SetParameter(name='use_sim_time', value=True),
-
         # DeclareLaunchArgument(
         #     'use_sim_time',
         #     default_value='true',
         #     description='Use simulation (Gazebo) clock if true'),
-
         gazebo,
-
         node_robot_state_publisher,
         spawn_entity,
         RegisterEventHandler(

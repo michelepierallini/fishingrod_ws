@@ -55,7 +55,7 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <parent link="Link_0"/>
     <child link="Link_1"/>
     <origin rpy="1.5708 0 0" xyz="0 0 0.09"/>
-    <limit effort="10" velocity="1.0" lower="-3.14" upper="3.14" />
+    <limit effort="100" velocity="100.0" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <!-- <gazebo>
       <dynamics damping="0.1" friction="0.2"/>

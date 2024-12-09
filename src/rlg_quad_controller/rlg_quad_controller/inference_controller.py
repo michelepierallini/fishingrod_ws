@@ -36,7 +36,7 @@ class InferenceController(Node):
         self.joint_state_topic = self.get_parameter('joint_state_topic').get_parameter_value().string_value
         self.joint_target_pos_topic = self.get_parameter('joint_target_pos_topic').get_parameter_value().string_value
         
-        self.DEBUGGING = True
+        self.DEBUGGING = False
 
         # Inference rate
         with open(self.config_path, 'r') as f:
@@ -105,12 +105,12 @@ class InferenceController(Node):
         for i in range(self.njoint):
             if (not np.isnan(msg.position[i]) and (not np.isnan(msg.velocity[i]))):
                 self.joint_pos[msg.name[i]] = msg.position[i]
-                # self.joint_vel[msg.name[i]] = msg.velocity[i]
+                self.joint_vel[msg.name[i]] = msg.velocity[i]
         self.prev_timestamp = timestamp
     
     def imu_callback(self, msg):
         """Callback to process IMU data and extract tip position."""
-        linear_velocity = np.array([
+        linear_acceleration = np.array([
             msg.linear_acceleration.x,
             msg.linear_acceleration.y,
             msg.linear_acceleration.z])
@@ -122,11 +122,12 @@ class InferenceController(Node):
             return
         
         dt = timestamp - self.prev_timestamp
+        # self.get_logger().info(f'dt is : {dt}')
         self.prev_timestamp = timestamp
-        self.tip_pos += linear_velocity * dt
-        self.tip_vel = linear_velocity
+        self.tip_vel_lin += linear_acceleration * dt
+        self.tip_pos += self.tip_vel_lin * dt
         self.err_pos = self.pos_des - self.tip_pos[0]
-        self.err_vel = self.vel_des - self.tip_vel[0]
+        self.err_vel = self.vel_des - self.tip_vel_lin[0]
 
     def inference_callback(self):
         """ Callback function for inference timer. Infers joints target_pos from model and publishes it. """  
@@ -154,9 +155,10 @@ class InferenceController(Node):
         
         if self.DEBUGGING:
             # rclpy.logging.get_logger('rclpy.node').info(f"joint_pos           : {self.joint_pos}")
-            # rclpy.logging.get_logger('rclpy.node').info(f"tip_vel_lin         : {self.tip_vel_lin}")
+            # rclpy.logging.get_logger('rclpy.node').info(f"joint_vel           : {self.joint_vel}")
             rclpy.logging.get_logger('rclpy.node').info(f"tip_pos             : {self.tip_pos}")
-            rclpy.logging.get_logger('rclpy.node').info(f"action              : {action}")
+            rclpy.logging.get_logger('rclpy.node').info(f"tip_vel_lin         : {self.tip_vel_lin}")
+            # rclpy.logging.get_logger('rclpy.node').info(f"action              : {action}")
             # rclpy.logging.get_logger('rclpy.node').info(f"tip_pos_previous    : {self.tip_pos_previous}")
             # rclpy.logging.get_logger('rclpy.node').info(f"tip_vel_lin_previous: {self.tip_vel_lin_previous}")
         
@@ -171,19 +173,22 @@ class InferenceController(Node):
             self.startup_time_obs = rclpy.clock.Clock().now()
             action *= 0.0
             joint_msg.position = self._avg_default_dof
+            joint_msg.velocity = np.zeros(self.njoint).tolist()
         else:               
             if rclpy.clock.Clock().now() > (self.startup_time_obs + rclpy.duration.Duration(seconds=2.0)):
                 rclpy.logging.get_logger('rclpy.node').info(colored('Policy stops ...', 'yellow')) 
                 joint_msg.position = self._avg_default_dof
+                joint_msg.velocity = np.zeros(self.njoint).tolist()
             else:
                 rclpy.logging.get_logger('rclpy.node').info(colored('Policy starts working ...', 'cyan'))                 
-                joint_msg.position = [float(action[0, 0] * self.action_scale)]     
+                joint_msg.position = [float(action[0, 0] * self.action_scale + self._avg_default_dof)]   
+                joint_msg.velocity = [float(-value) for value in self.joint_pos.values()]
                        
         if not self.simulation:
             joint_msg.kp_scale = self.joint_kp.tolist()
             joint_msg.kd_scale = self.joint_kd.tolist()
             
-        joint_msg.velocity = np.zeros(self.njoint).tolist()
+        # joint_msg.velocity = np.zeros(self.njoint).tolist()
         joint_msg.effort = np.zeros(self.njoint).tolist()
         self.joint_target_pos_pub.publish(joint_msg)
 
