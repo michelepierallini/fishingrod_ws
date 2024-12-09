@@ -20,7 +20,12 @@ ros2 launch rlg_quad_controller fishingrod_simulation.launch.py
 ```
 
 # TODO
+
 1) Add stiffnees (real) to the ```.urdf```
 2) Test the IMU
 3) Implement the camera (I do not think IMU will solve)
 4) Plug-in for stiffness and damping (eventually)
+
+------- 
+
+ 5) Retrain the Network with smart observation

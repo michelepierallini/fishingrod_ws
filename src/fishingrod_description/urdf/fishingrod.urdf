@@ -15,10 +15,10 @@
   </material>
 
 <!-- 
-Damping: Controls resistance proportional to velocity.
-Friction: Controls constant resistance to motion.
-Spring Reference: Sets the rest position of the spring.
-Spring Stiffness: Controls the force exerted by the spring based on displacement. 
+damping: Controls resistance proportional to velocity.
+friction: Controls constant resistance to motion.
+spring reference: Sets the rest position of the spring.
+spring stiffness: Controls the force exerted by the spring based on displacement. 
 -->
 
 <link name="world"/>
@@ -58,11 +58,11 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <origin rpy="1.5708 0 0" xyz="0 0 0.09"/>
     <limit effort="10" velocity="1.0" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
+    <!-- <gazebo>
       <dynamics damping="0.1" friction="0.2"/>
       <spring_reference>0.0</spring_reference>
       <spring_stiffness>100.0</spring_stiffness>
-    </gazebo>
+    </gazebo> -->
   </joint>
     <!-- Link 1 -->
   <link name="Link_1">
@@ -94,11 +94,13 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1.0" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.0955" friction="4.3262"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>4.3262</spring_stiffness>
     </gazebo>
   </joint>
+
+
     <!-- Link 2 -->
   <link name="Link_2">
     <inertial>
@@ -129,9 +131,9 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.082" friction="3.8263"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>3.8263</spring_stiffness>
     </gazebo>
   </joint>
     <!-- Link 3 -->
@@ -164,9 +166,9 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.0635" friction="3.355"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>3.355</spring_stiffness>
     </gazebo>
   </joint>
     <!-- Link 4 -->
@@ -199,9 +201,9 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.041" friction="2.1504"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>2.1504</spring_stiffness>
     </gazebo>
   </joint>
     <!-- Link 5 -->
@@ -234,9 +236,9 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.028" friction="1.4875"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>1.4875</spring_stiffness>
     </gazebo>
   </joint>
     <!-- Link 6 -->
@@ -261,6 +263,7 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
       <material name="Orange"/>
     </visual>
   </link>
+  
   <!-- Joint 7 -->
   <joint name="Joint_7" type="revolute">
     <parent link="Link_6"/>
@@ -304,9 +307,9 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.028" friction="1.4875"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>1.4875</spring_stiffness>
     </gazebo>
   </joint>
     <!-- Link 8 -->
@@ -341,9 +344,9 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.028" friction="1.4875"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>1.4875</spring_stiffness>
     </gazebo>
   </joint>
     <!-- Link 9 -->
@@ -376,9 +379,9 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.021" friction="1.11"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>1.11</spring_stiffness>
     </gazebo>
   </joint>
     <!-- Link 10 -->
@@ -411,9 +414,9 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.001" friction="0.505"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>0.505</spring_stiffness>
     </gazebo>
   </joint>
     <!-- Link 11 -->
@@ -446,9 +449,9 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.001" friction="0.4563"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>0.4563</spring_stiffness>
     </gazebo>
   </joint>
     <!-- Link 12 -->
@@ -481,9 +484,9 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.0075" friction="0.3812"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>0.3812</spring_stiffness>
     </gazebo>
   </joint>
     <!-- Link 13 -->
@@ -516,9 +519,9 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.01" friction="0.6750"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>0.6750</spring_stiffness>
     </gazebo>
   </joint>
     <!-- Link 14 -->
@@ -551,9 +554,9 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.0085" friction="0.4588"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>0.4588</spring_stiffness>
     </gazebo>
   </joint>
     <!-- Link 15 -->
@@ -586,9 +589,9 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.007" friction="0.3625"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>0.3625</spring_stiffness>
     </gazebo>
   </joint>
 <!-- Link 16 -->
@@ -621,9 +624,9 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.006" friction="0.3625"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>0.3625</spring_stiffness>
     </gazebo>
   </joint>
     <!-- Link 17 -->
@@ -656,9 +659,9 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.0045" friction="0.2663"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>0.2663</spring_stiffness>
     </gazebo>
   </joint>
     <!-- Link 18 -->
@@ -691,9 +694,9 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.0035" friction="0.2"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>0.2</spring_stiffness>
     </gazebo>
   </joint>
     <!-- Link 19 -->
@@ -726,9 +729,9 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.003" friction="0.2"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>0.2</spring_stiffness>
     </gazebo>
   </joint>
     <!-- Link 20 -->
@@ -761,9 +764,9 @@ Spring Stiffness: Controls the force exerted by the spring based on displacement
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
     <gazebo>
-      <dynamics damping="0.1" friction="0.2"/>
+      <dynamics damping="0.002" friction="0.15"/>
       <spring_reference>0.0</spring_reference>
-      <spring_stiffness>100.0</spring_stiffness>
+      <spring_stiffness>0.15</spring_stiffness>
     </gazebo>
   </joint>
     <!-- Link 21 -->
