@@ -86,10 +86,12 @@ class InferenceController(Node):
         self.previous_action = [0.0 for _ in range(self.njoint)]
         self.tip_pos_previous = [0.0 for _ in range(3)]
         self.tip_vel_lin_previous = [0.0 for _ in range(3)]
-        # self.err_pos = self.pos_des[0] - self.tip_pos[0]
-        # self.err_vel = self.vel_des[0] - self.tip_vel_lin[0]
-        self.err_pos = [0.0 for _ in range(self.njoint)]
-        self.err_vel = [0.0 for _ in range(self.njoint)]
+        self.err_pos = self.pos_des[0] - self.tip_pos[0]
+        self.err_pos = [self.pos_des[0] - self.tip_pos[0]]
+        self.err_vel = [self.vel_des[0] - self.tip_vel_lin[0]]
+        
+        # self.err_pos = [0.0 for _ in range(self.njoint)]
+        # self.err_vel = [0.0 for _ in range(self.njoint)]
 
         # Load PyTorch model and create timer
         rclpy.logging.get_logger('rclpy.node').info('Loading model from {}'.format(self.model_path))
@@ -154,12 +156,12 @@ class InferenceController(Node):
         self.tip_vel_lin_previous = self.tip_vel_lin.copy()
         
         if self.DEBUGGING:
-            rclpy.logging.get_logger('rclpy.node').info(f"joint_pos              : {self.joint_pos}")
-            rclpy.logging.get_logger('rclpy.node').info(f"tip_vel_lin            : {self.tip_vel_lin}")
-            rclpy.logging.get_logger('rclpy.node').info(f"tip_pos                : {self.tip_pos}")
-            rclpy.logging.get_logger('rclpy.node').info(f"action                 : {action}")
-            # rclpy.logging.get_logger('rclpy.node').info(f"tip_pos_previous       : {self.tip_pos_previous}")
-            # rclpy.logging.get_logger('rclpy.node').info(f"tip_vel_lin_previous   : {self.tip_vel_lin_previous}")
+            # rclpy.logging.get_logger('rclpy.node').info(f"joint_pos           : {self.joint_pos}")
+            # rclpy.logging.get_logger('rclpy.node').info(f"tip_vel_lin         : {self.tip_vel_lin}")
+            rclpy.logging.get_logger('rclpy.node').info(f"tip_pos             : {self.tip_pos}")
+            rclpy.logging.get_logger('rclpy.node').info(f"action              : {action}")
+            # rclpy.logging.get_logger('rclpy.node').info(f"tip_pos_previous    : {self.tip_pos_previous}")
+            # rclpy.logging.get_logger('rclpy.node').info(f"tip_vel_lin_previous: {self.tip_vel_lin_previous}")
         
         if self.simulation:
             joint_msg = JointState()
