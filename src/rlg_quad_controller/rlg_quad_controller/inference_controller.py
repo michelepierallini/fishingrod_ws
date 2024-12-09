@@ -36,7 +36,7 @@ class InferenceController(Node):
         self.joint_state_topic = self.get_parameter('joint_state_topic').get_parameter_value().string_value
         self.joint_target_pos_topic = self.get_parameter('joint_target_pos_topic').get_parameter_value().string_value
         
-        self.DEBUGGING = False
+        self.DEBUGGING = True
 
         # Inference rate
         with open(self.config_path, 'r') as f:
@@ -82,10 +82,12 @@ class InferenceController(Node):
         self.pos_des = [0.4]
         self.vel_des = [5.0]
         self.tip_vel_lin = [0.0 for _ in range(3)]
-        self.tip_pos = [0.0 for _ in range(3)]   
+        self.tip_pos = [0.0000, 0.0700, 2.9417]
         self.previous_action = [0.0 for _ in range(self.njoint)]
         self.tip_pos_previous = [0.0 for _ in range(3)]
         self.tip_vel_lin_previous = [0.0 for _ in range(3)]
+        # self.err_pos = self.pos_des[0] - self.tip_pos[0]
+        # self.err_vel = self.vel_des[0] - self.tip_vel_lin[0]
         self.err_pos = [0.0 for _ in range(self.njoint)]
         self.err_vel = [0.0 for _ in range(self.njoint)]
 
