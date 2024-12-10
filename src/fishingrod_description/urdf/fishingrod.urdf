@@ -65,13 +65,7 @@
     <origin rpy="0 0 0" xyz="0 0.73 0"/>
     <limit effort="10" velocity="1.0" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
-      <dynamics damping="0.0955" friction="4.3262"/>
-      <spring_reference>0.0</spring_reference>
-      <spring_stiffness>4.3262</spring_stiffness>
-    </gazebo>
   </joint>
-
   <!-- Link 2 -->
   <link name="Link_2">
     <inertial>
@@ -99,11 +93,6 @@
     <origin rpy="0 0 0" xyz="0 0.2 0"/>
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
-      <dynamics damping="0.082" friction="3.8263"/>
-      <spring_reference>0.0</spring_reference>
-      <spring_stiffness>3.8263</spring_stiffness>
-    </gazebo>
   </joint>
     <!-- Link 3 -->
   <link name="Link_3">
@@ -132,11 +121,6 @@
     <origin rpy="0 0 0" xyz="0 0.2 0"/>
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
-      <dynamics damping="0.0635" friction="3.355"/>
-      <spring_reference>0.0</spring_reference>
-      <spring_stiffness>3.355</spring_stiffness>
-    </gazebo>
   </joint>
     <!-- Link 4 -->
   <link name="Link_4">
@@ -165,11 +149,6 @@
     <origin rpy="0 0 0" xyz="0 0.133333333333333 0"/>
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
-      <dynamics damping="0.041" friction="2.1504"/>
-      <spring_reference>0.0</spring_reference>
-      <spring_stiffness>2.1504</spring_stiffness>
-    </gazebo>
   </joint>
     <!-- Link 5 -->
   <link name="Link_5">
@@ -198,11 +177,6 @@
     <origin rpy="0 0 0" xyz="0 0.133333333333333 0"/>
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
-      <dynamics damping="0.028" friction="1.4875"/>
-      <spring_reference>0.0</spring_reference>
-      <spring_stiffness>1.4875</spring_stiffness>
-    </gazebo>
   </joint>
     <!-- Link 6 -->
   <link name="Link_6">
@@ -224,7 +198,6 @@
       </geometry>
     </visual>
   </link>
-  
   <!-- Joint 7 -->
   <joint name="Joint_7" type="revolute">
     <parent link="Link_6"/>
@@ -232,11 +205,6 @@
     <origin rpy="0 0 0" xyz="0 0.1 0"/>
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
-      <dynamics damping="0.028" friction="1.4875"/>
-      <spring_reference>0.0</spring_reference>
-      <spring_stiffness>1.4875</spring_stiffness>
-    </gazebo>
   </joint>
     <!-- Link 7 -->
   <link name="Link_7">
@@ -265,11 +233,6 @@
     <origin rpy="0 0 0" xyz="0 0.1 0"/>
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
-      <dynamics damping="0.028" friction="1.4875"/>
-      <spring_reference>0.0</spring_reference>
-      <spring_stiffness>1.4875</spring_stiffness>
-    </gazebo>
   </joint>
     <!-- Link 8 -->
   <link name="Link_8">
@@ -298,11 +261,6 @@
     <origin rpy="0 0 0" xyz="0 0.1 0"/>
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
-      <dynamics damping="0.028" friction="1.4875"/>
-      <spring_reference>0.0</spring_reference>
-      <spring_stiffness>1.4875</spring_stiffness>
-    </gazebo>
   </joint>
     <!-- Link 9 -->
   <link name="Link_9">
@@ -322,7 +280,6 @@
       <geometry>
         <cylinder radius="0.022" length="0.022"/>
       </geometry>
-      <!-- <material name="Orange"/> -->
     </visual>
   </link>
    <!-- Joint 10 -->
@@ -332,11 +289,6 @@
     <origin rpy="0 0 0" xyz="0 0.1 0"/>
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
-      <dynamics damping="0.021" friction="1.11"/>
-      <spring_reference>0.0</spring_reference>
-      <spring_stiffness>1.11</spring_stiffness>
-    </gazebo>
   </joint>
     <!-- Link 10 -->
   <link name="Link_10">
@@ -365,11 +317,6 @@
     <origin rpy="0 0 0" xyz="0 0.08 0"/>
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
-      <dynamics damping="0.001" friction="0.505"/>
-      <spring_reference>0.0</spring_reference>
-      <spring_stiffness>0.505</spring_stiffness>
-    </gazebo>
   </joint>
     <!-- Link 11 -->
   <link name="Link_11">
@@ -398,11 +345,6 @@
     <origin rpy="0 0 0" xyz="0 0.08 0"/>
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
-      <dynamics damping="0.001" friction="0.4563"/>
-      <spring_reference>0.0</spring_reference>
-      <spring_stiffness>0.4563</spring_stiffness>
-    </gazebo>
   </joint>
     <!-- Link 12 -->
   <link name="Link_12">
@@ -431,11 +373,6 @@
     <origin rpy="0 0 0" xyz="0 0.08 0"/>
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
-      <dynamics damping="0.0075" friction="0.3812"/>
-      <spring_reference>0.0</spring_reference>
-      <spring_stiffness>0.3812</spring_stiffness>
-    </gazebo>
   </joint>
     <!-- Link 13 -->
   <link name="Link_13">
@@ -464,11 +401,6 @@
     <origin rpy="0 0 0" xyz="0 0.08 0"/>
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
-      <dynamics damping="0.01" friction="0.6750"/>
-      <spring_reference>0.0</spring_reference>
-      <spring_stiffness>0.6750</spring_stiffness>
-    </gazebo>
   </joint>
     <!-- Link 14 -->
   <link name="Link_14">
@@ -497,11 +429,6 @@
     <origin rpy="0 0 0" xyz="0 0.08 0"/>
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
-      <dynamics damping="0.0085" friction="0.4588"/>
-      <spring_reference>0.0</spring_reference>
-      <spring_stiffness>0.4588</spring_stiffness>
-    </gazebo>
   </joint>
     <!-- Link 15 -->
   <link name="Link_15">
@@ -530,11 +457,6 @@
     <origin rpy="0 0 0" xyz="0 0.066666666666667 0"/>
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
-      <dynamics damping="0.007" friction="0.3625"/>
-      <spring_reference>0.0</spring_reference>
-      <spring_stiffness>0.3625</spring_stiffness>
-    </gazebo>
   </joint>
 <!-- Link 16 -->
   <link name="Link_16">
@@ -563,11 +485,6 @@
     <origin rpy="0 0 0" xyz="0 0.066666666666667 0"/>
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
-      <dynamics damping="0.006" friction="0.3625"/>
-      <spring_reference>0.0</spring_reference>
-      <spring_stiffness>0.3625</spring_stiffness>
-    </gazebo>
   </joint>
     <!-- Link 17 -->
   <link name="Link_17">
@@ -596,11 +513,6 @@
     <origin rpy="0 0 0" xyz="0 0.066666666666667 0"/>
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
-      <dynamics damping="0.0045" friction="0.2663"/>
-      <spring_reference>0.0</spring_reference>
-      <spring_stiffness>0.2663</spring_stiffness>
-    </gazebo>
   </joint>
     <!-- Link 18 -->
   <link name="Link_18">
@@ -629,11 +541,6 @@
     <origin rpy="0 0 0" xyz="0 0.066666666666667 0"/>
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
-      <dynamics damping="0.0035" friction="0.2"/>
-      <spring_reference>0.0</spring_reference>
-      <spring_stiffness>0.2</spring_stiffness>
-    </gazebo>
   </joint>
     <!-- Link 19 -->
   <link name="Link_19">
@@ -662,11 +569,6 @@
     <origin rpy="0 0 0" xyz="0 0.066666666666667 0"/>
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
-      <dynamics damping="0.003" friction="0.2"/>
-      <spring_reference>0.0</spring_reference>
-      <spring_stiffness>0.2</spring_stiffness>
-    </gazebo>
   </joint>
     <!-- Link 20 -->
   <link name="Link_20">
@@ -695,11 +597,6 @@
     <origin rpy="0 0 0" xyz="0 0.066666666666667 0"/>
     <limit effort="10" velocity="1" lower="-3.14" upper="3.14" />
     <axis xyz="0 0 1"/>
-    <gazebo>
-      <dynamics damping="0.002" friction="0.15"/>
-      <spring_reference>0.0</spring_reference>
-      <spring_stiffness>0.15</spring_stiffness>
-    </gazebo>
   </joint>
     <!-- Link 21 -->
   <link name="Link_21">
@@ -950,6 +847,149 @@
       <state_interface name="effort" />
     </joint>
   </ros2_control> 
+
+  <gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_2</joint_name>
+        <stiffness>4.3262</stiffness>
+        <damping>0.0955</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_3</joint_name>
+        <stiffness>3.8263</stiffness>
+        <damping>0.083</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_4</joint_name>
+        <stiffness>3.355</stiffness>
+        <damping>0.0635</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+<plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_5</joint_name>
+        <stiffness>2.1504</stiffness>
+        <damping>0.041</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_6</joint_name>
+        <stiffness>1.4875</stiffness>
+        <damping>0.028</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+<plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_7</joint_name>
+        <stiffness>1.4875</stiffness>
+        <damping>0.028</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_8</joint_name>
+        <stiffness>1.4875</stiffness>
+        <damping>0.028</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+<plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_9</joint_name>
+        <stiffness>1.4875</stiffness>
+        <damping>0.025</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_10</joint_name>
+        <stiffness>1.11</stiffness>
+        <damping>0.02</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+<plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_11</joint_name>
+        <stiffness>0.705</stiffness>
+        <damping>0.015</damping>
+    </plugin>
+</gazebo>
+
+
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_12</joint_name>
+        <stiffness>0.4563</stiffness>
+        <damping>0.005</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+<plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_13</joint_name>
+        <stiffness>0.4812</stiffness>
+        <damping>0.0075</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_14</joint_name>
+        <stiffness>0.6750</stiffness>
+        <damping>0.005</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+<plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_15</joint_name>
+        <stiffness>0.4588</stiffness>
+        <damping>0.0085</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_16</joint_name>
+        <stiffness>0.3625</stiffness>
+        <damping>0.007</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+<plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_17</joint_name>
+        <stiffness>0.3625</stiffness>
+        <damping>0.006</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_18</joint_name>
+        <stiffness>0.2663</stiffness>
+        <damping>0.0045</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+<plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_19</joint_name>
+        <stiffness>0.2</stiffness>
+        <damping>0.0035</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_20</joint_name>
+        <stiffness>0.2</stiffness>
+        <damping>0.003</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_21</joint_name>
+        <stiffness>0.15</stiffness>
+        <damping>0.002</damping>
+    </plugin>
+</gazebo>
 
   <gazebo reference="Tip">
   <sensor name="br_imu" type="imu">

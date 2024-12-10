@@ -29,3 +29,10 @@ ros2 launch rlg_quad_controller fishingrod_simulation.launch.py
 ------- 
 
  5) Retrain the Network with smart observation
+
+
+if the SEA plugin returns error please run 
+``` 
+export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:~/michele_try_ws/fishingrod_ws/install/serial_elastic_plugin/lib
+
+```` 
