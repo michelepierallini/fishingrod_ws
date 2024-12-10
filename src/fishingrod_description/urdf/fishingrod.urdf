@@ -997,21 +997,18 @@
       </plugin>
   </gazebo> -->
 
-
-
-
   <gazebo>
       <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
           <joint_name>Joint_1 Joint_2</joint_name>
-          <stiffness>0 4.3262 </stiffness>
-          <damping>0 0.0955</damping>
+          <stiffness>0.0 4.3262 </stiffness>
+          <damping>0.0 0.0955</damping>
       </plugin>
   </gazebo>
   <gazebo>
       <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
           <joint_name>Joint_1 Joint_2 Joint_3</joint_name>
-          <stiffness>0 4.3262 3.8263</stiffness>
-          <damping>0 0.0955 0.083 </damping>
+          <stiffness>0.0 4.3262 3.8263</stiffness>
+          <damping>0.0 0.0955 0.083 </damping>
       </plugin>
   </gazebo>
   <gazebo>

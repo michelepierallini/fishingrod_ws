@@ -122,144 +122,139 @@
 //   GZ_REGISTER_MODEL_PLUGIN(SerialElasticPluginTri)
 // }
 
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
 
 #include <gazebo/common/Plugin.hh>
-#include <gazebo/physics/Joint.hh>
-#include <gazebo/physics/Model.hh>
-#include <gazebo/physics/World.hh>
-#include <gazebo/physics/Joint.hh>
-#include <gazebo/physics/PhysicsEngine.hh>
-#include <gazebo/transport/transport.hh>
-#include <gazebo/msgs/msgs.hh>
-#include <ignition/math/Pose3.hh>
+#include <gazebo/physics/physics.hh>
 #include <ignition/math/Vector3.hh>
-#include <string>
+#include <iostream>
 #include <vector>
 #include <sstream>
-#include <iostream>
-#include <Eigen/Dense>
+
+/* This class implements a Serial Elastic Actuator (SEA)
+   with coupling between neighboring joints.
+*/
 
 namespace gazebo
 {
   class SerialElasticPluginTri : public ModelPlugin
   {
-    public: 
-      SerialElasticPluginTri() : ModelPlugin() {}
+  public:
+    void Load(physics::ModelPtr model, sdf::ElementPtr sdf) override
+    {
+      this->model = model;
 
-      virtual ~SerialElasticPluginTri() {}
-
-      void Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
+      // Parse stiffness and damping values
+      if (sdf->HasElement("stiffness"))
       {
-        this->model = _model;
-        this->world = _model->GetWorld();
-
-        // Load joint names
-        if (_sdf->HasElement("joints"))
-        {
-          sdf::ElementPtr jointElem = _sdf->GetElement("joints");
-          while (jointElem)
-          {
-            this->jointNames.push_back(jointElem->Get<std::string>());
-            jointElem = jointElem->GetNextElement("joint");
-          }
-        }
-
-        // Parse stiffness and damping matrices from the SDF
-        if (_sdf->HasElement("stiffness"))
-        {
-          std::string stiffnessData = _sdf->GetElement("stiffness")->Get<std::string>();
-          this->K_matrix = ParseMatrix(stiffnessData, this->jointNames.size());
-        }
-
-        if (_sdf->HasElement("damping"))
-        {
-          std::string dampingData = _sdf->GetElement("damping")->Get<std::string>();
-          this->D_matrix = ParseMatrix(dampingData, this->jointNames.size());
-        }
-
-        // Initialize joint forces
-        this->torques.resize(this->jointNames.size(), 0.0);
-
-        // Set up a connection to update the forces each timestep
-        this->updateConnection = event::Events::ConnectWorldUpdateBegin(
-          boost::bind(&SerialElasticPluginTri::OnUpdate, this));
+        std::string stiffnessStr = sdf->Get<std::string>("stiffness");
+        this->stiffness = ParseValues(stiffnessStr);
+      }
+      else
+      {
+        gzerr << "Missing <stiffness> parameter in SDF plugin element.\n";
+        return;
       }
 
-      // Method to parse tridiagonal matrices (K_matrix and D_matrix)
-      Eigen::MatrixXd ParseMatrix(const std::string &data, size_t size)
+      if (sdf->HasElement("damping"))
       {
-        Eigen::MatrixXd matrix = Eigen::MatrixXd::Zero(size, size);
-        std::istringstream iss(data);
-        
-        // Fill the diagonal
-        for (size_t i = 0; i < size; ++i)
-        {
-          iss >> matrix(i, i);  // main diagonal
-        }
-        
-        // Fill the sub-diagonal and super-diagonal
-        for (size_t i = 1; i < size; ++i)
-        {
-          double value;
-          iss >> value;
-          matrix(i, i - 1) = value / 2e1;  // sub-diagonal
-          matrix(i - 1, i) = value / 2e1;  // super-diagonal
-        }
-        return matrix;
+        std::string dampingStr = sdf->Get<std::string>("damping");
+        this->damping = ParseValues(dampingStr);
+      }
+      else
+      {
+        gzerr << "Missing <damping> parameter in SDF plugin element.\n";
+        return;
       }
 
-      // Method to update joint forces based on stiffness and damping
-      void OnUpdate()
+      // Get joint names
+      if (sdf->HasElement("joint_name"))
       {
-        // Get joint positions and velocities
-        std::vector<double> positions;
-        std::vector<double> velocities;
-        for (size_t i = 0; i < this->jointNames.size(); ++i)
+        std::string jointNamesStr = sdf->Get<std::string>("joint_name");
+        std::istringstream iss(jointNamesStr);
+        std::string jointName;
+        while (iss >> jointName)
         {
-          physics::JointPtr joint = this->model->GetJoint(this->jointNames[i]);
-          positions.push_back(joint->Position(0));
-          velocities.push_back(joint->GetVelocity(0));
-        }
-
-        // Calculate torques based on stiffness and damping
-        for (size_t jointIndex = 0; jointIndex < this->jointNames.size(); ++jointIndex)
-        {
-          torques[jointIndex] = -this->K_matrix(jointIndex, jointIndex) * positions[jointIndex]
-                                - this->D_matrix(jointIndex, jointIndex) * velocities[jointIndex];
-          
-          // Apply interaction from neighboring joints (for tridiagonal matrix)
-          if (jointIndex > 0)
-          {
-            torques[jointIndex] -= this->K_matrix(jointIndex, jointIndex - 1) * positions[jointIndex - 1]
-                                    - this->D_matrix(jointIndex, jointIndex - 1) * velocities[jointIndex - 1];
-          }
-
-          if (jointIndex < this->jointNames.size() - 1)
-          {
-            torques[jointIndex] -= this->K_matrix(jointIndex, jointIndex + 1) * positions[jointIndex + 1]
-                                    - this->D_matrix(jointIndex, jointIndex + 1) * velocities[jointIndex + 1];
-          }
-
-          // Apply the computed torque to the joint
-          physics::JointPtr joint = this->model->GetJoint(this->jointNames[jointIndex]);
-          joint->SetForce(0, torques[jointIndex]);
+          auto joint = this->model->GetJoint(jointName);
+          if (joint)
+            this->joints.push_back(joint);
+          else
+            gzerr << "Joint " << jointName << " not found in the model!\n";
         }
       }
+      else
+      {
+        gzerr << "No <joint_name> specified in the SDF plugin element.\n";
+        return;
+      }
 
-    private:
-      physics::ModelPtr model;
-      physics::WorldPtr world;
-      event::ConnectionPtr updateConnection;
-      
-      // Vectors to store joint names and torques
-      std::vector<std::string> jointNames;
-      std::vector<double> torques;
+      if (this->joints.size() != this->stiffness.size() || 
+          this->joints.size() != this->damping.size())
+      {
+        gzerr << "Mismatch between number of joints, stiffness, and damping values.\n";
+        return;
+      }
 
-      // Matrices for stiffness and damping
-      Eigen::MatrixXd K_matrix;
-      Eigen::MatrixXd D_matrix;
+      // Connect to the world update event
+      this->updateConnection = event::Events::ConnectWorldUpdateBegin(
+          std::bind(&SerialElasticPluginTri::OnUpdate, this));
+    }
+
+    void OnUpdate()
+    {
+      if (this->joints.empty())
+        return;
+
+      for (size_t i = 0; i < this->joints.size(); ++i)
+      {
+        double position = this->joints[i]->Position(0);
+        double velocity = this->joints[i]->GetVelocity(0);
+        double torque = -this->stiffness[i] * position - this->damping[i] * velocity;
+
+        // Coupling effects with neighboring joints
+        if (i > 0) // Previous joint
+        {
+          double prevPosition = this->joints[i - 1]->Position(0);
+          double prevVelocity = this->joints[i - 1]->GetVelocity(0);
+
+          torque += -0.5 * this->stiffness[i - 1] * prevPosition -
+                    0.5 * this->damping[i - 1] * prevVelocity;
+        }
+
+        if (i < this->joints.size() - 1) // Next joint
+        {
+          double nextPosition = this->joints[i + 1]->Position(0);
+          double nextVelocity = this->joints[i + 1]->GetVelocity(0);
+
+          torque += -0.5 * this->stiffness[i + 1] * nextPosition -
+                    0.5 * this->damping[i + 1] * nextVelocity;
+        }
+
+        this->joints[i]->SetForce(0, torque);
+      }
+    }
+
+  private:
+    // Helper function to parse a string of double values into a vector
+    std::vector<double> ParseValues(const std::string &data)
+    {
+      std::vector<double> values;
+      std::istringstream iss(data);
+      double value;
+      while (iss >> value)
+      {
+        values.push_back(value);
+      }
+      return values;
+    }
+
+    physics::ModelPtr model;
+    std::vector<physics::JointPtr> joints;
+    std::vector<double> stiffness; // Stiffness values for each joint
+    std::vector<double> damping;   // Damping values for each joint
+    event::ConnectionPtr updateConnection;
   };
 
-  // Register the plugin with Gazebo
   GZ_REGISTER_MODEL_PLUGIN(SerialElasticPluginTri)
 }

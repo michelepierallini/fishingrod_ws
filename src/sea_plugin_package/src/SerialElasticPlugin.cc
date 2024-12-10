@@ -3,6 +3,10 @@
 #include <ignition/math/Vector3.hh>
 #include <iostream>
 
+/* This class implements a Serial Elastic Actuator (SEA)
+  It can be used also for the Mulinex robot and the Softleg Goatleg
+*/
+
 namespace gazebo
 {
   class SerialElasticPlugin : public ModelPlugin
@@ -28,7 +32,7 @@ namespace gazebo
         }
         else
         {
-          gzerr << "No joint_name specified in the SDF plugin element.\n";
+          gzerr << "No joint_name specified in the URDF plugin element.\n";
         }
 
         this->updateConnection = event::Events::ConnectWorldUpdateBegin(
