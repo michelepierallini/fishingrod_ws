@@ -651,6 +651,33 @@
       <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
         <parameters>/home/michele/michele_try_ws/fishingrod_ws/src/fishingrod_gazebo/config/fishingrod_gazebo_sim_jnt_PD.yaml</parameters>
       </plugin>
+      <physics type="dart">
+        <gravity>0 0 -9.81</gravity>
+        <max_step_size>0.002</max_step_size>
+        <real_time_update_rate>1000</real_time_update_rate>
+        <solver>
+          <type>world</type>
+          <ode>
+            <iters>100</iters>
+            <sor>1.3</sor>
+            <use_dynamic_moi_rescaling>1</use_dynamic_moi_rescaling>
+          </ode>
+        </solver>
+        <constraints>
+          <cfm>0.0</cfm>
+          <erp>0.2</erp>
+        </constraints>
+        <contact>
+          <ode>
+            <soft_cfm>0.0</soft_cfm>
+            <soft_erp>0.2</soft_erp>
+            <kp>1e5</kp>
+            <kd>1</kd>
+            <max_vel>0.01</max_vel>
+            <min_depth>0.001</min_depth>
+          </ode>
+        </contact>
+      </physics>
     </gazebo>
     <ros2_control name="GazeboSystem" type="system">
     <hardware>
@@ -848,302 +875,154 @@
     </joint>
   </ros2_control> 
 
+<!-- <gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_1</joint_name>
+        <stiffness>0.0</stiffness>
+        <damping>0.0</damping>
+    </plugin>
+</gazebo> -->
 
-  <!-- <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_1 Joint_2</joint_name>
-          <stiffness>0 4.3262 2.1 </stiffness>
-          <damping>0 0.0955 0.045</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_1 Joint_2 Joint_3</joint_name>
-          <stiffness>0 4.3262 3.8263 2.1 1.913</stiffness>
-          <damping>0 0.0955 0.083 0.0455 0.041</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_2 Joint_3 Joint_4</joint_name>
-          <stiffness>4.3262 3.8263 3.355 1.913 1.6775</stiffness>
-          <damping>0.0955 0.083 0.0635 0.041 0.037</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_3 Joint_4 Joint_5</joint_name>
-          <stiffness>3.8263 3.355 2.1504 1.6775 1.0752</stiffness>
-          <damping>0.083 0.0635 0.041 0.037 0.02</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_4 Joint_5 Joint_6</joint_name>
-          <stiffness>3.355 2.1504 1.4875 1.0752 0.7438</stiffness>
-          <damping>0.0635 0.041 0.028 0.02 0.015</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_5 Joint_6 Joint_7</joint_name>
-          <stiffness>2.1504 1.4875 1.4875 0.7438 0.7438</stiffness>
-          <damping>0.041 0.028 0.028 0.015 0.015</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_6 Joint_7 Joint_8</joint_name>
-          <stiffness>1.4875 1.4875 1.4875 0.7438 0.7438</stiffness>
-          <damping>0.028 0.028 0.028 0.015 0.015</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_7 Joint_8 Joint_9</joint_name>
-          <stiffness>1.4875 1.4875 1.4875 0.7438 0.7438</stiffness>
-          <damping>0.028 0.028 0.025 0.015 0.015</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_8 Joint_9 Joint_10</joint_name>
-          <stiffness>1.4875 1.4875 1.11 0.7438 0.705</stiffness>
-          <damping>0.028 0.025 0.02 0.015 0.015</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_9 Joint_10 Joint_11</joint_name>
-          <stiffness>1.4875 1.11 0.705 0.7438 0.4588</stiffness>
-          <damping>0.025 0.02 0.015 0.015 0.0085</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_10 Joint_11 Joint_12</joint_name>
-          <stiffness>1.11 0.705 0.4563 0.705 0.3625</stiffness>
-          <damping>0.02 0.015 0.005 0.015 0.007</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_11 Joint_12 Joint_13</joint_name>
-          <stiffness>0.705 0.4563 0.4812 0.3625 0.3625</stiffness>
-          <damping>0.015 0.005 0.0075 0.007 0.006</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_12 Joint_13 Joint_14</joint_name>
-          <stiffness>0.4563 0.4812 0.675 0.3625 0.2663</stiffness>
-          <damping>0.005 0.0075 0.005 0.006 0.0045</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_13 Joint_14 Joint_15</joint_name>
-          <stiffness>0.4812 0.675 0.4588 0.2663 0.2</stiffness>
-          <damping>0.0075 0.005 0.0085 0.0045 0.0035</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_14 Joint_15 Joint_16</joint_name>
-          <stiffness>0.675 0.4588 0.3625 0.2 0.2</stiffness>
-          <damping>0.005 0.0085 0.007 0.0035 0.003</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_15 Joint_16 Joint_17</joint_name>
-          <stiffness>0.4588 0.3625 0.3625 0.2 0.15</stiffness>
-          <damping>0.0085 0.007 0.006 0.003 0.002</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_16 Joint_17 Joint_18</joint_name>
-          <stiffness>0.3625 0.3625 0.2663 0.15 0.2</stiffness>
-          <damping>0.007 0.006 0.0045 0.002 0.003</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_17 Joint_18 Joint_19</joint_name>
-          <stiffness>0.3625 0.2663 0.2 0.2 0.15</stiffness>
-          <damping>0.006 0.0045 0.0035 0.003 0.002</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_18 Joint_19 Joint_20</joint_name>
-          <stiffness>0.2663 0.2 0.2 0.15 0.15</stiffness>
-          <damping>0.0045 0.0035 0.003 0.002 0.002</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_19 Joint_20 Joint_21</joint_name>
-          <stiffness>0.2 0.2 0.15 0.15 0.15</stiffness>
-          <damping>0.0035 0.003 0.002 0.002 0.002</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_20 Joint_21</joint_name>
-          <stiffness>0.2 0.15</stiffness>
-          <damping>0.003 0.002</damping>
-      </plugin>
-  </gazebo> -->
-
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_1 Joint_2</joint_name>
-          <stiffness>0.0 4.3262 </stiffness>
-          <damping>0.0 0.0955</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_1 Joint_2 Joint_3</joint_name>
-          <stiffness>0.0 4.3262 3.8263</stiffness>
-          <damping>0.0 0.0955 0.083 </damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_2 Joint_3 Joint_4</joint_name>
-          <stiffness>4.3262 3.8263 3.355</stiffness>
-          <damping>0.0955 0.083 0.0635</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_3 Joint_4 Joint_5</joint_name>
-          <stiffness>3.8263 3.355 2.1504</stiffness>
-          <damping>0.083 0.0635 0.041</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_4 Joint_5 Joint_6</joint_name>
-          <stiffness>3.355 2.1504 1.4875</stiffness>
-          <damping>0.0635 0.041 0.028</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_5 Joint_6 Joint_7</joint_name>
-          <stiffness>2.1504 1.4875 1.4875</stiffness>
-          <damping>0.041 0.028 0.028</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_6 Joint_7 Joint_8</joint_name>
-          <stiffness>1.4875 1.4875 1.4875</stiffness>
-          <damping>0.028 0.028 0.028</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_7 Joint_8 Joint_9</joint_name>
-          <stiffness>1.4875 1.4875 1.4875</stiffness>
-          <damping>0.028 0.028 0.025</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_8 Joint_9 Joint_10</joint_name>
-          <stiffness>1.4875 1.4875 1.11</stiffness>
-          <damping>0.028 0.025 0.02</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_9 Joint_10 Joint_11</joint_name>
-          <stiffness>1.4875 1.11 0.705</stiffness>
-          <damping>0.025 0.02 0.015</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_10 Joint_11 Joint_12</joint_name>
-          <stiffness>1.11 0.705 0.4563</stiffness>
-          <damping>0.02 0.015 0.005</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_11 Joint_12 Joint_13</joint_name>
-          <stiffness>0.705 0.4563 0.4812</stiffness>
-          <damping>0.015 0.005 0.0075</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_12 Joint_13 Joint_14</joint_name>
-          <stiffness>0.4563 0.4812 0.675</stiffness>
-          <damping>0.005 0.0075 0.005</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_13 Joint_14 Joint_15</joint_name>
-          <stiffness>0.4812 0.675 0.4588</stiffness>
-          <damping>0.0075 0.005 0.0085</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_14 Joint_15 Joint_16</joint_name>
-          <stiffness>0.675 0.4588 0.3625</stiffness>
-          <damping>0.005 0.0085 0.007</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_15 Joint_16 Joint_17</joint_name>
-          <stiffness>0.4588 0.3625 0.3625</stiffness>
-          <damping>0.0085 0.007 0.006</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_16 Joint_17 Joint_18</joint_name>
-          <stiffness>0.3625 0.3625 0.2663</stiffness>
-          <damping>0.007 0.006 0.0045</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_17 Joint_18 Joint_19</joint_name>
-          <stiffness>0.3625 0.2663 0.2</stiffness>
-          <damping>0.006 0.0045 0.0035</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_18 Joint_19 Joint_20</joint_name>
-          <stiffness>0.2663 0.2 0.2</stiffness>
-          <damping>0.0045 0.0035 0.003</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_19 Joint_20 Joint_21</joint_name>
-          <stiffness>0.2 0.2 0.15</stiffness>
-          <damping>0.0035 0.003 0.002</damping>
-      </plugin>
-  </gazebo>
-  <gazebo>
-      <plugin name="serial_elastic_plugin" filename="libSerialElasticPluginTri.so">
-          <joint_name>Joint_20 Joint_21</joint_name>
-          <stiffness>0.2 0.15</stiffness>
-          <damping>0.003 0.002</damping>
-      </plugin>
-  </gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_2</joint_name>
+        <stiffness>4.3262</stiffness>
+        <damping>0.0955</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_3</joint_name>
+        <stiffness>3.8263</stiffness>
+        <damping>0.083</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_4</joint_name>
+        <stiffness>3.355</stiffness>
+        <damping>0.0635</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+<plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_5</joint_name>
+        <stiffness>2.1504</stiffness>
+        <damping>0.041</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_6</joint_name>
+        <stiffness>1.4875</stiffness>
+        <damping>0.028</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+<plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_7</joint_name>
+        <stiffness>1.4875</stiffness>
+        <damping>0.028</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_8</joint_name>
+        <stiffness>1.4875</stiffness>
+        <damping>0.028</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+<plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_9</joint_name>
+        <stiffness>1.3567</stiffness>
+        <damping>0.025</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_10</joint_name>
+        <stiffness>1.11</stiffness>
+        <damping>0.02</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+<plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_11</joint_name>
+        <stiffness>0.805</stiffness>
+        <damping>0.018</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_12</joint_name>
+        <stiffness>0.763</stiffness>
+        <damping>0.012</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+<plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_13</joint_name>
+        <stiffness>0.6812</stiffness>
+        <damping>0.001</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_14</joint_name>
+        <stiffness>0.6750</stiffness>
+        <damping>0.0085</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+<plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_15</joint_name>
+        <stiffness>0.4588</stiffness>
+        <damping>0.008</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_16</joint_name>
+        <stiffness>0.3625</stiffness>
+        <damping>0.0075</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+<plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_17</joint_name>
+        <stiffness>0.3625</stiffness>
+        <damping>0.006</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_18</joint_name>
+        <stiffness>0.2663</stiffness>
+        <damping>0.0045</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+<plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_19</joint_name>
+        <stiffness>0.257</stiffness>
+        <damping>0.0035</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_20</joint_name>
+        <stiffness>0.23</stiffness>
+        <damping>0.005</damping>
+    </plugin>
+</gazebo>
+<gazebo>
+    <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
+        <joint_name>Joint_21</joint_name>
+        <stiffness>0.214</stiffness>
+        <damping>0.003</damping>
+    </plugin>
+</gazebo>
 
   <gazebo reference="Tip">
   <sensor name="br_imu" type="imu">

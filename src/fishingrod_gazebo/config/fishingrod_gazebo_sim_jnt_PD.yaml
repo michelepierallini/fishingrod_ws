@@ -1,6 +1,6 @@
 controller_manager:
   ros__parameters:
-    update_rate: 200 # Hz
+    update_rate: 1000 # Hz
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
     PD_control:
@@ -11,9 +11,9 @@ PD_control:
     joint:
     - Joint_1
     K_d:
-    - 10.0 
+    - 0.1 
     K_p: 
-    - 80.0
+    - 50.0
     init_pos:
     - 0.0
     use_sim_time: True

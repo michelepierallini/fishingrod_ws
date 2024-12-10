@@ -36,7 +36,7 @@ class InferenceController(Node):
         self.joint_state_topic = self.get_parameter('joint_state_topic').get_parameter_value().string_value
         self.joint_target_pos_topic = self.get_parameter('joint_target_pos_topic').get_parameter_value().string_value
         
-        self.DEBUGGING = False
+        self.DEBUGGING = True
 
         # Inference rate
         with open(self.config_path, 'r') as f:
@@ -132,8 +132,18 @@ class InferenceController(Node):
     def inference_callback(self):
         """ Callback function for inference timer. Infers joints target_pos from model and publishes it. """  
         
+        if self.DEBUGGING:
+            rclpy.logging.get_logger('rclpy.node').info(f"joint_pos           : {self.joint_pos}")
+            rclpy.logging.get_logger('rclpy.node').info(f"joint_vel           : {self.joint_vel}")
+            rclpy.logging.get_logger('rclpy.node').info(f"tip_pos             : {self.tip_pos}")
+            rclpy.logging.get_logger('rclpy.node').info(f"tip_vel_lin         : {self.tip_vel_lin}")
+            # rclpy.logging.get_logger('rclpy.node').info(f"action              : {action}")
+            # rclpy.logging.get_logger('rclpy.node').info(f"tip_pos_previous    : {self.tip_pos_previous}")
+            # rclpy.logging.get_logger('rclpy.node').info(f"tip_vel_lin_previous: {self.tip_vel_lin_previous}")
+        
         obs_list = np.concatenate((      
-            np.fromiter(list(self.joint_pos.values()), dtype=float).reshape((self.njoint, 1)) / self.action_scale,
+            # np.fromiter(list(self.joint_pos.values()), dtype=float).reshape((self.njoint, 1)) / self.action_scale,
+            np.array([list(self.joint_pos.values())[0]], dtype=float).reshape((self.njoint, 1)) / self.action_scale,
             np.fromiter(list(self.tip_vel_lin), dtype=float).reshape((3, 1)) / self.velocity_scale,
             np.fromiter(list(self.tip_pos), dtype=float).reshape((3, 1)) / self.position_scale,
             np.fromiter(list(self.tip_pos_previous), dtype=float).reshape((3, 1)) / self.position_scale,
@@ -153,14 +163,6 @@ class InferenceController(Node):
         self.tip_pos_previous = self.tip_pos.copy()
         self.tip_vel_lin_previous = self.tip_vel_lin.copy()
         
-        if self.DEBUGGING:
-            # rclpy.logging.get_logger('rclpy.node').info(f"joint_pos           : {self.joint_pos}")
-            # rclpy.logging.get_logger('rclpy.node').info(f"joint_vel           : {self.joint_vel}")
-            rclpy.logging.get_logger('rclpy.node').info(f"tip_pos             : {self.tip_pos}")
-            rclpy.logging.get_logger('rclpy.node').info(f"tip_vel_lin         : {self.tip_vel_lin}")
-            # rclpy.logging.get_logger('rclpy.node').info(f"action              : {action}")
-            # rclpy.logging.get_logger('rclpy.node').info(f"tip_pos_previous    : {self.tip_pos_previous}")
-            # rclpy.logging.get_logger('rclpy.node').info(f"tip_vel_lin_previous: {self.tip_vel_lin_previous}")
         
         if self.simulation:
             joint_msg = JointState()

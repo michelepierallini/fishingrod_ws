@@ -205,6 +205,8 @@ namespace gazebo
     {
       if (this->joints.empty())
         return;
+      
+      const double scale = 0.0; // Define the constant value
 
       for (size_t i = 0; i < this->joints.size(); ++i)
       {
@@ -218,8 +220,8 @@ namespace gazebo
           double prevPosition = this->joints[i - 1]->Position(0);
           double prevVelocity = this->joints[i - 1]->GetVelocity(0);
 
-          torque += -0.5 * this->stiffness[i - 1] * prevPosition -
-                    0.5 * this->damping[i - 1] * prevVelocity;
+          torque += -scale * this->stiffness[i - 1] * prevPosition 
+                    - scale * this->damping[i - 1] * prevVelocity;
         }
 
         if (i < this->joints.size() - 1) // Next joint
@@ -227,8 +229,8 @@ namespace gazebo
           double nextPosition = this->joints[i + 1]->Position(0);
           double nextVelocity = this->joints[i + 1]->GetVelocity(0);
 
-          torque += -0.5 * this->stiffness[i + 1] * nextPosition -
-                    0.5 * this->damping[i + 1] * nextVelocity;
+          torque += -scale * this->stiffness[i + 1] * nextPosition 
+                    - scale * this->damping[i + 1] * nextVelocity;
         }
 
         this->joints[i]->SetForce(0, torque);
