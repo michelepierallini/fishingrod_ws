@@ -37,14 +37,14 @@ def generate_launch_description():
     #     'Joint_7', 'Joint_8', 'Joint_9', 'Joint_10', 'Joint_11', 'Joint_12', 
     #     'Joint_13', 'Joint_14', 'Joint_15', 'Joint_16', 'Joint_17', 'Joint_18', 'Joint_19', 'Joint_20', 'Joint_21')
     
-    default_dof = (0.0,)
-    joint_names = ('Joint_1',)
-    default_dict = dict(zip(joint_names, default_dof))
+    # default_dof = (0.0,)
+    # joint_names = ('Joint_1',)
+    # default_dict = dict(zip(joint_names, default_dof))
 
-    default_joint_args = ""
-    for key, value in default_dict.items():
-        default_joint_args += key + ":=" + str(value) + " "
-        # print(default_joint_args)
+    # default_joint_args = ""
+    # for key, value in default_dict.items():
+    #     default_joint_args += key + ":=" + str(value) + " "
+    #     # print(default_joint_args)
 
     # Get URDF via xacro
     # fishingrod_description_content = Command(
@@ -59,6 +59,9 @@ def generate_launch_description():
                                                 'urdf',
                                                 'fishingrod.urdf'
                                                 )).read()
+    
+    # path_test = os.path.join(get_package_share_directory('fishingrod_description'), 'urdf', 'fishingrod.urdf')
+    # print(f'urdf_file_name again : {path_test}')
     
     robot_description = {"robot_description": fishingrod_description_content}
 
@@ -112,5 +115,4 @@ def generate_launch_description():
                 on_exit=[PD_jnt_control],
             )
         ),
-     
   ])
