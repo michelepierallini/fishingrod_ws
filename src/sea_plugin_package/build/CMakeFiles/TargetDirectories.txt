@@ -1,0 +1,10 @@
+/home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles/uninstall.dir
+/home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles/sea_plugin_package_uninstall.dir
+/home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles/SerialElasticPlugin.dir
+/home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles/test.dir
+/home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles/edit_cache.dir
+/home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles/rebuild_cache.dir
+/home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles/list_install_components.dir
+/home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles/install.dir
+/home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles/install/local.dir
+/home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles/install/strip.dir

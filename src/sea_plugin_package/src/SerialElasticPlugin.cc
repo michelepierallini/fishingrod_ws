@@ -31,7 +31,6 @@ namespace gazebo
           gzerr << "No joint_name specified in the SDF plugin element.\n";
         }
 
-        // Connect to the world update event
         this->updateConnection = event::Events::ConnectWorldUpdateBegin(
             std::bind(&SerialElasticPlugin::OnUpdate, this));
       }
@@ -52,8 +51,8 @@ namespace gazebo
     private:
       physics::ModelPtr model;
       physics::JointPtr joint;
-      double stiffness = 10.0;  // Default stiffness
-      double damping = 0.05;    // Default damping
+      double stiffness = 0.0;  // Default stiffness
+      double damping = 0.005;  // Default damping
       event::ConnectionPtr updateConnection;
   };
 

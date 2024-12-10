@@ -1,0 +1,16 @@
+/usr/local/lib/libSerialElasticPlugin.so
+/usr/local/share/ament_index/resource_index/package_run_dependencies/sea_plugin_package
+/usr/local/share/ament_index/resource_index/parent_prefix_path/sea_plugin_package
+/usr/local/share/sea_plugin_package/environment/ament_prefix_path.sh
+/usr/local/share/sea_plugin_package/environment/ament_prefix_path.dsv
+/usr/local/share/sea_plugin_package/environment/path.sh
+/usr/local/share/sea_plugin_package/environment/path.dsv
+/usr/local/share/sea_plugin_package/local_setup.bash
+/usr/local/share/sea_plugin_package/local_setup.sh
+/usr/local/share/sea_plugin_package/local_setup.zsh
+/usr/local/share/sea_plugin_package/local_setup.dsv
+/usr/local/share/sea_plugin_package/package.dsv
+/usr/local/share/ament_index/resource_index/packages/sea_plugin_package
+/usr/local/share/sea_plugin_package/cmake/sea_plugin_packageConfig.cmake
+/usr/local/share/sea_plugin_package/cmake/sea_plugin_packageConfig-version.cmake
+/usr/local/share/sea_plugin_package/package.xml

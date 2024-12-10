@@ -19,20 +19,27 @@ export ROS_DOMAIN_ID=10
 ros2 launch rlg_quad_controller fishingrod_simulation.launch.py
 ```
 
-# TODO
+# Usage of the SEA plugin
 
-1) Add stiffnees (real) to the ```.urdf``` done
-2) Test the IMU
-3) Implement the camera (I do not think IMU will solve)
-4) Plug-in for stiffness and damping (eventually)
+Compile the ```sea_plugin```
 
-------- 
-
- 5) Retrain the Network with smart observation
-
+```
+cd fishingrod_ws/src/sea_plugin_package/
+mkdir build && cd build
+cmake .. && make -j4 && sudo make install 
+```
 
 if the SEA plugin returns error please run 
 ``` 
 export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:~/michele_try_ws/fishingrod_ws/install/serial_elastic_plugin/lib
 
-```` 
+```
+
+# TODO
+
+1) Test the IMU
+2) Implement the camera (I do not think IMU will solve)
+--------------------------------------------------------
+-) Retrain the Network with smart observation
+
+

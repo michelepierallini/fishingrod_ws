@@ -1,0 +1,4 @@
+source;share/sea_plugin_package/local_setup.bash
+source;share/sea_plugin_package/local_setup.dsv
+source;share/sea_plugin_package/local_setup.sh
+source;share/sea_plugin_package/local_setup.zsh

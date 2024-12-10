@@ -848,7 +848,7 @@
     </joint>
   </ros2_control> 
 
-  <gazebo>
+<gazebo>
     <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
         <joint_name>Joint_2</joint_name>
         <stiffness>4.3262</stiffness>
