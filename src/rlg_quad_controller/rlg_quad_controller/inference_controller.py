@@ -133,14 +133,15 @@ class InferenceController(Node):
         """ Callback function for inference timer. Infers joints target_pos from model and publishes it. """  
         
         if self.DEBUGGING:
-            rclpy.logging.get_logger('rclpy.node').info(f"joint_pos           : {self.joint_pos}")
-            rclpy.logging.get_logger('rclpy.node').info(f"joint_vel           : {self.joint_vel}")
+            # rclpy.logging.get_logger('rclpy.node').info(f"joint_pos           : {self.joint_pos}")
+            # rclpy.logging.get_logger('rclpy.node').info(f"joint_vel           : {self.joint_vel}")
             rclpy.logging.get_logger('rclpy.node').info(f"tip_pos             : {self.tip_pos}")
             rclpy.logging.get_logger('rclpy.node').info(f"tip_vel_lin         : {self.tip_vel_lin}")
             # rclpy.logging.get_logger('rclpy.node').info(f"action              : {action}")
             # rclpy.logging.get_logger('rclpy.node').info(f"tip_pos_previous    : {self.tip_pos_previous}")
             # rclpy.logging.get_logger('rclpy.node').info(f"tip_vel_lin_previous: {self.tip_vel_lin_previous}")
         
+        ## When I added the SEA plugin somehting is fucked within the joints name but I just need the first one. 
         obs_list = np.concatenate((      
             # np.fromiter(list(self.joint_pos.values()), dtype=float).reshape((self.njoint, 1)) / self.action_scale,
             np.array([list(self.joint_pos.values())[0]], dtype=float).reshape((self.njoint, 1)) / self.action_scale,

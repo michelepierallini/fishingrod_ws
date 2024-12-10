@@ -133,7 +133,8 @@
 #include <sstream>
 
 /* This class implements a Serial Elastic Actuator (SEA)
-   with coupling between neighboring joints.
+  with coupling between neighboring joints.
+  The issue is within the damping which is too high for Gazebo, CHANGE IT AND RETRY 
 */
 
 namespace gazebo
