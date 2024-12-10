@@ -210,6 +210,19 @@ SerialElasticPlugin/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPlugin.dir/build.make CMakeFiles/SerialElasticPlugin.dir/build
 .PHONY : SerialElasticPlugin/fast
 
+#=============================================================================
+# Target rules for targets named SerialElasticPluginTri
+
+# Build rule for target.
+SerialElasticPluginTri: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SerialElasticPluginTri
+.PHONY : SerialElasticPluginTri
+
+# fast build rule for target.
+SerialElasticPluginTri/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPluginTri.dir/build.make CMakeFiles/SerialElasticPluginTri.dir/build
+.PHONY : SerialElasticPluginTri/fast
+
 src/SerialElasticPlugin.o: src/SerialElasticPlugin.cc.o
 .PHONY : src/SerialElasticPlugin.o
 
@@ -234,6 +247,30 @@ src/SerialElasticPlugin.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPlugin.dir/build.make CMakeFiles/SerialElasticPlugin.dir/src/SerialElasticPlugin.cc.s
 .PHONY : src/SerialElasticPlugin.cc.s
 
+src/SerialElasticPluginTri.o: src/SerialElasticPluginTri.cc.o
+.PHONY : src/SerialElasticPluginTri.o
+
+# target to build an object file
+src/SerialElasticPluginTri.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPluginTri.dir/build.make CMakeFiles/SerialElasticPluginTri.dir/src/SerialElasticPluginTri.cc.o
+.PHONY : src/SerialElasticPluginTri.cc.o
+
+src/SerialElasticPluginTri.i: src/SerialElasticPluginTri.cc.i
+.PHONY : src/SerialElasticPluginTri.i
+
+# target to preprocess a source file
+src/SerialElasticPluginTri.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPluginTri.dir/build.make CMakeFiles/SerialElasticPluginTri.dir/src/SerialElasticPluginTri.cc.i
+.PHONY : src/SerialElasticPluginTri.cc.i
+
+src/SerialElasticPluginTri.s: src/SerialElasticPluginTri.cc.s
+.PHONY : src/SerialElasticPluginTri.s
+
+# target to generate assembly for a file
+src/SerialElasticPluginTri.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPluginTri.dir/build.make CMakeFiles/SerialElasticPluginTri.dir/src/SerialElasticPluginTri.cc.s
+.PHONY : src/SerialElasticPluginTri.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -250,9 +287,13 @@ help:
 	@echo "... sea_plugin_package_uninstall"
 	@echo "... uninstall"
 	@echo "... SerialElasticPlugin"
+	@echo "... SerialElasticPluginTri"
 	@echo "... src/SerialElasticPlugin.o"
 	@echo "... src/SerialElasticPlugin.i"
 	@echo "... src/SerialElasticPlugin.s"
+	@echo "... src/SerialElasticPluginTri.o"
+	@echo "... src/SerialElasticPluginTri.i"
+	@echo "... src/SerialElasticPluginTri.s"
 .PHONY : help
 
 

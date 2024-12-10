@@ -918,8 +918,6 @@
         <damping>0.015</damping>
     </plugin>
 </gazebo>
-
-
 <gazebo>
     <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
         <joint_name>Joint_12</joint_name>

@@ -64,6 +64,7 @@ CMAKE_BINARY_DIR = /home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_pac
 
 # The main recursive "all" target.
 all: CMakeFiles/SerialElasticPlugin.dir/all
+all: CMakeFiles/SerialElasticPluginTri.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -74,6 +75,7 @@ preinstall:
 clean: CMakeFiles/uninstall.dir/clean
 clean: CMakeFiles/sea_plugin_package_uninstall.dir/clean
 clean: CMakeFiles/SerialElasticPlugin.dir/clean
+clean: CMakeFiles/SerialElasticPluginTri.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -153,6 +155,32 @@ SerialElasticPlugin: CMakeFiles/SerialElasticPlugin.dir/rule
 CMakeFiles/SerialElasticPlugin.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPlugin.dir/build.make CMakeFiles/SerialElasticPlugin.dir/clean
 .PHONY : CMakeFiles/SerialElasticPlugin.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/SerialElasticPluginTri.dir
+
+# All Build rule for target.
+CMakeFiles/SerialElasticPluginTri.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPluginTri.dir/build.make CMakeFiles/SerialElasticPluginTri.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPluginTri.dir/build.make CMakeFiles/SerialElasticPluginTri.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles --progress-num=3,4 "Built target SerialElasticPluginTri"
+.PHONY : CMakeFiles/SerialElasticPluginTri.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/SerialElasticPluginTri.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/SerialElasticPluginTri.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles 0
+.PHONY : CMakeFiles/SerialElasticPluginTri.dir/rule
+
+# Convenience name for target.
+SerialElasticPluginTri: CMakeFiles/SerialElasticPluginTri.dir/rule
+.PHONY : SerialElasticPluginTri
+
+# clean rule for target.
+CMakeFiles/SerialElasticPluginTri.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPluginTri.dir/build.make CMakeFiles/SerialElasticPluginTri.dir/clean
+.PHONY : CMakeFiles/SerialElasticPluginTri.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
