@@ -915,14 +915,14 @@
     <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
         <joint_name>Joint_6</joint_name>
         <stiffness>1.4875</stiffness>
-        <damping>0.028</damping>
+        <damping>0.035</damping>
     </plugin>
 </gazebo>
 <gazebo>
 <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
         <joint_name>Joint_7</joint_name>
         <stiffness>1.4875</stiffness>
-        <damping>0.028</damping>
+        <damping>0.030</damping>
     </plugin>
 </gazebo>
 <gazebo>
@@ -957,28 +957,28 @@
     <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
         <joint_name>Joint_12</joint_name>
         <stiffness>0.763</stiffness>
-        <damping>0.012</damping>
+        <damping>0.015</damping>
     </plugin>
 </gazebo>
 <gazebo>
 <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
         <joint_name>Joint_13</joint_name>
         <stiffness>0.6812</stiffness>
-        <damping>0.001</damping>
+        <damping>0.012</damping>
     </plugin>
 </gazebo>
 <gazebo>
     <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
         <joint_name>Joint_14</joint_name>
         <stiffness>0.6750</stiffness>
-        <damping>0.0085</damping>
+        <damping>0.009</damping>
     </plugin>
 </gazebo>
 <gazebo>
 <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
         <joint_name>Joint_15</joint_name>
         <stiffness>0.4588</stiffness>
-        <damping>0.008</damping>
+        <damping>0.0085</damping>
     </plugin>
 </gazebo>
 <gazebo>
@@ -1006,14 +1006,14 @@
 <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
         <joint_name>Joint_19</joint_name>
         <stiffness>0.257</stiffness>
-        <damping>0.0035</damping>
+        <damping>0.004</damping>
     </plugin>
 </gazebo>
 <gazebo>
     <plugin name="serial_elastic_plugin" filename="libSerialElasticPlugin.so">
         <joint_name>Joint_20</joint_name>
         <stiffness>0.23</stiffness>
-        <damping>0.005</damping>
+        <damping>0.0035</damping>
     </plugin>
 </gazebo>
 <gazebo>

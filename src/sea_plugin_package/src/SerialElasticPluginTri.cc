@@ -207,16 +207,16 @@ namespace gazebo
       if (this->joints.empty())
         return;
       
-      const double scale = 0.0; // Define the constant value
+      const double scale = 0.0;
+      const double scale_damp = 1e-3;
 
       for (size_t i = 0; i < this->joints.size(); ++i)
       {
         double position = this->joints[i]->Position(0);
         double velocity = this->joints[i]->GetVelocity(0);
-        double torque = -this->stiffness[i] * position - this->damping[i] * velocity;
+        double torque = -this->stiffness[i] * position - this->damping[i] * scale_damp * velocity;
 
-        // Coupling effects with neighboring joints
-        if (i > 0) // Previous joint
+        if (i > 0) // Previous
         {
           double prevPosition = this->joints[i - 1]->Position(0);
           double prevVelocity = this->joints[i - 1]->GetVelocity(0);
@@ -225,13 +225,13 @@ namespace gazebo
                     - scale * this->damping[i - 1] * prevVelocity;
         }
 
-        if (i < this->joints.size() - 1) // Next joint
+        if (i < this->joints.size() - 1) // Next
         {
           double nextPosition = this->joints[i + 1]->Position(0);
           double nextVelocity = this->joints[i + 1]->GetVelocity(0);
 
-          torque += -scale * this->stiffness[i + 1] * nextPosition 
-                    - scale * this->damping[i + 1] * nextVelocity;
+          torque += -scale_damp * this->stiffness[i + 1] * nextPosition 
+                    - scale_damp * this->damping[i + 1] * nextVelocity;
         }
 
         this->joints[i]->SetForce(0, torque);
@@ -239,7 +239,6 @@ namespace gazebo
     }
 
   private:
-    // Helper function to parse a string of double values into a vector
     std::vector<double> ParseValues(const std::string &data)
     {
       std::vector<double> values;

@@ -21,6 +21,8 @@ ros2 launch rlg_quad_controller fishingrod_simulation.launch.py
 
 # Usage of the SEA plugin
 
+Infos: the system is very sensitive to damping terms due to noise in the velocity so reduce the damping term in the case of violent oscillations
+
 Compile the ```sea_plugin```
 
 ```
@@ -39,7 +41,8 @@ export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:~/michele_try_ws/fishingrod_ws/ins
 
 1) Test the IMU
 2) Implement the camera (I do not think IMU will solve)
---------------------------------------------------------
+3) Callbacks for plots
+-------------------------------------------------------------
 -) Retrain the Network with smart observation
 
 

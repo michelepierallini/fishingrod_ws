@@ -1,5 +1,5 @@
 # config.yaml
-## real robot 
+## real robot, experiments 
 inference_controller:
   ros__parameters:
     joint_state_topic: "/state_broadcaster/joint_states"

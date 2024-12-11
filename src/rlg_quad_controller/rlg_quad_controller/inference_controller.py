@@ -12,7 +12,7 @@ from termcolor import colored
 """
 Simulations node.
 This node subscribes to the joint states and tip features topic, and publishes the target joint positions.
-first, joint_pos, tip pos, tip vel --> | inference_controller | --> joint_target_pos --> PD contr
+first, joint_pos, tip pos, tip vel, (time) --> | inference_controller | --> joint_target_pos --> PD contr
 """
 
 class InferenceController(Node):
@@ -163,8 +163,7 @@ class InferenceController(Node):
         action = np.clip(action, [-self.clip_act] * (self.njoint), [self.clip_act] * (self.njoint))
         self.tip_pos_previous = self.tip_pos.copy()
         self.tip_vel_lin_previous = self.tip_vel_lin.copy()
-        
-        
+                
         if self.simulation:
             joint_msg = JointState()
         else:
@@ -185,7 +184,7 @@ class InferenceController(Node):
             else:
                 rclpy.logging.get_logger('rclpy.node').info(colored('Policy starts working ...', 'cyan'))                 
                 joint_msg.position = [float(action[0, 0] * self.action_scale + self._avg_default_dof)]   
-                joint_msg.velocity = [float(-value) for value in self.joint_pos.values()]
+                joint_msg.velocity = [float(-value) for value in self.joint_vel.values()]
                        
         if not self.simulation:
             joint_msg.kp_scale = self.joint_kp.tolist()

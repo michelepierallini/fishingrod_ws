@@ -11,9 +11,9 @@ PD_control:
     joint:
     - Joint_1
     K_d:
-    - 0.1 
+    - 0.01 
     K_p: 
-    - 50.0
+    - 20.0
     init_pos:
     - 0.0
     use_sim_time: True
