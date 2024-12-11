@@ -1,0 +1,4 @@
+source;share/rbt_pd_cnt/local_setup.bash
+source;share/rbt_pd_cnt/local_setup.dsv
+source;share/rbt_pd_cnt/local_setup.sh
+source;share/rbt_pd_cnt/local_setup.zsh

@@ -1,0 +1,45 @@
+[0.022s] Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --build /home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt -- -j20 -l20
+[0.373s] [ 50%] [32mBuilding CXX object CMakeFiles/rbt_pd_cnt.dir/src/robot_pd_cnt.cpp.o[0m
+[1.620s] In file included from [01m[K/home/michele/michele_try_ws/fishingrod_ws/src/rbt_pd_cnt/src/robot_pd_cnt.cpp:2[m[K:
+[1.620s] [01m[K/home/michele/michele_try_ws/fishingrod_ws/src/rbt_pd_cnt/include/rbt_pd_cnt/robot_pd_cnt.hpp:[m[K In constructor ‘[01m[Krbt_pd_cnt::Rbt_PD_cnt::Rbt_PD_cnt()[m[K’:
+[1.620s] [01m[K/home/michele/michele_try_ws/fishingrod_ws/src/rbt_pd_cnt/include/rbt_pd_cnt/robot_pd_cnt.hpp:60:70:[m[K [01;35m[Kwarning: [m[K‘[01m[Krbt_pd_cnt::Rbt_PD_cnt::rt_command_ptr_[m[K’ will be initialized after [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[1.620s]    60 |             realtime_tools::RealtimeBuffer<std::shared_ptr<CmdType>> [01;35m[Krt_command_ptr_[m[K;
+[1.620s]       |                                                                      [01;35m[K^~~~~~~~~~~~~~~[m[K
+[1.620s] [01m[K/home/michele/michele_try_ws/fishingrod_ws/src/rbt_pd_cnt/include/rbt_pd_cnt/robot_pd_cnt.hpp:45:54:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Krclcpp::Subscription<sensor_msgs::msg::JointState_<std::allocator<void> > >::SharedPtr rbt_pd_cnt::Rbt_PD_cnt::jnt_cmd_sub_[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[1.620s]    45 |             rclcpp::Subscription<CmdType>::SharedPtr [01;35m[Kjnt_cmd_sub_[m[K;
+[1.620s]       |                                                      [01;35m[K^~~~~~~~~~~~[m[K
+[1.620s] [01m[K/home/michele/michele_try_ws/fishingrod_ws/src/rbt_pd_cnt/src/robot_pd_cnt.cpp:19:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[1.620s]    19 |     [01;35m[KRbt_PD_cnt[m[K::Rbt_PD_cnt():
+[1.620s]       |     [01;35m[K^~~~~~~~~~[m[K
+[5.246s] [32m[1mLinking CXX shared library librbt_pd_cnt.so[0m
+[5.566s] Built target rbt_pd_cnt
+[5.572s] Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --build /home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt -- -j20 -l20
+[5.596s] Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --install /home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt
+[5.605s] -- Install configuration: ""
+[5.605s] -- Execute custom install script
+[5.606s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt//rbt_pd_cnt.xml
+[5.606s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/include/rbt_pd_cnt/real_pd_cnt.hpp
+[5.606s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/include/rbt_pd_cnt/robot_pd_cnt.hpp
+[5.607s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/lib/librbt_pd_cnt.so
+[5.607s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/environment/library_path.sh
+[5.607s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/environment/library_path.dsv
+[5.607s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/ament_index/resource_index/package_run_dependencies/rbt_pd_cnt
+[5.607s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/ament_index/resource_index/parent_prefix_path/rbt_pd_cnt
+[5.607s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/environment/ament_prefix_path.sh
+[5.607s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/environment/ament_prefix_path.dsv
+[5.608s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/environment/path.sh
+[5.608s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/environment/path.dsv
+[5.608s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/local_setup.bash
+[5.608s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/local_setup.sh
+[5.608s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/local_setup.zsh
+[5.608s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/local_setup.dsv
+[5.609s] -- Symlinking: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/package.dsv
+[5.622s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/ament_index/resource_index/packages/rbt_pd_cnt
+[5.622s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/ament_index/resource_index/controller_interface__pluginlib__plugin/rbt_pd_cnt
+[5.622s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/cmake/ament_cmake_export_dependencies-extras.cmake
+[5.622s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/cmake/ament_cmake_export_include_directories-extras.cmake
+[5.622s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/cmake/ament_cmake_export_libraries-extras.cmake
+[5.622s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/cmake/rbt_pd_cntConfig.cmake
+[5.622s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/cmake/rbt_pd_cntConfig-version.cmake
+[5.623s] -- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/package.xml
+[5.635s] Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --install /home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt

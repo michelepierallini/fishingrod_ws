@@ -1,0 +1,21 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/pi3hat_moteus_int_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/pi3hat_moteus_int_msgs/msg/detail/joints_command__type_support.c.o"
+  "CMakeFiles/pi3hat_moteus_int_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/pi3hat_moteus_int_msgs/msg/detail/joints_command__type_support.c.o.d"
+  "CMakeFiles/pi3hat_moteus_int_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/pi3hat_moteus_int_msgs/msg/detail/joints_states__type_support.c.o"
+  "CMakeFiles/pi3hat_moteus_int_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/pi3hat_moteus_int_msgs/msg/detail/joints_states__type_support.c.o.d"
+  "CMakeFiles/pi3hat_moteus_int_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/pi3hat_moteus_int_msgs/msg/detail/packet_pass__type_support.c.o"
+  "CMakeFiles/pi3hat_moteus_int_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/pi3hat_moteus_int_msgs/msg/detail/packet_pass__type_support.c.o.d"
+  "libpi3hat_moteus_int_msgs__rosidl_typesupport_introspection_c.pdb"
+  "libpi3hat_moteus_int_msgs__rosidl_typesupport_introspection_c.so"
+  "rosidl_typesupport_introspection_c/pi3hat_moteus_int_msgs/msg/detail/joints_command__rosidl_typesupport_introspection_c.h"
+  "rosidl_typesupport_introspection_c/pi3hat_moteus_int_msgs/msg/detail/joints_command__type_support.c"
+  "rosidl_typesupport_introspection_c/pi3hat_moteus_int_msgs/msg/detail/joints_states__rosidl_typesupport_introspection_c.h"
+  "rosidl_typesupport_introspection_c/pi3hat_moteus_int_msgs/msg/detail/joints_states__type_support.c"
+  "rosidl_typesupport_introspection_c/pi3hat_moteus_int_msgs/msg/detail/packet_pass__rosidl_typesupport_introspection_c.h"
+  "rosidl_typesupport_introspection_c/pi3hat_moteus_int_msgs/msg/detail/packet_pass__type_support.c"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C)
+  include(CMakeFiles/pi3hat_moteus_int_msgs__rosidl_typesupport_introspection_c.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

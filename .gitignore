@@ -1,4 +1,6 @@
-/build 
-/install  
-/log
-/src/sea_plugin_package
+/src/build 
+/src/install  
+/src/log
+/src/sea_plugin_package/build
+/src/sea_plugin_package/install
+

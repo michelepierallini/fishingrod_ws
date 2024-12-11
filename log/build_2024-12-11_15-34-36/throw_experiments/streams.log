@@ -1,0 +1,20 @@
+[1.336s] Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments': PYTHONPATH=/home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments/build --no-deps symlink_data
+[1.696s] running develop
+[1.696s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:158: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.
+[1.696s]   warnings.warn(
+[1.979s] running egg_info
+[1.980s] writing throw_experiments.egg-info/PKG-INFO
+[1.980s] writing dependency_links to throw_experiments.egg-info/dependency_links.txt
+[1.980s] writing entry points to throw_experiments.egg-info/entry_points.txt
+[1.980s] writing requirements to throw_experiments.egg-info/requires.txt
+[1.980s] writing top-level names to throw_experiments.egg-info/top_level.txt
+[1.984s] reading manifest file 'throw_experiments.egg-info/SOURCES.txt'
+[1.985s] writing manifest file 'throw_experiments.egg-info/SOURCES.txt'
+[1.986s] running build_ext
+[1.986s] Creating /home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/lib/python3.10/site-packages/throw-experiments.egg-link (link to .)
+[1.987s] Installing getup script to /home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/lib/jumping_experiments
+[1.988s] Installing throw_node script to /home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/lib/jumping_experiments
+[1.988s] 
+[1.988s] Installed /home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments
+[1.988s] running symlink_data
+[2.036s] Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments' returned '0': PYTHONPATH=/home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments/build --no-deps symlink_data

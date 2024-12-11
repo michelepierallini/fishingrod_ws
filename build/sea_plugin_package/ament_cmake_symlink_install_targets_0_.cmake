@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/michele/michele_try_ws/fishingrod_ws/build/sea_plugin_package/libSerialElasticPlugin.so" "/home/michele/michele_try_ws/fishingrod_ws/build/sea_plugin_package/libSerialElasticPluginTri.so" "TARGETS" "SerialElasticPlugin" "SerialElasticPluginTri" "LIBRARY_DESTINATION" "lib")

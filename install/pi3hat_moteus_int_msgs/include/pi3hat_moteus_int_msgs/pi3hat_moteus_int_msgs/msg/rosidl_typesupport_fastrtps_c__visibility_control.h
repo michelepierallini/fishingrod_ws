@@ -1,0 +1,1 @@
+/home/michele/michele_try_ws/fishingrod_ws/build/pi3hat_moteus_int_msgs/rosidl_typesupport_fastrtps_c/pi3hat_moteus_int_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h

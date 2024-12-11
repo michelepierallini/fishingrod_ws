@@ -1,0 +1,25 @@
+[ 25%] [32mBuilding CXX object CMakeFiles/SerialElasticPluginTri.dir/src/SerialElasticPluginTri.cc.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/SerialElasticPlugin.dir/src/SerialElasticPlugin.cc.o[0m
+[32m[1mLinking CXX shared library libSerialElasticPlugin.so[0m
+[32m[1mLinking CXX shared library libSerialElasticPluginTri.so[0m
+Built target SerialElasticPlugin
+Built target SerialElasticPluginTri
+-- Install configuration: ""
+-- Execute custom install script
+-- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/lib/libSerialElasticPlugin.so
+-- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/lib/libSerialElasticPluginTri.so
+-- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/ament_index/resource_index/package_run_dependencies/sea_plugin_package
+-- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/ament_index/resource_index/parent_prefix_path/sea_plugin_package
+-- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/environment/ament_prefix_path.sh
+-- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/environment/path.sh
+-- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/environment/path.dsv
+-- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/local_setup.bash
+-- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/local_setup.sh
+-- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/local_setup.zsh
+-- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/local_setup.dsv
+-- Symlinking: /home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/package.dsv
+-- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/ament_index/resource_index/packages/sea_plugin_package
+-- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/cmake/sea_plugin_packageConfig.cmake
+-- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/cmake/sea_plugin_packageConfig-version.cmake
+-- Up-to-date symlink: /home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/package.xml

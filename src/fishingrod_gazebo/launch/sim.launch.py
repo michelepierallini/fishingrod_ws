@@ -59,10 +59,7 @@ def generate_launch_description():
                                                 'urdf',
                                                 'fishingrod.urdf'
                                                 )).read()
-    
-    # path_test = os.path.join(get_package_share_directory('fishingrod_description'), 'urdf', 'fishingrod.urdf')
-    # print(f'urdf_file_name again : {path_test}')
-    
+        
     robot_description = {"robot_description": fishingrod_description_content}
 
     node_robot_state_publisher = Node(
@@ -96,10 +93,6 @@ def generate_launch_description():
     return LaunchDescription([
         
         launch_ros.actions.SetParameter(name='use_sim_time', value=True),
-        # DeclareLaunchArgument(
-        #     'use_sim_time',
-        #     default_value='true',
-        #     description='Use simulation (Gazebo) clock if true'),
         gazebo,
         node_robot_state_publisher,
         spawn_entity,

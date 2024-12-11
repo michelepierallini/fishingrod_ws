@@ -1,0 +1,10 @@
+/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt/CMakeFiles/uninstall.dir
+/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt/CMakeFiles/rbt_pd_cnt_uninstall.dir
+/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt/CMakeFiles/rbt_pd_cnt.dir
+/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt/CMakeFiles/test.dir
+/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt/CMakeFiles/edit_cache.dir
+/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt/CMakeFiles/rebuild_cache.dir
+/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt/CMakeFiles/list_install_components.dir
+/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt/CMakeFiles/install.dir
+/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt/CMakeFiles/install/local.dir
+/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt/CMakeFiles/install/strip.dir

@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt/librbt_pd_cnt.so" "TARGETS" "rbt_pd_cnt" "RUNTIME_DESTINATION" "bin" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib")

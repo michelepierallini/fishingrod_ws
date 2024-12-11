@@ -1,0 +1,9 @@
+source;share/throw_experiments/hook/pythonpath.ps1
+source;share/throw_experiments/hook/pythonpath.dsv
+source;share/throw_experiments/hook/pythonpath.sh
+source;share/throw_experiments/hook/ament_prefix_path.ps1
+source;share/throw_experiments/hook/ament_prefix_path.dsv
+source;share/throw_experiments/hook/ament_prefix_path.sh
+source;../../build/throw_experiments/share/throw_experiments/hook/pythonpath_develop.ps1
+source;../../build/throw_experiments/share/throw_experiments/hook/pythonpath_develop.dsv
+source;../../build/throw_experiments/share/throw_experiments/hook/pythonpath_develop.sh

@@ -1,0 +1,11 @@
+source;share/rbt_pd_cnt/hook/cmake_prefix_path.ps1
+source;share/rbt_pd_cnt/hook/cmake_prefix_path.dsv
+source;share/rbt_pd_cnt/hook/cmake_prefix_path.sh
+source;share/rbt_pd_cnt/hook/ld_library_path_lib.ps1
+source;share/rbt_pd_cnt/hook/ld_library_path_lib.dsv
+source;share/rbt_pd_cnt/hook/ld_library_path_lib.sh
+source;share/rbt_pd_cnt/local_setup.bash
+source;share/rbt_pd_cnt/local_setup.dsv
+source;share/rbt_pd_cnt/local_setup.ps1
+source;share/rbt_pd_cnt/local_setup.sh
+source;share/rbt_pd_cnt/local_setup.zsh

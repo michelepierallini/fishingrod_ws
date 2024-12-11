@@ -1,0 +1,31 @@
+running develop
+running egg_info
+creating rlg_quad_controller.egg-info
+writing rlg_quad_controller.egg-info/PKG-INFO
+writing dependency_links to rlg_quad_controller.egg-info/dependency_links.txt
+writing entry points to rlg_quad_controller.egg-info/entry_points.txt
+writing requirements to rlg_quad_controller.egg-info/requires.txt
+writing top-level names to rlg_quad_controller.egg-info/top_level.txt
+writing manifest file 'rlg_quad_controller.egg-info/SOURCES.txt'
+reading manifest file 'rlg_quad_controller.egg-info/SOURCES.txt'
+writing manifest file 'rlg_quad_controller.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/lib/python3.10/site-packages/rlg-quad-controller.egg-link (link to .)
+Installing inference_controller script to /home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/lib/rlg_quad_controller
+
+Installed /home/michele/michele_try_ws/fishingrod_ws/build/rlg_quad_controller
+running symlink_data
+creating /home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/ament_index
+creating /home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/ament_index/resource_index
+creating /home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/ament_index/resource_index/packages
+symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/rlg_quad_controller/resource/rlg_quad_controller -> /home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/ament_index/resource_index/packages
+symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/rlg_quad_controller/package.xml -> /home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller
+creating /home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller/launch
+symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/rlg_quad_controller/launch/fishingrod_inference.launch.py -> /home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller/launch
+symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/rlg_quad_controller/launch/fishingrod_simulation.launch.py -> /home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller/launch
+creating /home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller/config
+symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/rlg_quad_controller/config/fishingrod_simulation_config.yaml -> /home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller/config
+symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/rlg_quad_controller/config/fishingrod_config.yaml -> /home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller/config
+creating /home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller/models
+symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/rlg_quad_controller/models/FishingRodPos_X_022_real_pos_vel/FishingRodPos_X_022_real_pos_vel.pth -> /home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller/models
+symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/rlg_quad_controller/models/FishingRodPos_X_022_real_pos_vel/config.yaml -> /home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller/models

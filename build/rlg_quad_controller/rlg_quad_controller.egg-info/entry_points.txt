@@ -1,0 +1,3 @@
+[console_scripts]
+inference_controller = rlg_quad_controller.inference_controller:main
+

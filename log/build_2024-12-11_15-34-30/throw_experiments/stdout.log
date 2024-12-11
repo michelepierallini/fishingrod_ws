@@ -1,0 +1,27 @@
+running develop
+running egg_info
+creating throw_experiments.egg-info
+writing throw_experiments.egg-info/PKG-INFO
+writing dependency_links to throw_experiments.egg-info/dependency_links.txt
+writing entry points to throw_experiments.egg-info/entry_points.txt
+writing requirements to throw_experiments.egg-info/requires.txt
+writing top-level names to throw_experiments.egg-info/top_level.txt
+writing manifest file 'throw_experiments.egg-info/SOURCES.txt'
+reading manifest file 'throw_experiments.egg-info/SOURCES.txt'
+writing manifest file 'throw_experiments.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/lib/python3.10/site-packages/throw-experiments.egg-link (link to .)
+Installing getup script to /home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/lib/jumping_experiments
+Installing throw_node script to /home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/lib/jumping_experiments
+
+Installed /home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments
+running symlink_data
+creating /home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/ament_index
+creating /home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/ament_index/resource_index
+creating /home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/ament_index/resource_index/packages
+symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments/resource/throw_experiments -> /home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/ament_index/resource_index/packages
+symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments/package.xml -> /home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/throw_experiments
+creating /home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/throw_experiments/launch
+symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments/launch/experiment_simulation.launch.py -> /home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/throw_experiments/launch
+symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments/launch/controller_start.launch.py -> /home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/throw_experiments/launch
+symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments/launch/experiment.launch.py -> /home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/throw_experiments/launch

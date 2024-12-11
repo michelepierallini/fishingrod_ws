@@ -1,0 +1,4 @@
+source;share/pi3hat_moteus_int_msgs/local_setup.bash
+source;share/pi3hat_moteus_int_msgs/local_setup.dsv
+source;share/pi3hat_moteus_int_msgs/local_setup.sh
+source;share/pi3hat_moteus_int_msgs/local_setup.zsh

@@ -1,0 +1,1 @@
+/home/michele/michele_try_ws/fishingrod_ws/build/sea_plugin_package/ament_cmake_environment_hooks/local_setup.zsh

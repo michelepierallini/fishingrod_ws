@@ -86,7 +86,7 @@ class InferenceController(Node):
         self.previous_action = [0.0 for _ in range(self.njoint)]
         self.tip_pos_previous = [0.0 for _ in range(3)]
         self.tip_vel_lin_previous = [0.0 for _ in range(3)]
-        self.err_pos = self.pos_des[0] - self.tip_pos[0]
+        # self.err_pos = self.pos_des[0] - self.tip_pos[0]
         self.err_pos = [self.pos_des[0] - self.tip_pos[0]]
         self.err_vel = [self.vel_des[0] - self.tip_vel_lin[0]]
 
