@@ -1,1 +1,0 @@
-/home/michele/michele_try_ws/fishingrod_ws/src/fishingrod_description/launch/display_fishingrod.launch.py

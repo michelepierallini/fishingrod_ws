@@ -1,1 +1,0 @@
-/home/michele/michele_try_ws/fishingrod_ws/src/test_experiments/launch/controller_start.launch.py

@@ -1,9 +1,0 @@
-/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_description/CMakeFiles/uninstall.dir
-/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_description/CMakeFiles/fishingrod_description_uninstall.dir
-/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_description/CMakeFiles/test.dir
-/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_description/CMakeFiles/edit_cache.dir
-/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_description/CMakeFiles/rebuild_cache.dir
-/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_description/CMakeFiles/list_install_components.dir
-/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_description/CMakeFiles/install.dir
-/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_description/CMakeFiles/install/local.dir
-/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_description/CMakeFiles/install/strip.dir

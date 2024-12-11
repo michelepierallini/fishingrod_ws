@@ -1,4 +1,0 @@
-[console_scripts]
-getup = throw_experiments.getup:main
-throw_node = throw_experiments.throw_node:main
-

@@ -1,11 +1,15 @@
 Fishingrod workspace to implement PPO. 
-[Paper](https://ieeexplore.ieee.org/abstract/document/10529546)
+
+The actuator module at the base is the SEA EM-ACT presented in [Paper](https://ieeexplore.ieee.org/abstract/document/10529546)
+
+The fishingrod is discretized using a classic pseudo-rigid model with spring and damper.
+The $K$ and $D$ matrixes in ```fishingrod.urdf``` has been experimentally estiamted via load tests. We use a plugin for simulating the SEA passive joints.
 
 Training has been done by implementing RL-baseline PPO via the NVIDIA Omniverse framework [.py](https://github.com/michelepierallini/OmniIsaacGymEnvs/blob/main/omniisaacgymenvs/tasks/)
 
 The interference Node is mainly adapted from [loco_sim](https://github.com/CentroEPiaggio/locosim_ws)
 
-# Usage in Simulations Interference
+# Usage in Simulations Interference and Classic Trajectory
 (i)
 ```
 source /opt/ros/humble/setup.bash
@@ -52,18 +56,21 @@ export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:~/michele_try_ws/fishingrod_ws/ins
 # Note
 
 *INFO*: the system is very sensitive to damping terms due to noise in the velocity so reduce the damping term in the case of violent oscillations.
-*INFO*: change this path in ```fishingrod.urdf```
+
+*INFO*: change this path in ```fishingrod.urdf```, i.e.,
 ```
 <parameters>/home/michele/michele_try_ws/fishingrod_ws/src/fishingrod_gazebo/config/fishingrod_gazebo_sim_jnt_PD.yaml</parameters> 
 ```
+
 *INFO*: the package `throw_experiment` is yet to be completed.
 
 # TODO
 
-1) Implement the camera
+1) Implement the camera sensor 
 2) Callbacks for plots
 3) `throw_experiment` package
--------------------------------------------------------------
+4) Implement a DDP-like or, in general, model-based, controller
+-----------------------------------------------------------------------------------------------
 -) Retrain the Network with smart observation
 
 

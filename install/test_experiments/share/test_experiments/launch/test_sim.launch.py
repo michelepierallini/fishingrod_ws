@@ -1,1 +1,0 @@
-/home/michele/michele_try_ws/fishingrod_ws/build/test_experiments/launch/test_sim.launch.py

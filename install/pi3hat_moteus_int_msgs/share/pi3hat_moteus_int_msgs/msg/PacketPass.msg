@@ -1,1 +1,0 @@
-/home/michele/michele_try_ws/fishingrod_ws/src/pi3hat_moteus_int_msgs/msg/PacketPass.msg

@@ -1,1 +1,0 @@
-/home/michele/michele_try_ws/fishingrod_ws/src/throw_experiments/launch/experiment.launch.py
