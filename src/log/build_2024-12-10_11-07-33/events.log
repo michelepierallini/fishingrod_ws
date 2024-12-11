@@ -1,9 +1,0 @@
-[0.000000] (-) TimerEvent: {}
-[0.000086] (-) JobUnselected: {'identifier': 'fishingrod_description'}
-[0.000101] (-) JobUnselected: {'identifier': 'fishingrod_gazebo'}
-[0.000109] (-) JobUnselected: {'identifier': 'jumping_experiments'}
-[0.000116] (-) JobUnselected: {'identifier': 'pi3hat_moteus_int_msgs'}
-[0.000122] (-) JobUnselected: {'identifier': 'rbt_pd_cnt'}
-[0.000129] (-) JobUnselected: {'identifier': 'rlg_quad_controller'}
-[0.000135] (-) JobUnselected: {'identifier': 'sea_plugin_package'}
-[0.000141] (-) EventReactorShutdown: {}

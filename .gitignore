@@ -3,4 +3,6 @@
 /src/log
 /src/sea_plugin_package/build
 /src/sea_plugin_package/install
-
+/build 
+/install  
+/log

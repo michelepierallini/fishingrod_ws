@@ -1,12 +1,11 @@
 import rclpy
 # import torch
 import numpy as np
-import yaml
 from rclpy.node import Node
 from pi3hat_moteus_int_msgs.msg import JointsCommand, JointsStates
 from sensor_msgs.msg import JointState, Imu
-# from geometry_msgs.msg import Twist, Point
 import time
+
 """
 Simulations node.
 This node subscribes to the joint states and tip features topic, and publishes the target joint positions.
@@ -42,7 +41,6 @@ class TestController(Node):
         self.njoint = 1
         self.joint_names = ('Joint_1',)
 
-        # this is what I am publishing 
         self.joint_kp = np.array([1.0])
         self.joint_kd = np.array([1.0])
 
@@ -139,7 +137,6 @@ class TestController(Node):
                 joint_msg.position = self._avg_default_dof
                 joint_msg.velocity = np.zeros(self.njoint).tolist()
             else:
-                ## real task
                 rclpy.logging.get_logger('rclpy.node').info(f"Real traj INIT ...")
                 if self.trajectory == 'const':
                     joint_msg.position = self.joint_pos_des 

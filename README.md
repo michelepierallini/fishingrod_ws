@@ -21,6 +21,8 @@ export ROS_DOMAIN_ID=10
 ros2 launch rlg_quad_controller fishingrod_simulation.launch.py
 ```
 
+--------------------------------------------------------------------------------------------------------------
+
 If you want to use a "test" trajectory, use the package `test_experiments` and run 
 (i) as before for loading the controllers 
 
@@ -33,8 +35,6 @@ ros2 launch test_experiments test_sim.launch.py
 ```
 
 # Usage of the SEA plugin
-
-Infos: the system is very sensitive to damping terms due to noise in the velocity so reduce the damping term in the case of violent oscillations
 
 Compile the ```sea_plugin```
 
@@ -49,13 +49,20 @@ if the SEA plugin returns error please run
 export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:~/michele_try_ws/fishingrod_ws/install/serial_elastic_plugin/lib
 
 ```
+# Note
 
+*INFO*: the system is very sensitive to damping terms due to noise in the velocity so reduce the damping term in the case of violent oscillations.
+*INFO*: change this path in ```fishingrod.urdf```
+```
+<parameters>/home/michele/michele_try_ws/fishingrod_ws/src/fishingrod_gazebo/config/fishingrod_gazebo_sim_jnt_PD.yaml</parameters> 
+```
+*INFO*: the package `throw_experiment` is yet to be completed.
 
 # TODO
 
-1) Test the IMU
-2) Implement the camera (I do not think IMU will solve)
-3) Callbacks for plots
+1) Implement the camera
+2) Callbacks for plots
+3) `throw_experiment` package
 -------------------------------------------------------------
 -) Retrain the Network with smart observation
 

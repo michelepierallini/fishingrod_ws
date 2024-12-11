@@ -1,6 +1,7 @@
 /home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/urdf/fishingrod.urdf
 /home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/urdf/fishingrod.xacro
 /home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/urdf/fishingrod_old_.urdf
+/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/urdf/fishingrod_sea_decent.urdf
 /home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/urdf/fishingrod_tri.urdf
 /home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/launch/display_fishingrod.launch.py
 /home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/launch/gazebo_fishingrod.launch.py
