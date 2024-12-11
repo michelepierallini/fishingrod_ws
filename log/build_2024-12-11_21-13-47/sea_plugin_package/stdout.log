@@ -115,8 +115,8 @@
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/michele/michele_try_ws/fishingrod_ws/build/sea_plugin_package
-[ 50%] [32mBuilding CXX object CMakeFiles/SerialElasticPluginTri.dir/src/SerialElasticPluginTri.cc.o[0m
 [ 50%] [32mBuilding CXX object CMakeFiles/SerialElasticPlugin.dir/src/SerialElasticPlugin.cc.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/SerialElasticPluginTri.dir/src/SerialElasticPluginTri.cc.o[0m
 [ 75%] [32m[1mLinking CXX shared library libSerialElasticPlugin.so[0m
 [100%] [32m[1mLinking CXX shared library libSerialElasticPluginTri.so[0m
 [100%] Built target SerialElasticPlugin

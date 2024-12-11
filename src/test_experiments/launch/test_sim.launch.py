@@ -13,9 +13,9 @@ from launch.event_handlers import OnProcessExit
 def generate_launch_description():
         
         params = os.path.join(
-                        get_package_share_directory('rlg_quad_controller'),
+                        get_package_share_directory('test_experiments'),
                         'config',
-                        'fishingrod_simulation_config.yaml'
+                        'fishing_simulation_config.yaml'
                         )
 
         test_node=Node(
@@ -33,9 +33,5 @@ def generate_launch_description():
 
 
         return LaunchDescription([
-                ExecuteProcess(
-                cmd=['ros2', 'bag', 'record', '-a', '-o', 'bag_to_delete', '-s', 'mcap'],
-                output='screen'
-                        ),
                 test_node,                
         ])

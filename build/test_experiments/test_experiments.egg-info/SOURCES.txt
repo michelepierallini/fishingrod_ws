@@ -1,6 +1,8 @@
 package.xml
 setup.cfg
 setup.py
+config/fishing_simulation_config.yaml
+launch/controller_start.launch.py
 launch/test_sim.launch.py
 resource/test_experiments
 test_experiments/__init__.py

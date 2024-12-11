@@ -21,4 +21,7 @@ creating /home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/sha
 symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/test_experiments/resource/test_experiments -> /home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/ament_index/resource_index/packages
 symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/test_experiments/package.xml -> /home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/test_experiments
 creating /home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/test_experiments/launch
+symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/test_experiments/launch/controller_start.launch.py -> /home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/test_experiments/launch
 symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/test_experiments/launch/test_sim.launch.py -> /home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/test_experiments/launch
+creating /home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/test_experiments/config
+symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/test_experiments/config/fishing_simulation_config.yaml -> /home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/test_experiments/config
