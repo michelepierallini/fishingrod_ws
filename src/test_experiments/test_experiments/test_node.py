@@ -28,14 +28,14 @@ class TestController(Node):
         
         self.declare_parameter('publication_rate', 1000)
         self.rate = self.get_parameter('publication_rate').get_parameter_value().integer_value
-        
+                
         # Topic names
         self.declare_parameter('joint_state_topic', '/state_broadcaster/joint_states')
         self.declare_parameter('joint_target_pos_topic', '/joint_controller/command')
         self.joint_state_topic = self.get_parameter('joint_state_topic').get_parameter_value().string_value
         self.joint_target_pos_topic = self.get_parameter('joint_target_pos_topic').get_parameter_value().string_value
         
-        self.DEBUGGING = True
+        self.DEBUGGING = False
         
         self.default_dof = np.array([0.0]) 
         self.njoint = 1
@@ -60,7 +60,7 @@ class TestController(Node):
         self.tip_pos = [0.0000, 0.0700, 2.9417]
         
         if self.trajectory == 'const':
-            self.joint_pos_des = [0.4]
+            self.joint_pos_des = [1.0]
             self.joint_vel_des = [0.0]
         elif self.trajectory == 'sinusoidal':
             self.amplitude = 0.5
@@ -80,6 +80,7 @@ class TestController(Node):
 
         self.timer = self.create_timer(1.0 / self.rate, self.test_callback)
         self.startup_time = rclpy.clock.Clock().now()
+        self.startup_time_obs = self.startup_time
         
     def joint_state_callback(self, msg):
         t = rclpy.clock.Clock().now()
@@ -115,7 +116,7 @@ class TestController(Node):
             rclpy.logging.get_logger('rclpy.node').info(f"joint_pos   : {self.joint_pos}")
             rclpy.logging.get_logger('rclpy.node').info(f"joint_vel   : {self.joint_vel}")
             rclpy.logging.get_logger('rclpy.node').info(f"tip_pos     : {self.tip_pos}")
-            rclpy.logging.get_logger('rclpy.node').info(f"tip_vel_lin : {self.tip_vel_lin}")
+            # rclpy.logging.get_logger('rclpy.node').info(f"tip_vel_lin : {self.tip_vel_lin}")
                         
         if self.simulation:
             joint_msg = JointState()
@@ -124,19 +125,22 @@ class TestController(Node):
         joint_msg.header.stamp = rclpy.clock.Clock().now().to_msg()
         joint_msg.name = self.joint_names
         
-        if rclpy.clock.Clock().now() < (self.startup_time + rclpy.duration.Duration(seconds=5.0)):
+        if rclpy.clock.Clock().now() < (self.startup_time + rclpy.duration.Duration(seconds=3.0)):
             self.startup_time_obs = rclpy.clock.Clock().now()
             joint_msg.position = self._avg_default_dof
             joint_msg.velocity = np.zeros(self.njoint).tolist()
         else:               
             if rclpy.clock.Clock().now() > (self.startup_time_obs + rclpy.duration.Duration(seconds=2.0)):
+                rclpy.logging.get_logger('rclpy.node').info(f"Real traj END  ...")
                 joint_msg.position = self._avg_default_dof
                 joint_msg.velocity = np.zeros(self.njoint).tolist()
             else:
                 ## real task
+                rclpy.logging.get_logger('rclpy.node').info(f"Real traj INIT ...")
                 if self.trajectory == 'const':
-                    joint_msg.position = [float(self.joint_pos_des + self._avg_default_dof)]   
+                    joint_msg.position = self.joint_pos_des 
                     joint_msg.velocity = [float(-value) for value in self.joint_vel.values()]
+                    # joint_msg.velocity = self.joint_vel_des
                 elif self.trajectory == 'sinusoidal':
                     t = (rclpy.clock.Clock().now() - self.startup_time).nanoseconds / 1e9
                     self.joint_pos_des[0] = self.amplitude * np.sin(2 * np.pi * self.frequency * t)

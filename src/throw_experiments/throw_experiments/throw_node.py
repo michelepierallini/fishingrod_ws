@@ -7,6 +7,10 @@ from rclpy.node import Node
 from geometry_msgs.msg import Point, Twist
 import time
 
+####################################################################################################
+# ThrowNode for the exoeriments 
+# ToDo
+####################################################################################################
 
 class ThrowNode(Node):
 

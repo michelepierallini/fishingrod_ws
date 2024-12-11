@@ -1,0 +1,626 @@
+[0.090s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install']
+[0.090s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=20, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7e486668f8e0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7e486668f2e0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7e486668f2e0>>, mixin_verb=('build',))
+[0.194s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.194s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.194s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.194s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.194s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.194s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.194s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/michele/michele_try_ws/fishingrod_ws'
+[0.194s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.194s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.194s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.194s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.194s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.194s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.194s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.194s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.194s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(bag_to_delete) by extensions ['ignore', 'ignore_ament_install']
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(bag_to_delete) by extension 'ignore'
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(bag_to_delete) by extension 'ignore_ament_install'
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(bag_to_delete) by extensions ['colcon_pkg']
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(bag_to_delete) by extension 'colcon_pkg'
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(bag_to_delete) by extensions ['colcon_meta']
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(bag_to_delete) by extension 'colcon_meta'
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(bag_to_delete) by extensions ['ros']
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(bag_to_delete) by extension 'ros'
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(bag_to_delete) by extensions ['cmake', 'python']
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(bag_to_delete) by extension 'cmake'
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(bag_to_delete) by extension 'python'
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(bag_to_delete) by extensions ['python_setup_py']
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(bag_to_delete) by extension 'python_setup_py'
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extensions ['ignore', 'ignore_ament_install']
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extension 'ignore'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) ignored
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/fishingrod_description) by extensions ['ignore', 'ignore_ament_install']
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/fishingrod_description) by extension 'ignore'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/fishingrod_description) by extension 'ignore_ament_install'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/fishingrod_description) by extensions ['colcon_pkg']
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/fishingrod_description) by extension 'colcon_pkg'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/fishingrod_description) by extensions ['colcon_meta']
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/fishingrod_description) by extension 'colcon_meta'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/fishingrod_description) by extensions ['ros']
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/fishingrod_description) by extension 'ros'
+[0.206s] DEBUG:colcon.colcon_core.package_identification:Package 'src/fishingrod_description' with type 'ros.ament_cmake' and name 'fishingrod_description'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/fishingrod_gazebo) by extensions ['ignore', 'ignore_ament_install']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/fishingrod_gazebo) by extension 'ignore'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/fishingrod_gazebo) by extension 'ignore_ament_install'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/fishingrod_gazebo) by extensions ['colcon_pkg']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/fishingrod_gazebo) by extension 'colcon_pkg'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/fishingrod_gazebo) by extensions ['colcon_meta']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/fishingrod_gazebo) by extension 'colcon_meta'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/fishingrod_gazebo) by extensions ['ros']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/fishingrod_gazebo) by extension 'ros'
+[0.207s] DEBUG:colcon.colcon_core.package_identification:Package 'src/fishingrod_gazebo' with type 'ros.ament_cmake' and name 'fishingrod_gazebo'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/install) by extensions ['ignore', 'ignore_ament_install']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/install) by extension 'ignore'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/install) ignored
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/log) by extensions ['ignore', 'ignore_ament_install']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/log) by extension 'ignore'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/log) ignored
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/pi3hat_moteus_int_msgs) by extensions ['ignore', 'ignore_ament_install']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/pi3hat_moteus_int_msgs) by extension 'ignore'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/pi3hat_moteus_int_msgs) by extension 'ignore_ament_install'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/pi3hat_moteus_int_msgs) by extensions ['colcon_pkg']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/pi3hat_moteus_int_msgs) by extension 'colcon_pkg'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/pi3hat_moteus_int_msgs) by extensions ['colcon_meta']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/pi3hat_moteus_int_msgs) by extension 'colcon_meta'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/pi3hat_moteus_int_msgs) by extensions ['ros']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/pi3hat_moteus_int_msgs) by extension 'ros'
+[0.208s] DEBUG:colcon.colcon_core.package_identification:Package 'src/pi3hat_moteus_int_msgs' with type 'ros.ament_cmake' and name 'pi3hat_moteus_int_msgs'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(src/rbt_pd_cnt) by extensions ['ignore', 'ignore_ament_install']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(src/rbt_pd_cnt) by extension 'ignore'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(src/rbt_pd_cnt) by extension 'ignore_ament_install'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(src/rbt_pd_cnt) by extensions ['colcon_pkg']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(src/rbt_pd_cnt) by extension 'colcon_pkg'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(src/rbt_pd_cnt) by extensions ['colcon_meta']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(src/rbt_pd_cnt) by extension 'colcon_meta'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(src/rbt_pd_cnt) by extensions ['ros']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(src/rbt_pd_cnt) by extension 'ros'
+[0.208s] DEBUG:colcon.colcon_core.package_identification:Package 'src/rbt_pd_cnt' with type 'ros.ament_cmake' and name 'rbt_pd_cnt'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(src/rlg_quad_controller) by extensions ['ignore', 'ignore_ament_install']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(src/rlg_quad_controller) by extension 'ignore'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(src/rlg_quad_controller) by extension 'ignore_ament_install'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(src/rlg_quad_controller) by extensions ['colcon_pkg']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(src/rlg_quad_controller) by extension 'colcon_pkg'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(src/rlg_quad_controller) by extensions ['colcon_meta']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(src/rlg_quad_controller) by extension 'colcon_meta'
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/rlg_quad_controller) by extensions ['ros']
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/rlg_quad_controller) by extension 'ros'
+[0.209s] DEBUG:colcon.colcon_core.package_identification:Package 'src/rlg_quad_controller' with type 'ros.ament_python' and name 'rlg_quad_controller'
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/sea_plugin_package) by extensions ['ignore', 'ignore_ament_install']
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/sea_plugin_package) by extension 'ignore'
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/sea_plugin_package) by extension 'ignore_ament_install'
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/sea_plugin_package) by extensions ['colcon_pkg']
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/sea_plugin_package) by extension 'colcon_pkg'
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/sea_plugin_package) by extensions ['colcon_meta']
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/sea_plugin_package) by extension 'colcon_meta'
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/sea_plugin_package) by extensions ['ros']
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/sea_plugin_package) by extension 'ros'
+[0.209s] DEBUG:colcon.colcon_core.package_identification:Package 'src/sea_plugin_package' with type 'ros.ament_cmake' and name 'sea_plugin_package'
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/test_experiments) by extensions ['ignore', 'ignore_ament_install']
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/test_experiments) by extension 'ignore'
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/test_experiments) by extension 'ignore_ament_install'
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/test_experiments) by extensions ['colcon_pkg']
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/test_experiments) by extension 'colcon_pkg'
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/test_experiments) by extensions ['colcon_meta']
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/test_experiments) by extension 'colcon_meta'
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/test_experiments) by extensions ['ros']
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/test_experiments) by extension 'ros'
+[0.210s] DEBUG:colcon.colcon_core.package_identification:Package 'src/test_experiments' with type 'ros.ament_python' and name 'test_experiments'
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/throw_experiments) by extensions ['ignore', 'ignore_ament_install']
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/throw_experiments) by extension 'ignore'
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/throw_experiments) by extension 'ignore_ament_install'
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/throw_experiments) by extensions ['colcon_pkg']
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/throw_experiments) by extension 'colcon_pkg'
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/throw_experiments) by extensions ['colcon_meta']
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/throw_experiments) by extension 'colcon_meta'
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/throw_experiments) by extensions ['ros']
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/throw_experiments) by extension 'ros'
+[0.210s] DEBUG:colcon.colcon_core.package_identification:Package 'src/throw_experiments' with type 'ros.ament_python' and name 'throw_experiments'
+[0.210s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.210s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.210s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.210s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.210s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.221s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.221s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.222s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.222s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.222s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.222s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.222s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.222s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.222s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.222s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.222s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.222s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.222s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.222s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.222s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.222s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.222s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 0 installed packages in /home/michele/michele_try_ws/fishingrod_ws/install
+[0.223s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 339 installed packages in /opt/ros/humble
+[0.224s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'fishingrod_description' build argument 'cmake_args' from command line to 'None'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'fishingrod_description' build argument 'cmake_target' from command line to 'None'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'fishingrod_description' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'fishingrod_description' build argument 'cmake_clean_cache' from command line to 'False'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'fishingrod_description' build argument 'cmake_clean_first' from command line to 'False'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'fishingrod_description' build argument 'cmake_force_configure' from command line to 'False'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'fishingrod_description' build argument 'ament_cmake_args' from command line to 'None'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'fishingrod_description' build argument 'catkin_cmake_args' from command line to 'None'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'fishingrod_description' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.244s] DEBUG:colcon.colcon_core.verb:Building package 'fishingrod_description' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_description', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description', 'merge_install': False, 'path': '/home/michele/michele_try_ws/fishingrod_ws/src/fishingrod_description', 'symlink_install': True, 'test_result_base': None}
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'pi3hat_moteus_int_msgs' build argument 'cmake_args' from command line to 'None'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'pi3hat_moteus_int_msgs' build argument 'cmake_target' from command line to 'None'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'pi3hat_moteus_int_msgs' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'pi3hat_moteus_int_msgs' build argument 'cmake_clean_cache' from command line to 'False'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'pi3hat_moteus_int_msgs' build argument 'cmake_clean_first' from command line to 'False'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'pi3hat_moteus_int_msgs' build argument 'cmake_force_configure' from command line to 'False'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'pi3hat_moteus_int_msgs' build argument 'ament_cmake_args' from command line to 'None'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'pi3hat_moteus_int_msgs' build argument 'catkin_cmake_args' from command line to 'None'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'pi3hat_moteus_int_msgs' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.244s] DEBUG:colcon.colcon_core.verb:Building package 'pi3hat_moteus_int_msgs' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/michele/michele_try_ws/fishingrod_ws/build/pi3hat_moteus_int_msgs', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs', 'merge_install': False, 'path': '/home/michele/michele_try_ws/fishingrod_ws/src/pi3hat_moteus_int_msgs', 'symlink_install': True, 'test_result_base': None}
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'rbt_pd_cnt' build argument 'cmake_args' from command line to 'None'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'rbt_pd_cnt' build argument 'cmake_target' from command line to 'None'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'rbt_pd_cnt' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'rbt_pd_cnt' build argument 'cmake_clean_cache' from command line to 'False'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'rbt_pd_cnt' build argument 'cmake_clean_first' from command line to 'False'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'rbt_pd_cnt' build argument 'cmake_force_configure' from command line to 'False'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'rbt_pd_cnt' build argument 'ament_cmake_args' from command line to 'None'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'rbt_pd_cnt' build argument 'catkin_cmake_args' from command line to 'None'
+[0.244s] Level 5:colcon.colcon_core.verb:set package 'rbt_pd_cnt' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.245s] DEBUG:colcon.colcon_core.verb:Building package 'rbt_pd_cnt' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt', 'merge_install': False, 'path': '/home/michele/michele_try_ws/fishingrod_ws/src/rbt_pd_cnt', 'symlink_install': True, 'test_result_base': None}
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'sea_plugin_package' build argument 'cmake_args' from command line to 'None'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'sea_plugin_package' build argument 'cmake_target' from command line to 'None'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'sea_plugin_package' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'sea_plugin_package' build argument 'cmake_clean_cache' from command line to 'False'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'sea_plugin_package' build argument 'cmake_clean_first' from command line to 'False'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'sea_plugin_package' build argument 'cmake_force_configure' from command line to 'False'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'sea_plugin_package' build argument 'ament_cmake_args' from command line to 'None'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'sea_plugin_package' build argument 'catkin_cmake_args' from command line to 'None'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'sea_plugin_package' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.245s] DEBUG:colcon.colcon_core.verb:Building package 'sea_plugin_package' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/michele/michele_try_ws/fishingrod_ws/build/sea_plugin_package', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package', 'merge_install': False, 'path': '/home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package', 'symlink_install': True, 'test_result_base': None}
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'test_experiments' build argument 'cmake_args' from command line to 'None'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'test_experiments' build argument 'cmake_target' from command line to 'None'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'test_experiments' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'test_experiments' build argument 'cmake_clean_cache' from command line to 'False'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'test_experiments' build argument 'cmake_clean_first' from command line to 'False'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'test_experiments' build argument 'cmake_force_configure' from command line to 'False'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'test_experiments' build argument 'ament_cmake_args' from command line to 'None'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'test_experiments' build argument 'catkin_cmake_args' from command line to 'None'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'test_experiments' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.245s] DEBUG:colcon.colcon_core.verb:Building package 'test_experiments' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/michele/michele_try_ws/fishingrod_ws/build/test_experiments', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments', 'merge_install': False, 'path': '/home/michele/michele_try_ws/fishingrod_ws/src/test_experiments', 'symlink_install': True, 'test_result_base': None}
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'throw_experiments' build argument 'cmake_args' from command line to 'None'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'throw_experiments' build argument 'cmake_target' from command line to 'None'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'throw_experiments' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'throw_experiments' build argument 'cmake_clean_cache' from command line to 'False'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'throw_experiments' build argument 'cmake_clean_first' from command line to 'False'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'throw_experiments' build argument 'cmake_force_configure' from command line to 'False'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'throw_experiments' build argument 'ament_cmake_args' from command line to 'None'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'throw_experiments' build argument 'catkin_cmake_args' from command line to 'None'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'throw_experiments' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.245s] DEBUG:colcon.colcon_core.verb:Building package 'throw_experiments' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments', 'merge_install': False, 'path': '/home/michele/michele_try_ws/fishingrod_ws/src/throw_experiments', 'symlink_install': True, 'test_result_base': None}
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'fishingrod_gazebo' build argument 'cmake_args' from command line to 'None'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'fishingrod_gazebo' build argument 'cmake_target' from command line to 'None'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'fishingrod_gazebo' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'fishingrod_gazebo' build argument 'cmake_clean_cache' from command line to 'False'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'fishingrod_gazebo' build argument 'cmake_clean_first' from command line to 'False'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'fishingrod_gazebo' build argument 'cmake_force_configure' from command line to 'False'
+[0.245s] Level 5:colcon.colcon_core.verb:set package 'fishingrod_gazebo' build argument 'ament_cmake_args' from command line to 'None'
+[0.246s] Level 5:colcon.colcon_core.verb:set package 'fishingrod_gazebo' build argument 'catkin_cmake_args' from command line to 'None'
+[0.246s] Level 5:colcon.colcon_core.verb:set package 'fishingrod_gazebo' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.246s] DEBUG:colcon.colcon_core.verb:Building package 'fishingrod_gazebo' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_gazebo', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo', 'merge_install': False, 'path': '/home/michele/michele_try_ws/fishingrod_ws/src/fishingrod_gazebo', 'symlink_install': True, 'test_result_base': None}
+[0.246s] Level 5:colcon.colcon_core.verb:set package 'rlg_quad_controller' build argument 'cmake_args' from command line to 'None'
+[0.246s] Level 5:colcon.colcon_core.verb:set package 'rlg_quad_controller' build argument 'cmake_target' from command line to 'None'
+[0.246s] Level 5:colcon.colcon_core.verb:set package 'rlg_quad_controller' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.246s] Level 5:colcon.colcon_core.verb:set package 'rlg_quad_controller' build argument 'cmake_clean_cache' from command line to 'False'
+[0.246s] Level 5:colcon.colcon_core.verb:set package 'rlg_quad_controller' build argument 'cmake_clean_first' from command line to 'False'
+[0.246s] Level 5:colcon.colcon_core.verb:set package 'rlg_quad_controller' build argument 'cmake_force_configure' from command line to 'False'
+[0.246s] Level 5:colcon.colcon_core.verb:set package 'rlg_quad_controller' build argument 'ament_cmake_args' from command line to 'None'
+[0.246s] Level 5:colcon.colcon_core.verb:set package 'rlg_quad_controller' build argument 'catkin_cmake_args' from command line to 'None'
+[0.246s] Level 5:colcon.colcon_core.verb:set package 'rlg_quad_controller' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.246s] DEBUG:colcon.colcon_core.verb:Building package 'rlg_quad_controller' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/michele/michele_try_ws/fishingrod_ws/build/rlg_quad_controller', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller', 'merge_install': False, 'path': '/home/michele/michele_try_ws/fishingrod_ws/src/rlg_quad_controller', 'symlink_install': True, 'test_result_base': None}
+[0.246s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.247s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.247s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/michele/michele_try_ws/fishingrod_ws/src/fishingrod_description' with build type 'ament_cmake'
+[0.247s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/michele/michele_try_ws/fishingrod_ws/src/fishingrod_description'
+[0.248s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.248s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.248s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.250s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/michele/michele_try_ws/fishingrod_ws/src/pi3hat_moteus_int_msgs' with build type 'ament_cmake'
+[0.250s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/michele/michele_try_ws/fishingrod_ws/src/pi3hat_moteus_int_msgs'
+[0.250s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.250s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.251s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/michele/michele_try_ws/fishingrod_ws/src/rbt_pd_cnt' with build type 'ament_cmake'
+[0.251s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/michele/michele_try_ws/fishingrod_ws/src/rbt_pd_cnt'
+[0.251s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.251s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.253s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package' with build type 'ament_cmake'
+[0.253s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package'
+[0.253s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.253s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.255s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/michele/michele_try_ws/fishingrod_ws/src/test_experiments' with build type 'ament_python'
+[0.255s] Level 1:colcon.colcon_core.shell:create_environment_hook('test_experiments', 'ament_prefix_path')
+[0.255s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/test_experiments/hook/ament_prefix_path.ps1'
+[0.255s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/test_experiments/hook/ament_prefix_path.dsv'
+[0.256s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/test_experiments/hook/ament_prefix_path.sh'
+[0.256s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.256s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.257s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/michele/michele_try_ws/fishingrod_ws/src/throw_experiments' with build type 'ament_python'
+[0.257s] Level 1:colcon.colcon_core.shell:create_environment_hook('throw_experiments', 'ament_prefix_path')
+[0.258s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/throw_experiments/hook/ament_prefix_path.ps1'
+[0.258s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/throw_experiments/hook/ament_prefix_path.dsv'
+[0.258s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/throw_experiments/hook/ament_prefix_path.sh'
+[0.258s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.258s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.263s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake /home/michele/michele_try_ws/fishingrod_ws/src/fishingrod_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description
+[0.264s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/pi3hat_moteus_int_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake /home/michele/michele_try_ws/fishingrod_ws/src/pi3hat_moteus_int_msgs -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs
+[0.266s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake /home/michele/michele_try_ws/fishingrod_ws/src/rbt_pd_cnt -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt
+[0.266s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/sea_plugin_package': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake /home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package
+[0.526s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/michele/michele_try_ws/fishingrod_ws/src/test_experiments'
+[0.526s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.526s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.712s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/michele/michele_try_ws/fishingrod_ws/src/throw_experiments'
+[0.713s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.713s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.773s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake /home/michele/michele_try_ws/fishingrod_ws/src/fishingrod_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description
+[0.775s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --build /home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_description -- -j20 -l20
+[0.806s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --build /home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_description -- -j20 -l20
+[0.828s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --install /home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_description
+[0.965s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(fishingrod_description)
+[0.965s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --install /home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_description
+[0.967s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description' for CMake module files
+[0.968s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description' for CMake config files
+[0.968s] Level 1:colcon.colcon_core.shell:create_environment_hook('fishingrod_description', 'cmake_prefix_path')
+[0.968s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/hook/cmake_prefix_path.ps1'
+[0.969s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/hook/cmake_prefix_path.dsv'
+[0.969s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/hook/cmake_prefix_path.sh'
+[0.970s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/bin'
+[0.970s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/lib/pkgconfig/fishingrod_description.pc'
+[0.970s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/lib/python3.10/site-packages'
+[0.970s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/bin'
+[0.970s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/package.ps1'
+[0.971s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/package.dsv'
+[0.972s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/package.sh'
+[0.972s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/package.bash'
+[0.973s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/package.zsh'
+[0.973s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/colcon-core/packages/fishingrod_description)
+[0.985s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/test_experiments': PYTHONPATH=/home/michele/michele_try_ws/fishingrod_ws/build/test_experiments/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/michele/michele_try_ws/fishingrod_ws/build/test_experiments/build --no-deps symlink_data
+[0.986s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(fishingrod_description)
+[0.986s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description' for CMake module files
+[0.987s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description' for CMake config files
+[0.987s] Level 1:colcon.colcon_core.shell:create_environment_hook('fishingrod_description', 'cmake_prefix_path')
+[0.987s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/hook/cmake_prefix_path.ps1'
+[0.987s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/hook/cmake_prefix_path.dsv'
+[0.988s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/hook/cmake_prefix_path.sh'
+[0.988s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/bin'
+[0.988s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/lib/pkgconfig/fishingrod_description.pc'
+[0.988s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/lib/python3.10/site-packages'
+[0.989s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/bin'
+[0.989s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/package.ps1'
+[0.989s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/package.dsv'
+[0.990s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/package.sh'
+[0.990s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/package.bash'
+[0.990s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/fishingrod_description/package.zsh'
+[0.991s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description/share/colcon-core/packages/fishingrod_description)
+[0.991s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/michele/michele_try_ws/fishingrod_ws/src/fishingrod_gazebo' with build type 'ament_cmake'
+[0.991s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/michele/michele_try_ws/fishingrod_ws/src/fishingrod_gazebo'
+[0.992s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.992s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.997s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments': PYTHONPATH=/home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments/build --no-deps symlink_data
+[0.999s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_gazebo': CMAKE_PREFIX_PATH=/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description:/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package:/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt:/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs:/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo:/opt/openrobots:/opt/openrobots:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake /home/michele/michele_try_ws/fishingrod_ws/src/fishingrod_gazebo -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo
+[1.350s] Level 1:colcon.colcon_core.shell:create_environment_hook('test_experiments', 'pythonpath_develop')
+[1.350s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/build/test_experiments/share/test_experiments/hook/pythonpath_develop.ps1'
+[1.351s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/test_experiments' returned '0': PYTHONPATH=/home/michele/michele_try_ws/fishingrod_ws/build/test_experiments/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/michele/michele_try_ws/fishingrod_ws/build/test_experiments/build --no-deps symlink_data
+[1.351s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/build/test_experiments/share/test_experiments/hook/pythonpath_develop.dsv'
+[1.351s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/build/test_experiments/share/test_experiments/hook/pythonpath_develop.sh'
+[1.352s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments' for CMake module files
+[1.352s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments' for CMake config files
+[1.352s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/lib'
+[1.353s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/bin'
+[1.353s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/lib/pkgconfig/test_experiments.pc'
+[1.353s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/lib/python3.10/site-packages'
+[1.353s] Level 1:colcon.colcon_core.shell:create_environment_hook('test_experiments', 'pythonpath')
+[1.353s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/test_experiments/hook/pythonpath.ps1'
+[1.354s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/test_experiments/hook/pythonpath.dsv'
+[1.354s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/test_experiments/hook/pythonpath.sh'
+[1.354s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/bin'
+[1.354s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(test_experiments)
+[1.355s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/test_experiments/package.ps1'
+[1.355s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/test_experiments/package.dsv'
+[1.356s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/test_experiments/package.sh'
+[1.356s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/test_experiments/package.bash'
+[1.356s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/test_experiments/package.zsh'
+[1.356s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/colcon-core/packages/test_experiments)
+[1.357s] Level 1:colcon.colcon_core.shell:create_environment_hook('throw_experiments', 'pythonpath_develop')
+[1.357s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments/share/throw_experiments/hook/pythonpath_develop.ps1'
+[1.358s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments' returned '0': PYTHONPATH=/home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments/build --no-deps symlink_data
+[1.358s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments/share/throw_experiments/hook/pythonpath_develop.dsv'
+[1.358s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/build/throw_experiments/share/throw_experiments/hook/pythonpath_develop.sh'
+[1.359s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments' for CMake module files
+[1.359s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments' for CMake config files
+[1.360s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/lib'
+[1.360s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/bin'
+[1.360s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/lib/pkgconfig/throw_experiments.pc'
+[1.360s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/lib/python3.10/site-packages'
+[1.360s] Level 1:colcon.colcon_core.shell:create_environment_hook('throw_experiments', 'pythonpath')
+[1.360s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/throw_experiments/hook/pythonpath.ps1'
+[1.360s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/throw_experiments/hook/pythonpath.dsv'
+[1.361s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/throw_experiments/hook/pythonpath.sh'
+[1.361s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/bin'
+[1.361s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(throw_experiments)
+[1.361s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/throw_experiments/package.ps1'
+[1.362s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/throw_experiments/package.dsv'
+[1.362s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/throw_experiments/package.sh'
+[1.362s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/throw_experiments/package.bash'
+[1.363s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/throw_experiments/package.zsh'
+[1.363s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments/share/colcon-core/packages/throw_experiments)
+[1.430s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_gazebo' returned '0': CMAKE_PREFIX_PATH=/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description:/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package:/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt:/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs:/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo:/opt/openrobots:/opt/openrobots:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake /home/michele/michele_try_ws/fishingrod_ws/src/fishingrod_gazebo -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo
+[1.432s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_gazebo': CMAKE_PREFIX_PATH=/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description:/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package:/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt:/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs:/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo:/opt/openrobots:/opt/openrobots:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --build /home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_gazebo -- -j20 -l20
+[1.454s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_gazebo' returned '0': CMAKE_PREFIX_PATH=/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description:/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package:/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt:/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs:/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo:/opt/openrobots:/opt/openrobots:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --build /home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_gazebo -- -j20 -l20
+[1.468s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_gazebo': CMAKE_PREFIX_PATH=/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description:/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package:/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt:/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs:/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo:/opt/openrobots:/opt/openrobots:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --install /home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_gazebo
+[1.560s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(fishingrod_gazebo)
+[1.561s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo' for CMake module files
+[1.561s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_gazebo' returned '0': CMAKE_PREFIX_PATH=/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description:/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package:/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt:/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs:/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo:/opt/openrobots:/opt/openrobots:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --install /home/michele/michele_try_ws/fishingrod_ws/build/fishingrod_gazebo
+[1.562s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo' for CMake config files
+[1.562s] Level 1:colcon.colcon_core.shell:create_environment_hook('fishingrod_gazebo', 'cmake_prefix_path')
+[1.562s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/share/fishingrod_gazebo/hook/cmake_prefix_path.ps1'
+[1.564s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/share/fishingrod_gazebo/hook/cmake_prefix_path.dsv'
+[1.565s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/share/fishingrod_gazebo/hook/cmake_prefix_path.sh'
+[1.565s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/bin'
+[1.565s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/lib/pkgconfig/fishingrod_gazebo.pc'
+[1.565s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/lib/python3.10/site-packages'
+[1.565s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/bin'
+[1.565s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/share/fishingrod_gazebo/package.ps1'
+[1.566s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/share/fishingrod_gazebo/package.dsv'
+[1.566s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/share/fishingrod_gazebo/package.sh'
+[1.566s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/share/fishingrod_gazebo/package.bash'
+[1.566s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/share/fishingrod_gazebo/package.zsh'
+[1.566s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/share/colcon-core/packages/fishingrod_gazebo)
+[1.568s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/pi3hat_moteus_int_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake /home/michele/michele_try_ws/fishingrod_ws/src/pi3hat_moteus_int_msgs -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs
+[1.569s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/pi3hat_moteus_int_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --build /home/michele/michele_try_ws/fishingrod_ws/build/pi3hat_moteus_int_msgs -- -j20 -l20
+[1.580s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(fishingrod_gazebo)
+[1.580s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo' for CMake module files
+[1.581s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo' for CMake config files
+[1.581s] Level 1:colcon.colcon_core.shell:create_environment_hook('fishingrod_gazebo', 'cmake_prefix_path')
+[1.581s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/share/fishingrod_gazebo/hook/cmake_prefix_path.ps1'
+[1.582s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/share/fishingrod_gazebo/hook/cmake_prefix_path.dsv'
+[1.582s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/share/fishingrod_gazebo/hook/cmake_prefix_path.sh'
+[1.582s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/bin'
+[1.582s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/lib/pkgconfig/fishingrod_gazebo.pc'
+[1.582s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/lib/python3.10/site-packages'
+[1.583s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/bin'
+[1.583s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/share/fishingrod_gazebo/package.ps1'
+[1.583s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/share/fishingrod_gazebo/package.dsv'
+[1.584s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/share/fishingrod_gazebo/package.sh'
+[1.584s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/share/fishingrod_gazebo/package.bash'
+[1.584s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/share/fishingrod_gazebo/package.zsh'
+[1.585s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo/share/colcon-core/packages/fishingrod_gazebo)
+[1.905s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/sea_plugin_package' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake /home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package
+[1.907s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/sea_plugin_package': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --build /home/michele/michele_try_ws/fishingrod_ws/build/sea_plugin_package -- -j20 -l20
+[2.396s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake /home/michele/michele_try_ws/fishingrod_ws/src/rbt_pd_cnt -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt
+[2.397s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --build /home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt -- -j20 -l20
+[3.441s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/pi3hat_moteus_int_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --build /home/michele/michele_try_ws/fishingrod_ws/build/pi3hat_moteus_int_msgs -- -j20 -l20
+[3.496s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/pi3hat_moteus_int_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --install /home/michele/michele_try_ws/fishingrod_ws/build/pi3hat_moteus_int_msgs
+[4.051s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(pi3hat_moteus_int_msgs)
+[4.051s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/pi3hat_moteus_int_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --install /home/michele/michele_try_ws/fishingrod_ws/build/pi3hat_moteus_int_msgs
+[4.051s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs' for CMake module files
+[4.052s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs' for CMake config files
+[4.052s] Level 1:colcon.colcon_core.shell:create_environment_hook('pi3hat_moteus_int_msgs', 'cmake_prefix_path')
+[4.052s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/hook/cmake_prefix_path.ps1'
+[4.053s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/hook/cmake_prefix_path.dsv'
+[4.053s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/hook/cmake_prefix_path.sh'
+[4.053s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/lib'
+[4.053s] Level 1:colcon.colcon_core.shell:create_environment_hook('pi3hat_moteus_int_msgs', 'ld_library_path_lib')
+[4.053s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/hook/ld_library_path_lib.ps1'
+[4.053s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/hook/ld_library_path_lib.dsv'
+[4.053s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/hook/ld_library_path_lib.sh'
+[4.054s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/bin'
+[4.054s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/lib/pkgconfig/pi3hat_moteus_int_msgs.pc'
+[4.054s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/lib/python3.10/site-packages'
+[4.054s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/bin'
+[4.054s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/package.ps1'
+[4.054s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/package.dsv'
+[4.054s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/package.sh'
+[4.055s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/package.bash'
+[4.055s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/package.zsh'
+[4.055s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/colcon-core/packages/pi3hat_moteus_int_msgs)
+[4.110s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(pi3hat_moteus_int_msgs)
+[4.110s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs' for CMake module files
+[4.110s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs' for CMake config files
+[4.110s] Level 1:colcon.colcon_core.shell:create_environment_hook('pi3hat_moteus_int_msgs', 'cmake_prefix_path')
+[4.111s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/hook/cmake_prefix_path.ps1'
+[4.111s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/hook/cmake_prefix_path.dsv'
+[4.111s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/hook/cmake_prefix_path.sh'
+[4.111s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/lib'
+[4.111s] Level 1:colcon.colcon_core.shell:create_environment_hook('pi3hat_moteus_int_msgs', 'ld_library_path_lib')
+[4.111s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/hook/ld_library_path_lib.ps1'
+[4.112s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/hook/ld_library_path_lib.dsv'
+[4.112s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/hook/ld_library_path_lib.sh'
+[4.112s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/bin'
+[4.112s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/lib/pkgconfig/pi3hat_moteus_int_msgs.pc'
+[4.112s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/lib/python3.10/site-packages'
+[4.112s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/bin'
+[4.112s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/package.ps1'
+[4.113s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/package.dsv'
+[4.113s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/package.sh'
+[4.113s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/package.bash'
+[4.113s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/pi3hat_moteus_int_msgs/package.zsh'
+[4.113s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/share/colcon-core/packages/pi3hat_moteus_int_msgs)
+[4.114s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/michele/michele_try_ws/fishingrod_ws/src/rlg_quad_controller' with build type 'ament_python'
+[4.114s] Level 1:colcon.colcon_core.shell:create_environment_hook('rlg_quad_controller', 'ament_prefix_path')
+[4.114s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller/hook/ament_prefix_path.ps1'
+[4.114s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller/hook/ament_prefix_path.dsv'
+[4.114s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller/hook/ament_prefix_path.sh'
+[4.115s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[4.115s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[4.305s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/michele/michele_try_ws/fishingrod_ws/src/rlg_quad_controller'
+[4.305s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[4.305s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[4.572s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/rlg_quad_controller': CMAKE_PREFIX_PATH=/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs:/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package:/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt:/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo:/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description:/opt/openrobots:/opt/openrobots LD_LIBRARY_PATH=/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/lib:/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/lib:/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/lib:/opt/openrobots/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/opt/openrobots/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins PYTHONPATH=/home/michele/michele_try_ws/fishingrod_ws/build/rlg_quad_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/michele/michele_try_ws/fishingrod_ws/build/rlg_quad_controller/build --no-deps symlink_data
+[4.924s] Level 1:colcon.colcon_core.shell:create_environment_hook('rlg_quad_controller', 'pythonpath_develop')
+[4.924s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/rlg_quad_controller' returned '0': CMAKE_PREFIX_PATH=/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs:/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package:/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt:/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_gazebo:/home/michele/michele_try_ws/fishingrod_ws/install/fishingrod_description:/opt/openrobots:/opt/openrobots LD_LIBRARY_PATH=/home/michele/michele_try_ws/fishingrod_ws/install/pi3hat_moteus_int_msgs/lib:/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/lib:/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/lib:/opt/openrobots/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/opt/openrobots/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins PYTHONPATH=/home/michele/michele_try_ws/fishingrod_ws/build/rlg_quad_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/michele/michele_try_ws/fishingrod_ws/build/rlg_quad_controller/build --no-deps symlink_data
+[4.924s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/build/rlg_quad_controller/share/rlg_quad_controller/hook/pythonpath_develop.ps1'
+[4.925s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/build/rlg_quad_controller/share/rlg_quad_controller/hook/pythonpath_develop.dsv'
+[4.925s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/build/rlg_quad_controller/share/rlg_quad_controller/hook/pythonpath_develop.sh'
+[4.925s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller' for CMake module files
+[4.925s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller' for CMake config files
+[4.926s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/lib'
+[4.926s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/bin'
+[4.926s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/lib/pkgconfig/rlg_quad_controller.pc'
+[4.926s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/lib/python3.10/site-packages'
+[4.926s] Level 1:colcon.colcon_core.shell:create_environment_hook('rlg_quad_controller', 'pythonpath')
+[4.926s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller/hook/pythonpath.ps1'
+[4.926s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller/hook/pythonpath.dsv'
+[4.926s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller/hook/pythonpath.sh'
+[4.927s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/bin'
+[4.927s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(rlg_quad_controller)
+[4.927s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller/package.ps1'
+[4.927s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller/package.dsv'
+[4.927s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller/package.sh'
+[4.928s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller/package.bash'
+[4.928s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/rlg_quad_controller/package.zsh'
+[4.928s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller/share/colcon-core/packages/rlg_quad_controller)
+[7.563s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/sea_plugin_package' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --build /home/michele/michele_try_ws/fishingrod_ws/build/sea_plugin_package -- -j20 -l20
+[7.582s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/sea_plugin_package': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --install /home/michele/michele_try_ws/fishingrod_ws/build/sea_plugin_package
+[7.734s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(sea_plugin_package)
+[7.734s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package' for CMake module files
+[7.735s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/sea_plugin_package' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --install /home/michele/michele_try_ws/fishingrod_ws/build/sea_plugin_package
+[7.736s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package' for CMake config files
+[7.736s] Level 1:colcon.colcon_core.shell:create_environment_hook('sea_plugin_package', 'cmake_prefix_path')
+[7.736s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/hook/cmake_prefix_path.ps1'
+[7.737s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/hook/cmake_prefix_path.dsv'
+[7.737s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/hook/cmake_prefix_path.sh'
+[7.738s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/lib'
+[7.738s] Level 1:colcon.colcon_core.shell:create_environment_hook('sea_plugin_package', 'ld_library_path_lib')
+[7.738s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/hook/ld_library_path_lib.ps1'
+[7.739s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/hook/ld_library_path_lib.dsv'
+[7.739s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/hook/ld_library_path_lib.sh'
+[7.739s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/bin'
+[7.739s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/lib/pkgconfig/sea_plugin_package.pc'
+[7.740s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/lib/python3.10/site-packages'
+[7.740s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/bin'
+[7.740s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/package.ps1'
+[7.741s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/package.dsv'
+[7.741s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/package.sh'
+[7.742s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/package.bash'
+[7.742s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/package.zsh'
+[7.742s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/colcon-core/packages/sea_plugin_package)
+[7.786s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(sea_plugin_package)
+[7.786s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package' for CMake module files
+[7.787s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package' for CMake config files
+[7.787s] Level 1:colcon.colcon_core.shell:create_environment_hook('sea_plugin_package', 'cmake_prefix_path')
+[7.787s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/hook/cmake_prefix_path.ps1'
+[7.788s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/hook/cmake_prefix_path.dsv'
+[7.788s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/hook/cmake_prefix_path.sh'
+[7.789s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/lib'
+[7.789s] Level 1:colcon.colcon_core.shell:create_environment_hook('sea_plugin_package', 'ld_library_path_lib')
+[7.789s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/hook/ld_library_path_lib.ps1'
+[7.790s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/hook/ld_library_path_lib.dsv'
+[7.790s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/hook/ld_library_path_lib.sh'
+[7.791s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/bin'
+[7.791s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/lib/pkgconfig/sea_plugin_package.pc'
+[7.791s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/lib/python3.10/site-packages'
+[7.791s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/bin'
+[7.792s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/package.ps1'
+[7.792s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/package.dsv'
+[7.793s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/package.sh'
+[7.793s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/package.bash'
+[7.794s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/sea_plugin_package/package.zsh'
+[7.794s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/michele/michele_try_ws/fishingrod_ws/install/sea_plugin_package/share/colcon-core/packages/sea_plugin_package)
+[8.005s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --build /home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt -- -j20 -l20
+[8.031s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --install /home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt
+[8.280s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(rbt_pd_cnt)
+[8.280s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/michele/michele_try_ws/fishingrod_ws/install/throw_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments:/home/michele/michele_try_ws/fishingrod_ws/install/rlg_quad_controller:/home/michele/michele_try_ws/fishingrod_ws/install/jumping_experiments:/opt/ros/humble /usr/bin/cmake --install /home/michele/michele_try_ws/fishingrod_ws/build/rbt_pd_cnt
+[8.281s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt' for CMake module files
+[8.282s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt' for CMake config files
+[8.282s] Level 1:colcon.colcon_core.shell:create_environment_hook('rbt_pd_cnt', 'cmake_prefix_path')
+[8.282s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/hook/cmake_prefix_path.ps1'
+[8.283s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/hook/cmake_prefix_path.dsv'
+[8.283s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/hook/cmake_prefix_path.sh'
+[8.283s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/lib'
+[8.283s] Level 1:colcon.colcon_core.shell:create_environment_hook('rbt_pd_cnt', 'ld_library_path_lib')
+[8.284s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/hook/ld_library_path_lib.ps1'
+[8.284s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/hook/ld_library_path_lib.dsv'
+[8.284s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/hook/ld_library_path_lib.sh'
+[8.285s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/bin'
+[8.285s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/lib/pkgconfig/rbt_pd_cnt.pc'
+[8.285s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/lib/python3.10/site-packages'
+[8.285s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/bin'
+[8.285s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/package.ps1'
+[8.286s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/package.dsv'
+[8.286s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/package.sh'
+[8.287s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/package.bash'
+[8.287s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/package.zsh'
+[8.287s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/colcon-core/packages/rbt_pd_cnt)
+[8.318s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(rbt_pd_cnt)
+[8.319s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt' for CMake module files
+[8.319s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt' for CMake config files
+[8.319s] Level 1:colcon.colcon_core.shell:create_environment_hook('rbt_pd_cnt', 'cmake_prefix_path')
+[8.320s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/hook/cmake_prefix_path.ps1'
+[8.320s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/hook/cmake_prefix_path.dsv'
+[8.320s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/hook/cmake_prefix_path.sh'
+[8.321s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/lib'
+[8.321s] Level 1:colcon.colcon_core.shell:create_environment_hook('rbt_pd_cnt', 'ld_library_path_lib')
+[8.321s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/hook/ld_library_path_lib.ps1'
+[8.322s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/hook/ld_library_path_lib.dsv'
+[8.322s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/hook/ld_library_path_lib.sh'
+[8.322s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/bin'
+[8.322s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/lib/pkgconfig/rbt_pd_cnt.pc'
+[8.323s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/lib/python3.10/site-packages'
+[8.323s] Level 1:colcon.colcon_core.environment:checking '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/bin'
+[8.323s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/package.ps1'
+[8.324s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/package.dsv'
+[8.324s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/package.sh'
+[8.324s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/package.bash'
+[8.325s] INFO:colcon.colcon_core.shell:Creating package script '/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/rbt_pd_cnt/package.zsh'
+[8.325s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/michele/michele_try_ws/fishingrod_ws/install/rbt_pd_cnt/share/colcon-core/packages/rbt_pd_cnt)
+[8.325s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[8.325s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[8.325s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[8.326s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[8.334s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[8.334s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[8.334s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[8.348s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[8.348s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/michele/michele_try_ws/fishingrod_ws/install/local_setup.ps1'
+[8.349s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/michele/michele_try_ws/fishingrod_ws/install/_local_setup_util_ps1.py'
+[8.350s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/michele/michele_try_ws/fishingrod_ws/install/setup.ps1'
+[8.351s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/michele/michele_try_ws/fishingrod_ws/install/local_setup.sh'
+[8.352s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/michele/michele_try_ws/fishingrod_ws/install/_local_setup_util_sh.py'
+[8.352s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/michele/michele_try_ws/fishingrod_ws/install/setup.sh'
+[8.354s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/michele/michele_try_ws/fishingrod_ws/install/local_setup.bash'
+[8.354s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/michele/michele_try_ws/fishingrod_ws/install/setup.bash'
+[8.356s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/michele/michele_try_ws/fishingrod_ws/install/local_setup.zsh'
+[8.356s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/michele/michele_try_ws/fishingrod_ws/install/setup.zsh'

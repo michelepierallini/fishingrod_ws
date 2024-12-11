@@ -1,9 +1,11 @@
 Fishingrod workspace to implement PPO. 
 [Paper](https://ieeexplore.ieee.org/abstract/document/10529546)
 
-Training has been done by implementing RL-baseline PPO via the NVIDIA Omniverse framework 
+Training has been done by implementing RL-baseline PPO via the NVIDIA Omniverse framework [.py](https://github.com/michelepierallini/OmniIsaacGymEnvs/blob/main/omniisaacgymenvs/tasks/)
 
-# Usage in Simulations
+The interference Node is mainly adapted from [loco_sim](https://github.com/CentroEPiaggio/locosim_ws)
+
+# Usage in Simulations Interference
 (i)
 ```
 source /opt/ros/humble/setup.bash
@@ -36,6 +38,7 @@ if the SEA plugin returns error please run
 export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:~/michele_try_ws/fishingrod_ws/install/serial_elastic_plugin/lib
 
 ```
+
 
 # TODO
 

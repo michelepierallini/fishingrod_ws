@@ -1,7 +1,6 @@
 package.xml
 setup.cfg
 setup.py
-launch/controller_start.launch.py
 launch/test_sim.launch.py
 resource/test_experiments
 test_experiments/__init__.py

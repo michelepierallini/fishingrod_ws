@@ -11,40 +11,24 @@ from launch_ros.substitutions import FindPackageShare
 from launch.event_handlers import OnProcessExit
 
 def generate_launch_description():
+        
+        params = os.path.join(
+                        get_package_share_directory('rlg_quad_controller'),
+                        'config',
+                        'fishingrod_simulation_config.yaml'
+                        )
 
         test_node=Node(
                 package = 'test_experiments',
                 name = 'test_node',
                 executable = 'test_node',
-                parameters = [
+                parameters = [params,
                         {'trajectory': 'const'},
                         {'publication_rate': 1000},
                         {'duration': 5.0},
-                        {'start_delay': 1.0}]
-        )
-
-        # launch argument: movie name
-        # movie_name = LaunchConfiguration('v', default='test')
-        # movie_name_declare = DeclareLaunchArgument(
-        #         'v',
-        #         default_value='test',
-        #         description='Name of the movie to be recorded'
-        #         )
-                
-        # # launch argument: index of experiment
-        # index = LaunchConfiguration('n', default='0')
-        # index_declare = DeclareLaunchArgument(
-        #         'n',
-        #         default_value='0',
-        #         description='Number of the experiment'
-        #         )
-        # time_stamp = time.strftime("%Y_%m_%d_%H-%M-%S")
-        # # bag_filename = 'exp_' + index + '_mv_'+ movie_name+ '_' + time_stamp + '.bag'
-
-        policy = IncludeLaunchDescription(
-                PythonLaunchDescriptionSource(
-                        [PathJoinSubstitution([FindPackageShare("test_experiments"), "launch", "test_sim.launch.py"])]
-                ),
+                        {'start_delay': 1.0}, 
+                        {'simulation': True},
+                        {'use_sim_time': False}]
         )
 
 
@@ -53,7 +37,5 @@ def generate_launch_description():
                 cmd=['ros2', 'bag', 'record', '-a', '-o', 'bag_to_delete', '-s', 'mcap'],
                 output='screen'
                         ),
-                test_node,
-                policy,
-                
+                test_node,                
         ])

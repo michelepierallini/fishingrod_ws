@@ -1,0 +1,28 @@
+[0.730s] Invoking command in '/home/michele/michele_try_ws/fishingrod_ws/build/test_experiments': PYTHONPATH=/home/michele/michele_try_ws/fishingrod_ws/build/test_experiments/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/michele/michele_try_ws/fishingrod_ws/build/test_experiments/build --no-deps symlink_data
+[0.911s] running develop
+[0.911s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:158: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.
+[0.911s]   warnings.warn(
+[1.061s] running egg_info
+[1.061s] creating test_experiments.egg-info
+[1.061s] writing test_experiments.egg-info/PKG-INFO
+[1.061s] writing dependency_links to test_experiments.egg-info/dependency_links.txt
+[1.061s] writing entry points to test_experiments.egg-info/entry_points.txt
+[1.061s] writing requirements to test_experiments.egg-info/requires.txt
+[1.062s] writing top-level names to test_experiments.egg-info/top_level.txt
+[1.063s] writing manifest file 'test_experiments.egg-info/SOURCES.txt'
+[1.065s] reading manifest file 'test_experiments.egg-info/SOURCES.txt'
+[1.065s] writing manifest file 'test_experiments.egg-info/SOURCES.txt'
+[1.067s] running build_ext
+[1.067s] Creating /home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/lib/python3.10/site-packages/test-experiments.egg-link (link to .)
+[1.068s] Installing test_node script to /home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/lib/test_experiments
+[1.068s] 
+[1.068s] Installed /home/michele/michele_try_ws/fishingrod_ws/build/test_experiments
+[1.068s] running symlink_data
+[1.068s] creating /home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/ament_index
+[1.068s] creating /home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/ament_index/resource_index
+[1.068s] creating /home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/ament_index/resource_index/packages
+[1.068s] symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/test_experiments/resource/test_experiments -> /home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/ament_index/resource_index/packages
+[1.069s] symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/test_experiments/package.xml -> /home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/test_experiments
+[1.069s] creating /home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/test_experiments/launch
+[1.069s] symbolically linking /home/michele/michele_try_ws/fishingrod_ws/build/test_experiments/launch/test_sim.launch.py -> /home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/share/test_experiments/launch
+[1.096s] Invoked command in '/home/michele/michele_try_ws/fishingrod_ws/build/test_experiments' returned '0': PYTHONPATH=/home/michele/michele_try_ws/fishingrod_ws/build/test_experiments/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/michele/michele_try_ws/fishingrod_ws/install/test_experiments/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/michele/michele_try_ws/fishingrod_ws/build/test_experiments/build --no-deps symlink_data
