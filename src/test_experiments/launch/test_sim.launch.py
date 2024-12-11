@@ -29,7 +29,19 @@ def generate_launch_description():
                         {'simulation': True},
                         {'use_sim_time': False}]
         )
+        
+        bag_dir = os.path.join(get_package_share_directory('test_experiments'), 'bags')
+        os.makedirs(bag_dir, exist_ok=True)
+
+        record_bag = ExecuteProcess(
+                cmd = [
+                'ros2', 'bag', 'record', '-o', os.path.join(bag_dir, 'recorded_data'),
+                '-a', '--storage', 'mcap'
+                ],
+                output='screen'
+        )
 
         return LaunchDescription([
-                test_node,                
+                test_node,  
+                # record_bag,              
         ])
