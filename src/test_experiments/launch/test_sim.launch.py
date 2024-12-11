@@ -23,14 +23,12 @@ def generate_launch_description():
                 name = 'test_node',
                 executable = 'test_node',
                 parameters = [params,
-                        {'trajectory': 'const'},
                         {'publication_rate': 1000},
                         {'duration': 5.0},
                         {'start_delay': 1.0}, 
                         {'simulation': True},
                         {'use_sim_time': False}]
         )
-
 
         return LaunchDescription([
                 test_node,                

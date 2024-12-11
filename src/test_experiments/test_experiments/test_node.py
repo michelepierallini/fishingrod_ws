@@ -22,8 +22,9 @@ class TestController(Node):
         self.declare_parameter('simulation', True)
         self.simulation = self.get_parameter('simulation').get_parameter_value().bool_value
         
-        self.declare_parameter('trajectory', 'const') # 'sinosoidel' # 'chirp'
+        self.declare_parameter('trajectory', 'chirp') # 'const' # 'chirp' # 'sinusoidal'
         self.trajectory = self.get_parameter('trajectory').get_parameter_value().string_value
+        self.time_traj = 0.0
         rclpy.logging.get_logger('rclpy.node').info(f"trajectory type : {self.trajectory}")
         
         self.declare_parameter('publication_rate', 1000)
@@ -62,18 +63,21 @@ class TestController(Node):
         if self.trajectory == 'const':
             self.joint_pos_des = [1.0]
             self.joint_vel_des = [0.0]
+            self.time_traj = 5.0
         elif self.trajectory == 'sinusoidal':
-            self.amplitude = 0.5
+            self.amplitude = np.pi / 8
             self.frequency = 0.5
             self.joint_pos_des = [0.0]
             self.joint_vel_des = [0.0]
+            self.time_traj = 10.0
         elif self.trajectory == 'chirp':
-            self.amplitude = 0.5
+            self.amplitude = np.pi / 8
             self.start_freq = 0.1
             self.end_freq = 1.0
             self.duration = 10.0
             self.joint_pos_des = [0.0]
             self.joint_vel_des = [0.0]
+            self.time_traj = 10.0
         else:
             self.get_logger().error(f"Unknown traj: {self.trajectory}. Please select one <const> <sinusoidal> <chirp>")            
             return
@@ -130,7 +134,7 @@ class TestController(Node):
             joint_msg.position = self._avg_default_dof
             joint_msg.velocity = np.zeros(self.njoint).tolist()
         else:               
-            if rclpy.clock.Clock().now() > (self.startup_time_obs + rclpy.duration.Duration(seconds=2.0)):
+            if rclpy.clock.Clock().now() > (self.startup_time_obs + rclpy.duration.Duration(seconds=self.time_traj)):
                 rclpy.logging.get_logger('rclpy.node').info(f"Real traj END  ...")
                 joint_msg.position = self._avg_default_dof
                 joint_msg.velocity = np.zeros(self.njoint).tolist()
@@ -145,14 +149,15 @@ class TestController(Node):
                     t = (rclpy.clock.Clock().now() - self.startup_time).nanoseconds / 1e9
                     self.joint_pos_des[0] = self.amplitude * np.sin(2 * np.pi * self.frequency * t)
                     self.joint_vel_des[0] = self.amplitude * 2 * np.pi * self.frequency * np.cos(2 * np.pi * self.frequency * t)
-                    joint_msg.position = [float(self.joint_pos_des + self._avg_default_dof)]
-                    joint_msg.velocity = [float(self.joint_vel_des)]
+                    joint_msg.position = [float(self.joint_pos_des[0] + self._avg_default_dof)]
+                    joint_msg.velocity = [float(-self.joint_vel_des[0])]
                 elif self.trajectory == 'chirp':
+                    t = (rclpy.clock.Clock().now() - self.startup_time).nanoseconds / 1e9
                     k = (self.end_freq - self.start_freq) / self.duration
                     self.joint_pos_des[0] = self.amplitude * np.sin(2 * np.pi * (self.start_freq * t + 0.5 * k * t**2))
                     self.joint_vel_des[0] = self.amplitude * 2 * np.pi * (self.start_freq + k * t) * np.cos(2 * np.pi * (self.start_freq * t + 0.5 * k * t**2))
-                    joint_msg.position = [float(self.joint_pos_des + self._avg_default_dof)]
-                    joint_msg.velocity = [float(self.joint_vel_des)]
+                    joint_msg.position = [float(self.joint_pos_des[0] + self._avg_default_dof)]
+                    joint_msg.velocity = [float(-self.joint_vel_des[0])]
                 else:
                     self.get_logger().error(f"Unknown traj: {self.trajectory}. Please select one <const> <sinusoidal> <chirp>")
                     return

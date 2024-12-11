@@ -21,6 +21,17 @@ export ROS_DOMAIN_ID=10
 ros2 launch rlg_quad_controller fishingrod_simulation.launch.py
 ```
 
+If you want to use a "test" trajectory, use the package `test_experiments` and run 
+(i) as before for loading the controllers 
+
+(ii) 
+```
+source /opt/ros/humble/setup.bash
+. install/setup.bash
+export ROS_DOMAIN_ID=10
+ros2 launch test_experiments test_sim.launch.py
+```
+
 # Usage of the SEA plugin
 
 Infos: the system is very sensitive to damping terms due to noise in the velocity so reduce the damping term in the case of violent oscillations
