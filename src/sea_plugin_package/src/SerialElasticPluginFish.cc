@@ -43,8 +43,6 @@ namespace gazebo
         std::string prefix = "Joint_";
         if (jointName.find(prefix) == 0) {
             std::string numberPart = jointName.substr(prefix.length());
-
-            // Convert to an integer
             int jointNumber = std::stoi(numberPart);
             // std::cout << "Joint: " << jointName << ", Number: " << jointNumber << ", Damping: " << damping << ", Stiffness: " << stiffness << std::endl;
             return jointNumber;
@@ -57,12 +55,9 @@ namespace gazebo
         if (!this->joint)
           return;
 
-        // Get current position and velocity
         double position = this->joint->Position(0);
         double velocity = this->joint->GetVelocity(0);
-
         int jointNumber = processJoint(this->joint->GetName());
-
         double scale_K = 2;
         double scale_D = 1;
 

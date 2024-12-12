@@ -97,6 +97,9 @@ class TestController(Node):
             if (not np.isnan(msg.position[i]) and (not np.isnan(msg.velocity[i]))):
                 self.joint_pos[msg.name[i]] = msg.position[i]
                 self.joint_vel[msg.name[i]] = msg.velocity[i]
+                if rclpy.clock.Clock().now() > (self.startup_time + rclpy.duration.Duration(seconds=3.0)):
+                    self.joint_pos_active_plot.append(self.joint_pos[msg.name[i]])
+                    self.joint_vel_active_plot.append(self.joint_vel[msg.name[i]])
         self.prev_timestamp = timestamp
     
     def imu_callback(self, msg):
@@ -168,8 +171,10 @@ class TestController(Node):
                 
             self.tip_plot.append(self.tip_pos[0])
             self.tip_vel_plot.append(self.tip_vel_lin[0])
-            self.joint_pos_active_plot.append(joint_msg.position[0])
-            self.joint_vel_active_plot.append(joint_msg.velocity[0])
+            # self.joint_pos_active_plot.append(joint_msg.position[0])
+            # self.joint_vel_active_plot.append(joint_msg.velocity[0])
+            # self.joint_pos_active_plot.append(self.joint_pos['Joint_1'])
+            # self.joint_vel_active_plot.append(self.joint_vel['Joint_1'])
             
         if not self.simulation:
             joint_msg.kp_scale = self.joint_kp.tolist()
@@ -180,34 +185,37 @@ class TestController(Node):
         self.joint_target_pos_pub.publish(joint_msg)
         
     def callback_plot(self, *args):
-        
         """ Function to plot the data """
-        plt.figure(figsize=(10, 8))
+        plt.figure(figsize=(16, 14))
 
         plt.subplot(2, 2, 1)
-        plt.plot(self.tip_plot, label='Tip Position')
+        plt.plot(self.tip_plot, linewidth=2, label='Tip Position')
         plt.xlabel('Time')
         plt.ylabel('Tip Position')
         plt.legend()
-
+        plt.grid()
+        
         plt.subplot(2, 2, 2)
-        plt.plot(self.tip_vel_plot, label='Tip Velocity')
+        plt.plot(self.tip_vel_plot, linewidth=2, label='Tip Velocity')
         plt.xlabel('Time')
         plt.ylabel('Tip Velocity')
         plt.legend()
-
+        plt.grid()
+        
         plt.subplot(2, 2, 3)
-        plt.plot(self.joint_pos_active_plot, label='Joint Position')
+        plt.plot(self.joint_pos_active_plot, linewidth=2, label='Joint Position')
         plt.xlabel('Time')
         plt.ylabel('Joint Position')
         plt.legend()
-
+        plt.grid()
+        
         plt.subplot(2, 2, 4)
-        plt.plot(self.joint_vel_active_plot, label='Joint Velocity')
+        plt.plot(self.joint_vel_active_plot, linewidth=2, label='Joint Velocity')
         plt.xlabel('Time')
         plt.ylabel('Joint Velocity')
         plt.legend()
-
+        plt.grid()
+        
         plt.tight_layout()
         plt.show()
 

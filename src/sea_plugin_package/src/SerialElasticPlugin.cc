@@ -48,7 +48,9 @@ namespace gazebo
         double position = this->joint->Position(0);
         double velocity = this->joint->GetVelocity(0);
 
+        // double torque = -this->stiffness * position - this->damping * 0.5 * velocity;
         double torque = -this->stiffness * position - this->damping * velocity;
+
         this->joint->SetForce(0, torque);
       }
 
