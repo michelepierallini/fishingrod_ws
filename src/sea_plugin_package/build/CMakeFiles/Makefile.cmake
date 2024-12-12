@@ -890,4 +890,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/sea_plugin_package_uninstall.dir/DependInfo.cmake"
   "CMakeFiles/SerialElasticPlugin.dir/DependInfo.cmake"
   "CMakeFiles/SerialElasticPluginTri.dir/DependInfo.cmake"
+  "CMakeFiles/SerialElasticPluginFish.dir/DependInfo.cmake"
   )

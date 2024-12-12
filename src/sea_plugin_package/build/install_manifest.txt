@@ -1,5 +1,6 @@
 /usr/local/lib/libSerialElasticPlugin.so
 /usr/local/lib/libSerialElasticPluginTri.so
+/usr/local/lib/libSerialElasticPluginFish.so
 /usr/local/share/ament_index/resource_index/package_run_dependencies/sea_plugin_package
 /usr/local/share/ament_index/resource_index/parent_prefix_path/sea_plugin_package
 /usr/local/share/sea_plugin_package/environment/ament_prefix_path.sh

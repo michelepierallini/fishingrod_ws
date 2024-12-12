@@ -65,6 +65,7 @@ CMAKE_BINARY_DIR = /home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_pac
 # The main recursive "all" target.
 all: CMakeFiles/SerialElasticPlugin.dir/all
 all: CMakeFiles/SerialElasticPluginTri.dir/all
+all: CMakeFiles/SerialElasticPluginFish.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -76,6 +77,7 @@ clean: CMakeFiles/uninstall.dir/clean
 clean: CMakeFiles/sea_plugin_package_uninstall.dir/clean
 clean: CMakeFiles/SerialElasticPlugin.dir/clean
 clean: CMakeFiles/SerialElasticPluginTri.dir/clean
+clean: CMakeFiles/SerialElasticPluginFish.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -163,7 +165,7 @@ CMakeFiles/SerialElasticPlugin.dir/clean:
 CMakeFiles/SerialElasticPluginTri.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPluginTri.dir/build.make CMakeFiles/SerialElasticPluginTri.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPluginTri.dir/build.make CMakeFiles/SerialElasticPluginTri.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles --progress-num=3,4 "Built target SerialElasticPluginTri"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles --progress-num=5,6 "Built target SerialElasticPluginTri"
 .PHONY : CMakeFiles/SerialElasticPluginTri.dir/all
 
 # Build rule for subdir invocation for target.
@@ -181,6 +183,32 @@ SerialElasticPluginTri: CMakeFiles/SerialElasticPluginTri.dir/rule
 CMakeFiles/SerialElasticPluginTri.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPluginTri.dir/build.make CMakeFiles/SerialElasticPluginTri.dir/clean
 .PHONY : CMakeFiles/SerialElasticPluginTri.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/SerialElasticPluginFish.dir
+
+# All Build rule for target.
+CMakeFiles/SerialElasticPluginFish.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPluginFish.dir/build.make CMakeFiles/SerialElasticPluginFish.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPluginFish.dir/build.make CMakeFiles/SerialElasticPluginFish.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles --progress-num=3,4 "Built target SerialElasticPluginFish"
+.PHONY : CMakeFiles/SerialElasticPluginFish.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/SerialElasticPluginFish.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/SerialElasticPluginFish.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles 0
+.PHONY : CMakeFiles/SerialElasticPluginFish.dir/rule
+
+# Convenience name for target.
+SerialElasticPluginFish: CMakeFiles/SerialElasticPluginFish.dir/rule
+.PHONY : SerialElasticPluginFish
+
+# clean rule for target.
+CMakeFiles/SerialElasticPluginFish.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPluginFish.dir/build.make CMakeFiles/SerialElasticPluginFish.dir/clean
+.PHONY : CMakeFiles/SerialElasticPluginFish.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -29,10 +29,14 @@ ament_target_dependencies(SerialElasticPluginTri rclcpp gazebo_ros gazebo_dev)
 target_link_libraries(SerialElasticPluginTri ${GAZEBO_LIBRARIES})
 target_include_directories(SerialElasticPluginTri PRIVATE ${EIGEN3_INCLUDE_DIR})
 
+add_library(SerialElasticPluginFish SHARED src/SerialElasticPluginFish.cc)
+ament_target_dependencies(SerialElasticPluginFish rclcpp gazebo_ros gazebo_dev)
+target_link_libraries(SerialElasticPluginFish ${GAZEBO_LIBRARIES})
+target_include_directories(SerialElasticPluginFish PRIVATE ${EIGEN3_INCLUDE_DIR})
 
 # Install plugin library
 install(
-  TARGETS SerialElasticPlugin SerialElasticPluginTri
+  TARGETS SerialElasticPlugin SerialElasticPluginTri SerialElasticPluginFish
   LIBRARY DESTINATION lib
 )
 

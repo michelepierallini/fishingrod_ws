@@ -223,6 +223,19 @@ SerialElasticPluginTri/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPluginTri.dir/build.make CMakeFiles/SerialElasticPluginTri.dir/build
 .PHONY : SerialElasticPluginTri/fast
 
+#=============================================================================
+# Target rules for targets named SerialElasticPluginFish
+
+# Build rule for target.
+SerialElasticPluginFish: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SerialElasticPluginFish
+.PHONY : SerialElasticPluginFish
+
+# fast build rule for target.
+SerialElasticPluginFish/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPluginFish.dir/build.make CMakeFiles/SerialElasticPluginFish.dir/build
+.PHONY : SerialElasticPluginFish/fast
+
 src/SerialElasticPlugin.o: src/SerialElasticPlugin.cc.o
 .PHONY : src/SerialElasticPlugin.o
 
@@ -246,6 +259,30 @@ src/SerialElasticPlugin.s: src/SerialElasticPlugin.cc.s
 src/SerialElasticPlugin.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPlugin.dir/build.make CMakeFiles/SerialElasticPlugin.dir/src/SerialElasticPlugin.cc.s
 .PHONY : src/SerialElasticPlugin.cc.s
+
+src/SerialElasticPluginFish.o: src/SerialElasticPluginFish.cc.o
+.PHONY : src/SerialElasticPluginFish.o
+
+# target to build an object file
+src/SerialElasticPluginFish.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPluginFish.dir/build.make CMakeFiles/SerialElasticPluginFish.dir/src/SerialElasticPluginFish.cc.o
+.PHONY : src/SerialElasticPluginFish.cc.o
+
+src/SerialElasticPluginFish.i: src/SerialElasticPluginFish.cc.i
+.PHONY : src/SerialElasticPluginFish.i
+
+# target to preprocess a source file
+src/SerialElasticPluginFish.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPluginFish.dir/build.make CMakeFiles/SerialElasticPluginFish.dir/src/SerialElasticPluginFish.cc.i
+.PHONY : src/SerialElasticPluginFish.cc.i
+
+src/SerialElasticPluginFish.s: src/SerialElasticPluginFish.cc.s
+.PHONY : src/SerialElasticPluginFish.s
+
+# target to generate assembly for a file
+src/SerialElasticPluginFish.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SerialElasticPluginFish.dir/build.make CMakeFiles/SerialElasticPluginFish.dir/src/SerialElasticPluginFish.cc.s
+.PHONY : src/SerialElasticPluginFish.cc.s
 
 src/SerialElasticPluginTri.o: src/SerialElasticPluginTri.cc.o
 .PHONY : src/SerialElasticPluginTri.o
@@ -287,10 +324,14 @@ help:
 	@echo "... sea_plugin_package_uninstall"
 	@echo "... uninstall"
 	@echo "... SerialElasticPlugin"
+	@echo "... SerialElasticPluginFish"
 	@echo "... SerialElasticPluginTri"
 	@echo "... src/SerialElasticPlugin.o"
 	@echo "... src/SerialElasticPlugin.i"
 	@echo "... src/SerialElasticPlugin.s"
+	@echo "... src/SerialElasticPluginFish.o"
+	@echo "... src/SerialElasticPluginFish.i"
+	@echo "... src/SerialElasticPluginFish.s"
 	@echo "... src/SerialElasticPluginTri.o"
 	@echo "... src/SerialElasticPluginTri.i"
 	@echo "... src/SerialElasticPluginTri.s"

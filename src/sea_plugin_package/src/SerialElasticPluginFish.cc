@@ -4,18 +4,17 @@
 #include <iostream>
 
 /* This class implements a Serial Elastic Actuator (SEA)
-  It can be used also for the Mulinex robot and the Softleg Goatleg
+  It can be used JUST FOR the Softleg Goatleg
 */
 
 namespace gazebo
 {
-  class SerialElasticPlugin : public ModelPlugin
+  class SerialElasticPluginFish : public ModelPlugin
   {
     public: 
       void Load(physics::ModelPtr model, sdf::ElementPtr sdf) override
       {
         this->model = model;
-        // Parse stiffness (K) and damping (D) parameters
         if (sdf->HasElement("stiffness"))
           this->stiffness = sdf->Get<double>("stiffness");
 
@@ -36,7 +35,22 @@ namespace gazebo
         }
 
         this->updateConnection = event::Events::ConnectWorldUpdateBegin(
-            std::bind(&SerialElasticPlugin::OnUpdate, this));
+            std::bind(&SerialElasticPluginFish::OnUpdate, this));
+      }
+
+      int processJoint(const std::string& jointName) 
+      {
+        std::string prefix = "Joint_";
+        if (jointName.find(prefix) == 0) {
+            std::string numberPart = jointName.substr(prefix.length());
+
+            // Convert to an integer
+            int jointNumber = std::stoi(numberPart);
+            // std::cout << "Joint: " << jointName << ", Number: " << jointNumber << ", Damping: " << damping 
+            //           << ", Stiffness: " << stiffness << std::endl;
+            return jointNumber;
+          }
+          return -1;
       }
 
       void OnUpdate()
@@ -48,7 +62,24 @@ namespace gazebo
         double position = this->joint->Position(0);
         double velocity = this->joint->GetVelocity(0);
 
-        double torque = -this->stiffness * position - this->damping * velocity;
+        int jointNumber = processJoint(this->joint->GetName());
+
+        double scale_K = 2;
+        double scale_D = 1;
+
+        if (jointNumber < 10)
+        {
+          scale_K = 2.0;
+          scale_D = 1.0;
+        } 
+        else 
+        {
+          scale_K = 1.0;
+          scale_D = 0.5;
+        }
+
+        double torque = -this->stiffness * scale_K * position - this->damping * scale_D * velocity;
+
         this->joint->SetForce(0, torque);
       }
 
@@ -61,5 +92,5 @@ namespace gazebo
   };
 
   // Register this plugin with the simulator
-  GZ_REGISTER_MODEL_PLUGIN(SerialElasticPlugin)
+  GZ_REGISTER_MODEL_PLUGIN(SerialElasticPluginFish)
 }

@@ -2,6 +2,7 @@
 /home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles/sea_plugin_package_uninstall.dir
 /home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles/SerialElasticPlugin.dir
 /home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles/SerialElasticPluginTri.dir
+/home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles/SerialElasticPluginFish.dir
 /home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles/test.dir
 /home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles/edit_cache.dir
 /home/michele/michele_try_ws/fishingrod_ws/src/sea_plugin_package/build/CMakeFiles/rebuild_cache.dir
