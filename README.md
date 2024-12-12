@@ -53,6 +53,14 @@ if the SEA plugin returns error please run
 export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:~/michele_try_ws/fishingrod_ws/install/serial_elastic_plugin/lib
 
 ```
+
+# Dockerfile 
+
+```
+chmod +x build_and_run.sh
+.build_and_run.sh
+```
+
 # Note
 
 *INFO*: the system is very sensitive to damping terms due to noise in the velocity so reduce the damping term in the case of violent oscillations.
