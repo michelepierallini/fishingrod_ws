@@ -171,10 +171,8 @@ class TestController(Node):
                 
             self.tip_plot.append(self.tip_pos[0])
             self.tip_vel_plot.append(self.tip_vel_lin[0])
-            # self.joint_pos_active_plot.append(joint_msg.position[0])
-            # self.joint_vel_active_plot.append(joint_msg.velocity[0])
-            # self.joint_pos_active_plot.append(self.joint_pos['Joint_1'])
-            # self.joint_vel_active_plot.append(self.joint_vel['Joint_1'])
+            # self.joint_pos_active_plot.append(joint_msg.position[0]) # des
+            # self.joint_vel_active_plot.append(joint_msg.velocity[0]) # des 
             
         if not self.simulation:
             joint_msg.kp_scale = self.joint_kp.tolist()
