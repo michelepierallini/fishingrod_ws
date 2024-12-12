@@ -5,7 +5,8 @@ from rclpy.node import Node
 from pi3hat_moteus_int_msgs.msg import JointsCommand, JointsStates
 from sensor_msgs.msg import JointState, Imu
 import time
-
+import signal
+import matplotlib.pyplot as plt
 """
 Simulations node.
 This node subscribes to the joint states and tip features topic, and publishes the target joint positions.
@@ -21,7 +22,7 @@ class TestController(Node):
         self.declare_parameter('simulation', True)
         self.simulation = self.get_parameter('simulation').get_parameter_value().bool_value
         
-        self.declare_parameter('trajectory', 'chirp') # 'const' # 'chirp' # 'sinusoidal'
+        self.declare_parameter('trajectory', 'const') # 'const' # 'chirp' # 'sinusoidal'
         self.trajectory = self.get_parameter('trajectory').get_parameter_value().string_value
         self.time_traj = 0.0
         rclpy.logging.get_logger('rclpy.node').info(f"trajectory type : {self.trajectory}")
@@ -57,6 +58,11 @@ class TestController(Node):
         self._avg_default_dof = list(self.joint_pos.values()) 
         self.tip_vel_lin = [0.0 for _ in range(3)]
         self.tip_pos = [0.0000, 0.0700, 2.9417]
+        
+        self.tip_plot = [0.0]
+        self.tip_vel_plot = [0.0]
+        self.joint_pos_active_plot = list(self.joint_pos.values()) 
+        self.joint_vel_active_plot = [0.0]
         
         if self.trajectory == 'const':
             self.joint_pos_des = [1.0]
@@ -136,6 +142,7 @@ class TestController(Node):
                 rclpy.logging.get_logger('rclpy.node').info(f"Real traj END  ...")
                 joint_msg.position = self._avg_default_dof
                 joint_msg.velocity = np.zeros(self.njoint).tolist()
+                
             else:
                 rclpy.logging.get_logger('rclpy.node').info(f"Real traj INIT ...")
                 if self.trajectory == 'const':
@@ -158,7 +165,12 @@ class TestController(Node):
                 else:
                     self.get_logger().error(f"Unknown traj: {self.trajectory}. Please select one <const> <sinusoidal> <chirp>")
                     return
-                       
+                
+            self.tip_plot.append(self.tip_pos[0])
+            self.tip_vel_plot.append(self.tip_vel_lin[0])
+            self.joint_pos_active_plot.append(joint_msg.position[0])
+            self.joint_vel_active_plot.append(joint_msg.velocity[0])
+            
         if not self.simulation:
             joint_msg.kp_scale = self.joint_kp.tolist()
             joint_msg.kd_scale = self.joint_kd.tolist()
@@ -166,12 +178,48 @@ class TestController(Node):
         # joint_msg.velocity = np.zeros(self.njoint).tolist()
         joint_msg.effort = np.zeros(self.njoint).tolist()
         self.joint_target_pos_pub.publish(joint_msg)
+        
+    def callback_plot(self, *args):
+        
+        """ Function to plot the data """
+        plt.figure(figsize=(10, 8))
+
+        plt.subplot(2, 2, 1)
+        plt.plot(self.tip_plot, label='Tip Position')
+        plt.xlabel('Time')
+        plt.ylabel('Tip Position')
+        plt.legend()
+
+        plt.subplot(2, 2, 2)
+        plt.plot(self.tip_vel_plot, label='Tip Velocity')
+        plt.xlabel('Time')
+        plt.ylabel('Tip Velocity')
+        plt.legend()
+
+        plt.subplot(2, 2, 3)
+        plt.plot(self.joint_pos_active_plot, label='Joint Position')
+        plt.xlabel('Time')
+        plt.ylabel('Joint Position')
+        plt.legend()
+
+        plt.subplot(2, 2, 4)
+        plt.plot(self.joint_vel_active_plot, label='Joint Velocity')
+        plt.xlabel('Time')
+        plt.ylabel('Joint Velocity')
+        plt.legend()
+
+        plt.tight_layout()
+        plt.show()
 
 def main(args=None):
     rclpy.init(args=args)
     test_controller = TestController()
+    
+    def signal_handler(signum, frame):
+        test_controller.callback_plot()
+
+    signal.signal(signal.SIGINT, signal_handler)
     rclpy.spin(test_controller)
-    test_controller.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':

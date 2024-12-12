@@ -46,8 +46,7 @@ namespace gazebo
 
             // Convert to an integer
             int jointNumber = std::stoi(numberPart);
-            // std::cout << "Joint: " << jointName << ", Number: " << jointNumber << ", Damping: " << damping 
-            //           << ", Stiffness: " << stiffness << std::endl;
+            // std::cout << "Joint: " << jointName << ", Number: " << jointNumber << ", Damping: " << damping << ", Stiffness: " << stiffness << std::endl;
             return jointNumber;
           }
           return -1;
@@ -69,8 +68,8 @@ namespace gazebo
 
         if (jointNumber < 10)
         {
-          scale_K = 2.0;
-          scale_D = 1.0;
+          scale_K = 1.5;
+          scale_D = 0.75;
         } 
         else 
         {
