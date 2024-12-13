@@ -184,37 +184,49 @@ class TestController(Node):
         
     def callback_plot(self, *args):
         """ Function to plot the data """
+
+        from matplotlib import rc
+        rc('font', **{'family': 'serif', 'serif': ['Computer Modern']})
+        rc('text', usetex=True)
+        plt.rcParams['text.usetex'] = True
+        
+        labelWidth = 4
+        font_size = 18
         plt.figure(figsize=(16, 14))
 
         plt.subplot(2, 2, 1)
-        plt.plot(self.tip_plot, linewidth=2, label='Tip Position')
-        plt.xlabel('Time')
-        plt.ylabel('Tip Position')
+        # plt.plot(np.linspace(0, len(self.tip_plot) / self.rate, len(self.tip_plot)), self.tip_plot, linewidth=labelWidth, label='Tip Position')
+        plt.plot(self.tip_plot, linewidth=labelWidth, label='Tip Position')
+        plt.xlabel(r'Time $(nT)$')
+        plt.ylabel(r'Tip Position $[m]$')
         plt.legend()
         plt.grid()
         
         plt.subplot(2, 2, 2)
-        plt.plot(self.tip_vel_plot, linewidth=2, label='Tip Velocity')
-        plt.xlabel('Time')
-        plt.ylabel('Tip Velocity')
+        # plt.plot(np.linspace(0, len(self.tip_vel_plot) / self.rate, len(self.tip_vel_plot)), self.tip_vel_plot, linewidth=labelWidth, label='Tip Velocity')
+        plt.plot(self.tip_vel_plot, linewidth=labelWidth, label='Tip Velocity')
+        plt.xlabel(r'Time $(nT)$')
+        plt.ylabel(r'Tip Velocity $[m/s]$')
         plt.legend()
         plt.grid()
         
         plt.subplot(2, 2, 3)
-        plt.plot(self.joint_pos_active_plot, linewidth=2, label='Joint Position')
-        plt.xlabel('Time')
-        plt.ylabel('Joint Position')
+        # plt.plot(np.linspace(0,len(self.joint_pos_active_plot)) / self.rate, self.joint_pos_active_plot, linewidth=labelWidth, label='Joint Position')
+        plt.plot(self.joint_pos_active_plot, linewidth=labelWidth, label='Joint Position')
+        plt.xlabel(r'Time $(nT)$')
+        plt.ylabel(r'Joint Position $[rad]$')
         plt.legend()
         plt.grid()
         
         plt.subplot(2, 2, 4)
-        plt.plot(self.joint_vel_active_plot, linewidth=2, label='Joint Velocity')
-        plt.xlabel('Time')
-        plt.ylabel('Joint Velocity')
+        # plt.plot(np.linspace(0, len(self.joint_vel_active_plot) / self.rate, len(self.joint_vel_active_plot)), self.joint_vel_active_plot, linewidth=labelWidth, label='Joint Velocity')
+        plt.plot(self.joint_vel_active_plot, linewidth=labelWidth, label='Joint Velocity')
+        plt.xlabel(r'Time $(nT)$')
+        plt.ylabel(r'Joint Velocity $[rad/s]$')
         plt.legend()
         plt.grid()
         
-        plt.tight_layout()
+        plt.tick_params(labelsize=font_size)
         plt.show()
 
 def main(args=None):
