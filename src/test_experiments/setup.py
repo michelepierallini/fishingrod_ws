@@ -22,7 +22,10 @@ setup(
     maintainer_email='michele.pierallini@gmail.com',
     description='Simple Test for the Fishingrod',
     license='License declaration',
-    tests_require=['pytest'],
+    # tests_require=['pytest'],
+    extras_require={
+    'test': ['pytest'],
+            },
     entry_points={
         'console_scripts': [
             'test_node = test_experiments.test_node:main',
