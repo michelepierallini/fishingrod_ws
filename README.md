@@ -60,12 +60,14 @@ export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:~/michele_try_ws/fishingrod_ws/ins
 chmod +x build_and_run.sh
 .build_and_run.sh
 ```
+Inside my local machine ```xhost +local:docker ```
+Inside the container ```export DISPLAY=:0```
 
 # Note
 
 *INFO*: the system is very sensitive to damping terms due to noise in the velocity so reduce the damping term in the case of violent oscillations.
 
-*INFO*: change this path in ```fishingrod.urdf```, i.e.,
+*INFO*: change this path in ```fishingrod.urdf```, i.e., (also in the Docker container)
 ```
 <parameters>/home/michele/michele_try_ws/fishingrod_ws/src/fishingrod_gazebo/config/fishingrod_gazebo_sim_jnt_PD.yaml</parameters> 
 ```
