@@ -56,12 +56,18 @@ export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:~/michele_try_ws/fishingrod_ws/ins
 
 # Dockerfile 
 
+Please refer to this [link](https://github.com/ddebenedittis/solo12_exp/tree/main)
+Briefly run
 ```
-chmod +x build_and_run.sh
-.build_and_run.sh
+./build.bash [-r]
+``` 
 ```
-Inside my local machine ```xhost +local:docker ```
-Inside the container ```export DISPLAY=:0```
+ ./run.bash
+``` 
+and inside the container  run
+```
+colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON && source install/setup.bash
+```
 
 # Note
 

@@ -17,18 +17,11 @@ docker build -t $IMAGE_NAME .
 
 # Run the Docker container with display access
 echo "Running Docker container..."
-# docker run -it --env="DISPLAY" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --name $CONTAINER_NAME $IMAGE_NAME
+# export DISPLAY=:0
+docker run -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix $IMAGE_NAME gazebo
 
-# docker run -it --env="NVIDIA_VISIBLE_DEVICES=all" \
-#   --env="NVIDIA_DRIVER_CAPABILITIES=all" \
-#   --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
-#   --volume="/usr/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu" \
-#   --gpus all \
+# docker run --runtime=nvidia -it --gpus all \
 #   --name $CONTAINER_NAME $IMAGE_NAME
-
-docker run --runtime=nvidia -it --gpus all \
-  --name $CONTAINER_NAME $IMAGE_NAME
-
 
 
 # Clean up unused Docker resources

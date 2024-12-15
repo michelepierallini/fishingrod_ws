@@ -6,4 +6,6 @@
 /build 
 /install  
 /log
-Dockerfile_nvidia
+Dockerfile_old
+build_and_run.sh
+core.1151
