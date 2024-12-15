@@ -57,7 +57,8 @@ export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:~/michele_try_ws/fishingrod_ws/ins
 # Dockerfile 
 
 Please refer to this [link](https://github.com/ddebenedittis/solo12_exp/tree/main)
-Briefly run
+
+Briefly setup the [Dokcer](https://docs.docker.com/engine/install/ubuntu/) and [NVIDIA Container Tollkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html). Then, run
 ```
 ./build.bash [-r]
 ``` 
@@ -83,8 +84,8 @@ colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_E
 # TODO
 
 1) Implement the camera sensor 
-2) Callbacks for plots
-3) `throw_experiment` package
+2) `throw_experiment` package. If I will try experiments. Not planned yet
+3) Creates the reel module
 4) Implement a DDP-like or, in general, model-based, controller
 -----------------------------------------------------------------------------------------------
 -) Retrain the Network with smart observation
