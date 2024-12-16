@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'ddp_controller_publisher_node = ddp_fishing.ddp_controller_publisher_node:main'
         ],
     },
 )

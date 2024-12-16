@@ -1,0 +1,20 @@
+ddp_controller_publisher_node:
+  ros__parameters:
+    parent_folder: 'step_jump'
+    rate: 1.0
+    # topic_name: '/joint_states' # RVIZ-sim
+    topic_name: '/PD_control/command' # sim
+    # topic_name: '/joint_controller/command' # exp
+    simulation: True # False
+    ilc: False
+    ilc_Kp: 0.0
+    ilc_Kd: 0.0
+    iter_number: 5
+    homing_duration: 2.0
+    
+
+bag_recorder:
+  ros__parameters:
+    bag_filename: 'task.csv'
+    parent_folder: 'step_jump'
+    rate: 1.0
