@@ -1,11 +1,14 @@
-Fishingrod workspace to implement PPO. 
+Fishingrod workspace. 
 
 The actuator module at the base is the SEA EM-ACT presented in [Paper](https://ieeexplore.ieee.org/abstract/document/10529546)
 
 The fishingrod is discretized using a classic pseudo-rigid model with spring and damper.
 The $K$ and $D$ matrixes in ```fishingrod.urdf``` has been experimentally estiamted via load tests. We use a plugin for simulating the SEA passive joints.
 
-Training has been done by implementing RL-baseline PPO via the NVIDIA Omniverse framework [.py](https://github.com/michelepierallini/OmniIsaacGymEnvs/blob/main/omniisaacgymenvs/tasks/)
+We have _src/test_experiments_ for testing basic trajectory on the first (and only) active joints.
+
+We have a _src/rlq_quad_controller_ for implementing PPO.
+Training has been done by implementing RL-baseline PPO via the NVIDIA Omniverse framework [fishing_rod_real_pos.py](https://github.com/michelepierallini/OmniIsaacGymEnvs/blob/main/omniisaacgymenvs/tasks/fishing_rod_real_pos.py)
 
 The interference Node is mainly adapted from [loco_sim](https://github.com/CentroEPiaggio/locosim_ws)
 
@@ -24,7 +27,6 @@ colcon build --symlink-install && . install/setup.bash
 export ROS_DOMAIN_ID=10
 ros2 launch rlg_quad_controller fishingrod_simulation.launch.py
 ```
-
 --------------------------------------------------------------------------------------------------------------
 
 If you want to use a "test" trajectory, use the package `test_experiments` and run 
@@ -88,6 +90,6 @@ colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_E
 3) Creates the reel module
 4) Implement a DDP-like or, in general, model-based, controller
 -----------------------------------------------------------------------------------------------
--) Retrain the Network with smart observation
+-) Retrain the Network with smart observation and/or implementing a curriculum learning. 
 
 
