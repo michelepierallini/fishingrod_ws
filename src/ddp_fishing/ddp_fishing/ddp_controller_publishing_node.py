@@ -62,8 +62,10 @@ class DDP_Controller(Node):
                 ('u_max', 10.0),
                 ('L0', 2.687), 
                 ('alpha', np.pi / 2),
-                ('timer_period', 0.0001), # 0.001
-                ('timer_period_ddp', 0.0001)   
+                ('timer_period', 0.005), # 0.0001
+                ('timer_period_ddp', 0.0001), 
+                ('scale_Kp', 2.0),
+                ('scale_Kv', 1.0),
             ]
         )
               
@@ -73,6 +75,8 @@ class DDP_Controller(Node):
         self.homing_duration = self.get_parameter('homing_duration').get_parameter_value().double_value # for experiments
         self.timer_period = self.get_parameter('timer_period').get_parameter_value().double_value
         self.timer_period_ddp = self.get_parameter('timer_period_ddp').get_parameter_value().double_value
+        self.scale_Kp = self.get_parameter('scale_Kp').get_parameter_value().double_value
+        self.scale_Kv = self.get_parameter('scale_Kv').get_parameter_value().double_value
 
         self.ilc = self.get_parameter('ilc').get_parameter_value().bool_value
         self.iter_number = self.get_parameter('iter_number').get_parameter_value().integer_value
@@ -351,8 +355,7 @@ class DDP_Controller(Node):
                 self.joint_velocity_meas[0, self.j, self.iter] = msg.velocity[0]
                 self.joint_effort_meas[0, self.j, self.iter] = msg.effort[0] 
                 self.j += 1
-                
-                rclpy.logging.get_logger("states").info(f"joint_position_meas: {self.joint_position_meas[0, self.j, self.iter]}")
+                # rclpy.logging.get_logger("states").info(f"joint_position_meas: {self.joint_position_meas[0, self.j, self.iter]}")
         else:
             self.j = 0    
                 
@@ -393,9 +396,10 @@ class DDP_Controller(Node):
             # rclpy.logging.get_logger("states").info(f"joint names : {self.joint_states_msg.name}")
             self.joint_states_msg.velocity = self.joint_velocity[:, self.i].tolist()
             self.joint_states_msg.effort = self.joint_effort[:, self.i].tolist()
+            
             if not self.simulation:
-                self.joint_states_msg.kp_scale = np.ones(self.jnt_num).tolist()
-                self.joint_states_msg.kd_scale = np.ones(self.jnt_num).tolist()
+                self.joint_states_msg.kp_scale = self.scale_Kp * np.ones(self.jnt_num).tolist()
+                self.joint_states_msg.kd_scale = self.scale_Kp * np.ones(self.jnt_num).tolist()
                 
             self.pub_joint_states.publish(self.joint_states_msg)
             self.i += 1
@@ -425,13 +429,12 @@ class DDP_Controller(Node):
         DEAD_ZONE = 10 # seconds
         # Read the last joint positions and set them as the starting values  
         start_pos = self.joint_position[:, -1]
-        final_pos = self.joint_position[:, 0]
+        final_pos = self.joint_position[:, 0] * 0 
         if self.init_counter < WARMUP_ZONE:
             self.joint_pos = start_pos
         elif (self.init_counter >= WARMUP_ZONE) and (self.init_counter < WARMUP_ZONE + (self.homing_duration / self.timer_period)):
             # interpolate from current to default pos
             t = ((self.init_counter - WARMUP_ZONE) / (self.homing_duration / self.timer_period))
-            # self.get_logger().info(f't: {t}')
             self.joint_pos = start_pos * (1 - t) + final_pos * t
 
         elif (self.init_counter >= WARMUP_ZONE + (self.homing_duration / self.timer_period)) and (self.init_counter < WARMUP_ZONE +  ((DEAD_ZONE + self.homing_duration) / self.timer_period)):
@@ -454,18 +457,18 @@ class DDP_Controller(Node):
         '''
         Plot the joint states at each iteration.
         '''
-        fig, ax = plt.subplots(figsize=(20, 10))
-        
+        fig, ax = plt.subplots(figsize=(10, 5))
+        line_width = 3.5
         for iter in range(self.iter_number):
             ## just the first joint is actuated in the fishing rod
-            ax.plot(self.joint_position_meas[0, :, iter], label=f'Real {iter}', linewidth=1.5, linestyle='-', color='blue')
-            ax.plot(self.joint_position[0, :], label=f'Ref {iter}', linewidth=1.5, linestyle='--', color='red')
+            ax.plot(self.joint_position_meas[0, :, iter], label=f'Real {iter}', linewidth=line_width, linestyle='-', color='blue')
+            ax.plot(self.joint_position[0, :], label=f'Ref {iter}', linewidth=line_width, linestyle='--', color='red')
         
-        ax.set_xlabel('Time')
-        ax.set_ylabel('Position')
+        ax.set_xlabel('Time', fontsize=16)
+        ax.set_ylabel('Position', fontsize=16)
         ax.grid()
         ax.legend()
-        fig.suptitle(f'Joint States Measurement', fontsize=16)
+        fig.suptitle(f'Joint States Measurement', fontsize=20)
         plt.tight_layout()
         plt.show()
         
