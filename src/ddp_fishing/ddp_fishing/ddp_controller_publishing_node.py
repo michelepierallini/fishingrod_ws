@@ -22,12 +22,16 @@ import aslr_to
 from utils import dataCallBacks
 
 class DDP_Controller(Node):
+    
     '''
     This class creates a ROS2 node that is used to publish the joint state from the DDP controller to the fihsing rod robot.
     Next, it pusblishes positions, velocities and torques to the robot. Optionally, it allows to implement the ILC controller.
     '''
+    
     def __init__(self):
-        '''Initialize the node and the parameters.'''
+        '''
+        Initialize the node and the parameters.
+        '''
         super().__init__('ddp_controller_publisher')
         
         # ============================ Parameters ============================ #
@@ -181,7 +185,9 @@ class DDP_Controller(Node):
         self.timer = self.create_timer(self.timer_period, self.publish_joint_states)
     
     def ddp_controller(self):
-        '''Implement the DDP controller.'''        
+        '''
+        Implement the DDP controller.
+        '''        
         fishing_rod = example_robot_data.load(self.robot_name)
         robot_model = fishing_rod.model
         robot_model.gravity.linear = np.array([0, 0, -9.81]) # w.r.t. global frame
@@ -276,36 +282,29 @@ class DDP_Controller(Node):
             self.joint_effort[:, i] = np.zeros((self.jnt_num))
             
         if wanna_plot: 
-            fig, axs = plt.subplots(2, 4, figsize=(20, 10))  # Create a 2x4 grid for plotting
-            for i in range(2):
-                for j in range(4):
-                    joint_idx = 4 * i + j
-                    axs[i, j].plot(self.joint_position[joint_idx, :], label='Ref', linewidth=1.5, linestyle='--', color='red')
-                    axs[i, j].set_xlabel('Time')
-                    axs[i, j].set_ylabel('Position')
-                    axs[i, j].legend()
-                    axs[i, j].grid()
-                    axs[i, j].set_title(self.joint_names[joint_idx]) 
-
-            fig.suptitle('Reference Joint Positions', fontsize=16)
-            plt.tight_layout()
-            plt.show()
+            
+            fig, axs = plt.subplots(1, 3, figsize=(20, 10))  # Create a 1x3 grid for plotting
+            axs[0].plot(self.joint_position, label='Ref', linewidth=1.5, linestyle='--', color='red')
+            axs[0].set_xlabel('Time')
+            axs[0].set_ylabel('Position')
+            axs[0].legend()
+            axs[0].grid()
+            
+            axs[1].plot(self.joint_velocity, label='Ref', linewidth=1.5, linestyle='--', color='red')
+            axs[1].set_xlabel('Time')
+            axs[1].set_ylabel('Velocity')
+            axs[1].legend()
+            axs[1].grid()
+            
+            axs[2].plot(self.joint_effort, label='Ref', linewidth=1.5, linestyle='--', color='red')
+            axs[2].set_xlabel('Time')
+            axs[2].set_ylabel('Effort')
+            axs[2].legend()
+            axs[2].grid()
         
-            fig, axs = plt.subplots(2, 4, figsize=(20, 10))  # Create a 2x4 grid for plotting
-            for i in range(2):
-                for j in range(4):
-                    joint_idx = 4 * i + j
-                    axs[i, j].plot(self.joint_effort[joint_idx, :], linewidth=1.5, linestyle='--', color='green')
-                    axs[i, j].set_xlabel('Time')
-                    axs[i, j].set_ylabel('Effort')
-                    axs[i, j].legend()
-                    axs[i, j].grid()
-                    axs[i, j].set_title(self.joint_names[joint_idx]) 
-
-            fig.suptitle('Effort FF Joint', fontsize=16)
+            fig.suptitle('DDP', fontsize=16)
             plt.tight_layout()
-            plt.show()
-        
+            plt.show()        
             
     def smooth_derivative(self, data, window_length=11, polyorder=4):
         '''
@@ -451,18 +450,15 @@ class DDP_Controller(Node):
         '''
         Plot the joint states at each iteration.
         '''
-        fig, axs = plt.subplots(2, 4, figsize=(20, 10))
+        fig = plt.subplots(figsize=(20, 10))
         
         for iter in range(self.iter_number):
-            for i in range(2):
-                for j in range(4):
-                    axs[i, j].plot(self.joint_position_meas[4 * i + j, :, iter], label=f'Real', linewidth=1.5, linestyle='-', color='blue')
-                    axs[i, j].plot(self.joint_position[4 * i + j, :], label='Ref', linewidth=1.5, linestyle='--', color='red')
-                    axs[i, j].set_xlabel('Time')
-                    axs[i, j].set_ylabel('Position')
-                    axs[i, j].grid()
-                    axs[i, j].legend()
-                    axs[i, j].set_title(self.joint_names[4 * i + j])
+            plt.plot(self.joint_position_meas[:, iter], label=f'Real', linewidth=1.5, linestyle='-', color='blue')
+            plt.plot(self.joint_position[:, :], label='Ref', linewidth=1.5, linestyle='--', color='red')
+            plt.set_xlabel('Time')
+            plt.set_ylabel('Position')
+            plt.grid()
+            plt.legend()
             fig.suptitle(f'Iteration {self.i}', fontsize=16)
         plt.tight_layout()
         plt.show()

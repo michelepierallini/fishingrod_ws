@@ -9,15 +9,20 @@ from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
     
-    mulinex_descr_share_path = FindPackageShare('fishing_description')
+    fishingrod_descr_share_path = FindPackageShare('fishing_description')
 
-    xacro_file_path = PathJoinSubstitution([
-        mulinex_descr_share_path,
-        LaunchConfiguration('xacro_file_path', default=os.path.join('urdf', 'mulinex.urdf.xacro'))
+    # xacro_file_path = PathJoinSubstitution([
+    #     fishingrod_descr_share_path,
+    #     LaunchConfiguration('xacro_file_path', default=os.path.join('urdf', 'mulinex.urdf.xacro'))
+    # ])
+    
+    urdf_file_path = PathJoinSubstitution([
+        fishingrod_descr_share_path,
+        LaunchConfiguration('urdf_file_path', default=os.path.join('urdf', 'fishingrod.urdf'))
     ])
     
     config_file_path = PathJoinSubstitution([
-        mulinex_descr_share_path,
+        fishingrod_descr_share_path,
         LaunchConfiguration('config_file_path', default=os.path.join('rviz', 'config.rviz'))
     ])
     
@@ -54,7 +59,7 @@ def generate_launch_description():
             executable='robot_state_publisher',
             parameters=[
                 {'use_sim_time': use_sim_time},
-                {'robot_description': ParameterValue(Command(['xacro ', xacro_file_path, ' use_gazebo:=True', ' ', default_joint_args]), value_type=str)}
+                {'robot_description': ParameterValue(Command(['urdf ', urdf_file_path, ' use_gazebo:=True', ' ', default_joint_args]), value_type=str)}
             ],
         ),
         
