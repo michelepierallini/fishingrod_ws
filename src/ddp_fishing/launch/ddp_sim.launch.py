@@ -18,30 +18,30 @@ def generate_launch_description():
                         'ddp_controller_params.yaml'
                         )
 
-        test_node=Node(
-                package = 'ddp_fishing',
-                name = 'test_node',
-                executable = 'test_node',
-                parameters = [params,
-                        {'publication_rate': 1000},
-                        {'duration': 5.0},
-                        {'start_delay': 1.0}, 
-                        {'simulation': True},
-                        {'use_sim_time': False}]
-        )
+        ddp_controller_publishing_node = Node(
+                                        package = 'ddp_fishing',
+                                        name = 'ddp_controller_publishing_node',
+                                        executable = 'ddp_controller_publishing_node',
+                                        parameters = [params,
+                                                {'publication_rate': 1000},
+                                                {'duration': 5.0},
+                                                {'start_delay': 1.0}, 
+                                                {'simulation': True},
+                                                {'use_sim_time': False}]
+                                )
         
         bag_dir = os.path.join(get_package_share_directory('ddp_fishing'), 'bags')
         os.makedirs(bag_dir, exist_ok=True)
 
         record_bag = ExecuteProcess(
-                cmd = [
-                'ros2', 'bag', 'record', '-o', os.path.join(bag_dir, 'recorded_data'),
-                '-a', '--storage', 'mcap'
-                ],
-                output='screen'
-        )
+                        cmd = [
+                        'ros2', 'bag', 'record', '-o', os.path.join(bag_dir, 'recorded_data'),
+                        '-a', '--storage', 'mcap'
+                        ],
+                        output='screen'
+                )
 
         return LaunchDescription([
-                test_node,  
+                ddp_controller_publishing_node,  
                 # record_bag,              
         ])

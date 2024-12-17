@@ -450,16 +450,17 @@ class DDP_Controller(Node):
         '''
         Plot the joint states at each iteration.
         '''
-        fig = plt.subplots(figsize=(20, 10))
+        fig, ax = plt.subplots(figsize=(20, 10))
         
         for iter in range(self.iter_number):
-            plt.plot(self.joint_position_meas[:, iter], label=f'Real', linewidth=1.5, linestyle='-', color='blue')
-            plt.plot(self.joint_position[:, :], label='Ref', linewidth=1.5, linestyle='--', color='red')
-            plt.set_xlabel('Time')
-            plt.set_ylabel('Position')
-            plt.grid()
-            plt.legend()
-            fig.suptitle(f'Iteration {self.i}', fontsize=16)
+            ax.plot(self.joint_position_meas[:, iter], label=f'Real {iter}', linewidth=1.5, linestyle='-', color='blue')
+            ax.plot(self.joint_position[:, iter], label=f'Ref {iter}', linewidth=1.5, linestyle='--', color='red')
+        
+        ax.set_xlabel('Time')
+        ax.set_ylabel('Position')
+        ax.grid()
+        ax.legend()
+        fig.suptitle(f'Joint States Measurement', fontsize=16)
         plt.tight_layout()
         plt.show()
         

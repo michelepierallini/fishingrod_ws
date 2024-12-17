@@ -650,7 +650,7 @@
     <gazebo>
       <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
         <!-- <parameters>package://fishingrod_gazebo/config/fishingrod_gazebo_sim_jnt_PD.yaml</parameters> -->
-        <parameters>/home/michele/michele_try_ws/workspace/src/fishingrod_gazebo/config/fishingrod_gazebo_sim_jnt_PD.yaml</parameters>
+        <parameters>/home/michele/michele_try_ws/fishingrod_ws/src/fishingrod_gazebo/config/fishingrod_gazebo_sim_jnt_PD.yaml</parameters>
       </plugin>
       <physics type="dart">
         <gravity>0 0 -9.81</gravity>
