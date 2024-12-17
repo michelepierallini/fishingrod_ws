@@ -58,10 +58,12 @@ class DDP_Controller(Node):
                 ('Z_des', 0),
                 ('v_des', 10),
                 ('T_f_des', 10), 
-                ('steps_ddp', 7000),
+                ('steps_ddp', 3000), # 7000
                 ('u_max', 10),
                 ('L0', 2.687), 
                 ('alpha', np.pi / 2),
+                ('timer_period', 0.001),
+                ('timer_period_ddp', 0.0001)            
             ]
         )
               
@@ -69,6 +71,8 @@ class DDP_Controller(Node):
         topic_name = self.get_parameter('topic_name').get_parameter_value().string_value
         simulation = self.get_parameter('simulation').get_parameter_value().bool_value
         self.homing_duration = self.get_parameter('homing_duration').get_parameter_value().double_value # for experiments
+        self.timer_period = self.get_parameter('timer_period').get_parameter_value().double_value
+        self.timer_period_ddp = self.get_parameter('timer_period_ddp').get_parameter_value().double_value
 
         self.ilc = self.get_parameter('ilc').get_parameter_value().bool_value
         self.iter_number = self.get_parameter('iter_number').get_parameter_value().integer_value
@@ -122,7 +126,7 @@ class DDP_Controller(Node):
             self.joint_target_pos_topic = topic_name
             self.pub_joint_states = self.create_publisher(JointsCommand, self.joint_target_pos_topic, 10)      
               
-        # ============================ Variables ============================ #
+        # ============================ Variables zeros ============================ #
         
         self.big_data, self.data_q_ddp, self.data_q_vel_ddp, self.data_ff_ddp, self.data_fb_ddp = [], [], [], [], []
         self.WANNA_TEST = False
@@ -131,14 +135,11 @@ class DDP_Controller(Node):
         self.init_counter = 0
         self.iter = 0
         self.j = 0  # index for the measured joint states
-        
-        self.timer_period = 0.001 # seconds
-        self.timer_period_ddp = 0.0001
         self.time = 0
         
         self.joint_names = ['Joint_1', ]
                                 
-        self.jnt_num = 1
+        self.jnt_num = 1 # this is fixed
         self.simulation = simulation
         self.topic_name = topic_name        
         self.nan_counter = 0

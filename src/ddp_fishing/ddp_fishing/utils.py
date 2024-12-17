@@ -86,15 +86,15 @@ def dataCallBacks(solver,
         for jj in range(0, len(q0)):
             velOut[i, jj] = appState[jj + len(q0)]
             
-    for i in range(len(K_fb)):
-        if np.shape(K_fb[i])[0] > 0 :
-            K_fb_all.append(np.array(K_fb[i][0,:]))
+    # for i in range(len(K_fb)):
+    #     if np.shape(K_fb[i])[0] > 0 :
+    #         K_fb_all.append(np.array(K_fb[i][0,:]))
             
     N_new = int(fROS * dtDDP * len(stateOut))
     # print(colored(f'[INFO]:\t From {dtDDP} to dt = 2e-3 sec, data len {len(data_q_new)} --> {N_new}', 'cyan'))
     data_q_new = interpolate_matrix(data_q_new, N_new).tolist()
     data_ff_new = interpolate_matrix(uContrlOut, N_new).tolist()
-    data_fb_new = interpolate_matrix(K_fb_all, N_new).tolist()
+    # data_fb_new = interpolate_matrix(K_fb_all, N_new).tolist()
     data_q_vel_new = interpolate_matrix(velOut, N_new).tolist()
     
     data_q_new = np.asanyarray(data_q_new)
