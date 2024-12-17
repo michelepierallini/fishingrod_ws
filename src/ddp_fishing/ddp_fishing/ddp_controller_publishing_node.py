@@ -18,7 +18,10 @@ import crocoddyl
 from termcolor import colored
 from .ballistic_motion import GetBallistMotion 
 import crocoddyl
+
 import aslr_to
+print(aslr_to.__path__)
+
 from .utils import dataCallBacks
 
 class DDP_Controller(Node):
@@ -223,7 +226,7 @@ class DDP_Controller(Node):
         print(colored(f"[INFO]:\t CoM Move phase", 'yellow'))
         
         runningModel = crocoddyl.IntegratedActionModelEuler(
-                                aslr_to.DAM2(state, actuation, runningCostModel, self.K, self.D), 1 / self.timer_period_ddp)
+                                aslr_to.DAM2(state, actuation, runningCostModel, self.K, self.D), self.timer_period_ddp)
         terminalModel = crocoddyl.IntegratedActionModelEuler(
                                 aslr_to.DAM2(state, actuation, terminalCostModel, self.K, self.D), 0) # dt) # need to rescale the problem
 
@@ -232,14 +235,17 @@ class DDP_Controller(Node):
 
         q0 = np.zeros(state.nv)
         x0 = np.concatenate([q0,pinocchio.utils.zero(state.nv)])
-        problem = crocoddyl.ShootingProblem(x0, [runningModel] * self.steps_ddp, terminalModel)
+        problem = crocoddyl.ShootingProblem(x0, [runningModel] * int(self.steps_ddp), terminalModel)
 
-        solver = crocoddyl.SolverBoxFDDP(problem)               
+        solver = crocoddyl.SolverBoxFDDP(problem)  
+                    
         solver.problem.nthreads = 1
         solver.th_stop = self.thres_ddp # 1e-5         
         
         xs = [x0] * (solver.problem.T + 1)
-        us = solver.problem.quasiStatic([x0] * solver.problem.T)
+        us = [np.zeros(1)] * (solver.problem.T)
+        
+        self.get_logger().info(colored(f"[INFO]:\t DDP Opt. starting for {self.robot_name}", 'cyan'))
         solver.solve(xs, us, self.iter_ddp, False)
         
         # ============================ Results ============================ #
@@ -249,10 +255,10 @@ class DDP_Controller(Node):
         vel_final = pinocchio.getFrameVelocity(solver.problem.terminalModel.differential.state.pinocchio,\
             solver.problem.terminalData.differential.multibody.pinocchio, robot_model.getFrameId("Link_EE")).linear
 
-        print('[INFO]: Reached Pos: {}\nReached Vel: {}'.format(np.round(pos_final, 3), np.round(vel_final, 3)))
-        print('[INFO]: Desired Pos: {}\nDesired Vel: {}'.format(np.round(self.target_pos_ddp, 3), np.round(self.target_vel_ddp, 3)))
+        self.get_logger().info('[INFO]: Reached Pos: {}\nReached Vel: {}'.format(np.round(pos_final, 3), np.round(vel_final, 3)))
+        self.get_logger().info('[INFO]: Desired Pos: {}\nDesired Vel: {}'.format(np.round(self.target_pos_ddp, 3), np.round(self.target_vel_ddp, 3)))
         
-        print(colored(f"[INFO]:\t DDP Opt. completed for {self.robot_name}", 'cyan'))
+        self.get_logger().info(colored(f"[INFO]:\t DDP Opt. completed for {self.robot_name}", 'cyan'))
         self.big_data, self.data_q_ddp, self.data_q_vel_ddp, self.data_ff_ddp = dataCallBacks(solver, fishing_rod)
         
     def reference_extract(self, wanna_plot=False):
