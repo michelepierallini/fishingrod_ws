@@ -1,10 +1,8 @@
 import time
 import traceback
-
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.signal import savgol_filter
-
 from builtin_interfaces.msg import Time
 import rclpy
 import rclpy.clock
@@ -21,6 +19,7 @@ from termcolor import colored
 from ballistic_motion import GetBallistMotion 
 import crocoddyl
 import aslr_to
+from utils import dataCallBacks
 
 class DDP_Controller(Node):
     '''
@@ -52,9 +51,10 @@ class DDP_Controller(Node):
                 ('Z_des', 0),
                 ('v_des', 10),
                 ('T_f_des', 10), 
-                ('steps', 7000),
-                ('u_max',  10),
+                ('steps_ddp', 7000),
+                ('u_max', 10),
                 ('L0', 2.687), 
+                ('alpha', np.pi / 2),
             ]
         )
               
@@ -81,13 +81,21 @@ class DDP_Controller(Node):
         self.k_ii = 4 * np.array([0, 63.1656, 30.8417, 15.1807, 10.1850, 8.8447,
             6.3321, 5.2807, 4.7269, 4.4887, 4.1110, 4.0055, 3.8352, 3.2700, 
             2.6058, 1.7932, 1.3104, 1.0466, 0.9186, 0.6518, 0.3424])
-
         self.d_ii = 1e1 * np.array([0.087, 0.016, 0.0127, 0.0082, 0.007, 0.0075,
             0.0060, 0.0042, 0.0040, 0.0036, 0.0032, 0.0028, 0.0027, 0.0025, 0.0024,
             0.0020, 0.0018, 0.0016, 0.0015, 0.0012, 0.001])
+        self.fixed_length = 0.18
 
         self.D = np.diag(self.d_ii) # + np.diag(d_ii[:-1]/2e1, k=-1) + np.diag(d_ii[:-1]/2e1, k=1) 
         self.K = np.diag(self.k_ii) + np.diag(self.k_ii[:-1] / 2e1, k=-1) + np.diag(self.k_ii[:-1] / 2e1, k=1)
+        
+        self.steps_ddp = self.get_parameter('steps_ddp').get_parameter_value().integer_value
+        self.u_max = self.get_parameter('u_max').get_parameter_value().double_value
+        self.L0 = self.get_parameter('L0').get_parameter_value().double_value
+        self.alpha = self.get_parameter('alpha').get_parameter_value().double_value
+        
+        self.target_pos_ddp = np.array([self.L0 * np.cos(self.alpha) + self.fixed_length, 0, self.L0 * np.sin(self.alpha)])
+        self.target_vel_ddp = np.array([self.v_des, -self.v_des / 2, 0])
         
         # Check the correctness of the topics
         sim_condition = (simulation == True) and (topic_name == '/PD_control/command')
@@ -121,6 +129,7 @@ class DDP_Controller(Node):
         self.j = 0  # index for the measured joint states
         
         self.timer_period = 0.001 # seconds
+        self.timer_period_ddp = 0.0001
         self.time = 0
         
         self.joint_names = ['Joint_1', ]
@@ -145,7 +154,7 @@ class DDP_Controller(Node):
         if try_res.success:
             print(colored('Success','green'))
             print('X_des: {}\nv_des: {}'.format(self.X_des, self.v_des))
-        
+                    
         # ============================ DDP optimization ============================ #
         
         self.ddp_controller()
@@ -172,36 +181,76 @@ class DDP_Controller(Node):
         self.timer = self.create_timer(self.timer_period, self.publish_joint_states)
     
     def ddp_controller(self):
-        '''Implement the DDP controller.'''
-        self.mulinex = example_robot_data.load(self.robot_name)
+        '''Implement the DDP controller.'''        
+        fishing_rod = example_robot_data.load(self.robot_name)
+        robot_model = fishing_rod.model
+        robot_model.gravity.linear = np.array([0, 0, -9.81]) # w.r.t. global frame
+        state = crocoddyl.StateMultibody(robot_model)
+        actuation = aslr_to.ASRFishing(state)
+        nu = actuation.nu
 
-        q0 = self.mulinex.model.referenceConfigurations[self.config].copy()
-        self.mulinex.q0 = q0
-        v0 = pinocchio.utils.zero(self.mulinex.model.nv)
-        x0 = np.concatenate([q0, v0])
-            
+        runningCostModel = crocoddyl.CostModelSum(state,nu)
+        terminalCostModel = crocoddyl.CostModelSum(state,nu)
+        xResidual = crocoddyl.ResidualModelState(state, state.zero(), nu)
+        uResidual = crocoddyl.ResidualModelControl(state, nu)
+        uRegCost = crocoddyl.CostModelResidual(state, uResidual)
+
+        framePlacementResidual = crocoddyl.ResidualModelFramePlacement(state, robot_model.getFrameId("Link_EE"),
+                                                               pinocchio.SE3(np.eye(3), self.target_pos_ddp), nu)
+        framePlacementVelocity = crocoddyl.ResidualModelFrameVelocity(state, robot_model.getFrameId("Link_EE"),
+                                                               pinocchio.Motion(self.target_vel_ddp, np.zeros(3)),
+                                                               pinocchio.WORLD, nu)
         
+        xActivation = crocoddyl.ActivationModelWeightedQuad(np.array([1e1] * state.nv + [1e0] * state.nv)) # 1e1
+        xResidual = crocoddyl.ResidualModelState(state, state.zero(), nu)
+        xRegCost = crocoddyl.CostModelResidual(state, xActivation, xResidual)
+
+        goalTrackingCost = crocoddyl.CostModelResidual(state, framePlacementResidual)
+        goalVelCost = crocoddyl.CostModelResidual(state, framePlacementVelocity)
+        xRegCost = crocoddyl.CostModelResidual(state, xResidual)
+
+        runningCostModel.addCost("gripperPose", goalTrackingCost, 1e2)
+        runningCostModel.addCost("gripperVel", goalVelCost, 1e1)
+        runningCostModel.addCost("xReg", xRegCost, 1e0)
+        runningCostModel.addCost("uReg", uRegCost, 1e0) # increase to decrease the cost of the control
+        terminalCostModel.addCost("gripperPose", goalTrackingCost, 1e2) 
+        terminalCostModel.addCost("gripperVel", goalVelCost, 1e1)
         
         print(colored(f"[INFO]:\t CoM Move phase", 'yellow'))
-        self.solver[i] = crocoddyl.SolverFDDP(gait.createCoMProblemWalkingVersor(x0, value["comGoTo"], value["versor"], value["timeStep"], value["numKnots"], stepLength=value["stepLength"], stepHeight=value["stepHeight"]))    
-                
-        self.solver[i].problem.nthreads = 1
-        self.solver[i].th_stop = self.thres_ddp # 1e-5         
         
-        xs = [x0] * (self.solver[i].problem.T + 1)
-        us = self.solver[i].problem.quasiStatic([x0] * self.solver[i].problem.T)
-        self.solver[i].solve(xs, us, self.iter_ddp, False)
-            
-        print(colored(f"[INFO]:\t DDP Opt. completed for {self.robot_name}", 'cyan'))
-        big_data, data_q_ddp, data_q_vel_ddp, data_ff_ddp, data_fb_ddp = dataCallBacks(self.solver[i], 
-                                                                                    self.mulinex, 
-                                                                                    self.K, 
-                                                                                    dtDDP=self.timer_period,
-                                                                                    robot_name=self.robot_name, 
-                                                                                    nA=12, 
-                                                                                    nState=19)
-            
+        runningModel = crocoddyl.IntegratedActionModelEuler(
+                                aslr_to.DAM2(state, actuation, runningCostModel, self.K, self.D), 1 / self.timer_period_ddp)
+        terminalModel = crocoddyl.IntegratedActionModelEuler(
+                                aslr_to.DAM2(state, actuation, terminalCostModel, self.K, self.D), 0) # dt) # need to rescale the problem
 
+        runningModel.u_lb = np.array([-self.u_max])
+        runningModel.u_ub = np.array([self.u_max])
+
+        q0 = np.zeros(state.nv)
+        x0 = np.concatenate([q0,pinocchio.utils.zero(state.nv)])
+        problem = crocoddyl.ShootingProblem(x0, [runningModel] * self.T, terminalModel)
+
+        solver = crocoddyl.SolverBoxFDDP(problem)               
+        solver.problem.nthreads = 1
+        solver.th_stop = self.thres_ddp # 1e-5         
+        
+        xs = [x0] * (self.solver.problem.T + 1)
+        us = self.solver.problem.quasiStatic([x0] * solver.problem.T)
+        solver.solve(xs, us, self.iter_ddp, False)
+        
+        # ============================ Results ============================ #
+        
+        pos_final = solver.problem.terminalData.differential.multibody.pinocchio.oMf[robot_model.getFrameId(
+        "Link_EE")].translation.T
+        vel_final = pinocchio.getFrameVelocity(solver.problem.terminalModel.differential.state.pinocchio,\
+            solver.problem.terminalData.differential.multibody.pinocchio, robot_model.getFrameId("Link_EE")).linear
+
+        print('[INFO]: Reached Pos: {}\nReached Vel: {}'.format(np.round(pos_final, 3), np.round(vel_final, 3)))
+        print('[INFO]: Desired Pos: {}\nDesired Vel: {}'.format(np.round(self.target_pos_ddp, 3), np.round(self.target_vel_ddp, 3)))
+        
+        print(colored(f"[INFO]:\t DDP Opt. completed for {self.robot_name}", 'cyan'))
+        self.big_data, self.data_q_ddp, self.data_q_vel_ddp, self.data_ff_ddp = dataCallBacks(solver, fishing_rod)
+        
     def reference_extract(self, wanna_plot=False):
         '''
         Extract the reference joint states from the data.
