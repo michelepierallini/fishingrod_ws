@@ -12,7 +12,6 @@ ddp_controller_publisher_node:
     iter_number: 5
     homing_duration: 2.0
     
-
 bag_recorder:
   ros__parameters:
     bag_filename: 'task.csv'

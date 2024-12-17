@@ -8,7 +8,7 @@ from termcolor import colored
 def get_csv_filepath(parent_folder: str, file_name: str) -> str:
     """Search for a file within a specified parent folder and its subdirectories."""
     # folder install 
-    directory = f"{get_package_share_directory('ddp_controller_publisher')}/../../../../tasks/"
+    directory = f"{get_package_share_directory('ddp_fishing')}/../../../../tasks/"
     full_path = os.path.join(directory, parent_folder)
     # print(f'full_path is {full_path}')
     
@@ -96,8 +96,7 @@ def dataCallBacks(solver,
     data_ff_new = interpolate_matrix(uContrlOut, N_new).tolist()
     data_fb_new = interpolate_matrix(K_fb_all, N_new).tolist()
     data_q_vel_new = interpolate_matrix(velOut, N_new).tolist()
-
-   
+    
     data_q_new = np.asanyarray(data_q_new)
     data_q_vel_new = np.asanyarray(data_q_vel_new)
     data_ff_new = np.asanyarray(data_ff_new)
@@ -136,7 +135,6 @@ def interpolate_matrix(matrix: np.array, N_new: int) -> np.array:
     interpolated_matrix = np.zeros((N_new, num_columns))
     for i in range(num_columns):
         interpolated_matrix[:, i] = np.interp(np.linspace(0, 1, N_new), np.linspace(0, 1, N), matrix[:, i])
-        
     # print(f'[INFO]:\tOriginal matrix shape     : {matrix.shape}')
     # print(f'[INFO]:\tInterpolated matrix shape : {interpolated_matrix.shape}')
     return interpolated_matrix
