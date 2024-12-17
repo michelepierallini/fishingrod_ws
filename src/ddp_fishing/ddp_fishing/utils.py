@@ -1,9 +1,10 @@
 import os
 from ament_index_python.packages import get_package_share_directory
 import numpy as np
-import pandas as pd
-import shutil
+# import pandas as pd
+# import shutil
 from termcolor import colored
+import rclpy
 
 def get_csv_filepath(parent_folder: str, file_name: str) -> str:
     """Search for a file within a specified parent folder and its subdirectories."""
@@ -23,8 +24,9 @@ def dataCallBacks(solver,
                 name="test", 
                 nA=1,
                 WANNA_SAVE=False,
+                WANNA_PLOT=False,
                 dtDDP=1e-4, 
-                fROS=1000):
+                fROS=500):
     
     """Probably best ot put as a method of the controlling node
 
@@ -62,10 +64,10 @@ def dataCallBacks(solver,
     q0 = robot.q0
     u = solver.us.tolist()
     xs = solver.xs.tolist()
-    
-    print(colored(f'[INFO]:\t Init {len(q0)}, Data u: {len(u)}, Data xs: {len(xs)}', 'cyan'))
+    # print(colored(f'[INFO]:\t Init {len(q0)}, Data u: {len(u)}, Data xs: {len(xs)}', 'cyan'))
     K_fb = solver.K.tolist()
-    K_fb_all, big_data = [], []
+    # K_fb_all = []
+    big_data = []
 
     uContrlOut = np.zeros((len(u), nA))
     stateOut = np.zeros((len(xs), len(q0)))
@@ -93,7 +95,7 @@ def dataCallBacks(solver,
     #         K_fb_all.append(np.array(K_fb[i][0,:]))
             
     N_new = int(fROS * dtDDP * len(stateOut))
-    # print(colored(f'[INFO]:\t From {dtDDP} to dt = 2e-3 sec, data len {len(data_q_new)} --> {N_new}', 'cyan'))
+    # print(colored(f'[INFO]:\t From {dtDDP} to dt = 2e-3 sec, data len {len(stateOut)} --> {N_new}', 'cyan'))
     data_q_new = interpolate_matrix(stateOut, N_new).tolist()
     data_ff_new = interpolate_matrix(uContrlOut, N_new).tolist()
     # data_fb_new = interpolate_matrix(K_fb_all, N_new).tolist()
@@ -110,12 +112,41 @@ def dataCallBacks(solver,
             big_data.append(data_q_vel_new[i, j])
         for j in range(0, nA):
             big_data.append(data_ff_new[i, j])
+            
+    if WANNA_PLOT: 
+        from matplotlib import pyplot as plt
+        font_size = 20
+        line_width = 3
+        fig, axs = plt.subplots(1, 3, figsize=(20, 10))  # Create a 1x3 grid for plotting
+        axs[0].plot(data_q_new[:, 0], label='Joint 1', linewidth=line_width, linestyle='--', color='red')
+        axs[0].set_xlabel('Time', fontsize=font_size)
+        axs[0].set_ylabel('Position', fontsize=font_size)
+        axs[0].legend()
+        axs[0].grid()
+        
+        axs[1].plot(data_q_vel_new[:, 0], label='Joint 1', linewidth=line_width, linestyle='--', color='red')
+        axs[1].set_xlabel('Time', fontsize=font_size)
+        axs[1].set_ylabel('Velocity', fontsize=font_size)
+        axs[1].legend()
+        axs[1].grid()
+        
+        axs[2].plot(data_ff_new, label='Joint 1', linewidth=line_width, linestyle='--', color='red')
+        axs[2].set_xlabel('Time', fontsize=font_size)
+        axs[2].set_ylabel('Effort', fontsize=font_size)
+        axs[2].legend()
+        axs[2].grid()
+    
+        fig.suptitle('DDP', fontsize=font_size + 4)
+        plt.tight_layout()
+        plt.show()     
     
     return big_data, data_q_new, data_q_vel_new, data_ff_new
 
 
-def reshape_data(data, n_colums_1=12, n_coloums_2=8):
-    """Assume the dimension to comprehend just the joints not the base information"""
+def reshape_data(data, n_colums_1: int, n_coloums_2: int):
+    """
+    Assume the dimension to comprehend just the joints not the base information
+    """
     _, cols = data.shape if data.shape[0] > data.shape[1] else data.T.shape
     
     if cols == n_colums_1 or cols == n_coloums_2:

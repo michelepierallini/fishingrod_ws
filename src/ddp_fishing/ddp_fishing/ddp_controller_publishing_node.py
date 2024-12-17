@@ -62,8 +62,8 @@ class DDP_Controller(Node):
                 ('u_max', 10.0),
                 ('L0', 2.687), 
                 ('alpha', np.pi / 2),
-                ('timer_period', 0.001),
-                ('timer_period_ddp', 0.001) # 0.0001   
+                ('timer_period', 0.0001), # 0.001
+                ('timer_period_ddp', 0.0001)   
             ]
         )
               
@@ -149,16 +149,16 @@ class DDP_Controller(Node):
             state_des = try_res.x
             v_0x, X_0, Z_0, v_0z = try_res.x
             
-            print('=============================================================================================')
-            print('v_0x: {:.3}\nX_0: {:.3}\t\t X_des: {}\nZ_0: {}\t\t Z_des: {}\nv_0z: {:.3}\ntheta_0: {:.3}\nT: {}'\
+            self.get_logger().info('=============================================================================================')
+            self.get_logger().info('v_0x: {:.3}\nX_0: {:.3}\t\t X_des: {}\nZ_0: {}\t\t Z_des: {}\nv_0z: {:.3}\ntheta_0: {:.3}\nT: {}'\
                 .format(v_0x, state_des[0], self.X_des, state_des[1], self.Z_des, v_0z, np.arctan(v_0x/v_0z), test_motion.T))
             err_X = abs(self.X_des - X_0 - v_0x * test_motion.T)
             err_Z = abs(self.Z_des - Z_0 - v_0z * test_motion.T + 0.5 * test_motion.GRAVITY * (test_motion.T) ** 2)
-            print('=============================================================================================')
-            print('err_X: {:.3}\nerr_Z: {:.3}'.format(err_X, err_Z))
+            self.get_logger().info('=============================================================================================')
+            self.get_logger().info('err_X: {:.3}\terr_Z: {:.3}'.format(err_X, err_Z))
             if try_res.success:
-                print(colored('Success','green'))
-                print('X_des: {}\nv_des: {}'.format(self.X_des, self.v_des))
+                self.get_logger().info(colored('Success','green'))
+                self.get_logger().info('X_des: {}\tv_des: {}'.format(self.X_des, self.v_des))
                     
         # ============================ DDP optimization ============================ #
         
@@ -260,7 +260,7 @@ class DDP_Controller(Node):
         self.get_logger().info(colored(f"DDP Opt. completed for {self.robot_name}", 'cyan'))
         self.big_data, self.data_q_ddp, self.data_q_vel_ddp, self.data_ff_ddp = dataCallBacks(solver, fishing_rod)
         
-    def reference_extract(self, wanna_plot=False):
+    def reference_extract(self, wanna_plot=True):
         '''
         Extract the reference joint states from the data.
         '''
@@ -285,21 +285,23 @@ class DDP_Controller(Node):
             self.joint_effort[:, i] = np.zeros((self.jnt_num))
             
         if wanna_plot: 
-            line_width = 1.5
+            line_width = 3.5
             fig, axs = plt.subplots(1, 3, figsize=(20, 10))  # Create a 1x3 grid for plotting
-            axs[0].plot(self.joint_position, label='', linewidth=line_width, linestyle='--', color='red')
+            axs[0].plot(self.joint_position[0,:], label='', linewidth=line_width, linestyle='--', color='red')
+            axs[0].plot(self.joint_position[:,:], label='', linewidth=line_width, linestyle='--', color='green')
+            axs[0].plot(self.joint_position[:,0], label='', linewidth=line_width, linestyle='--', color='blue')
             axs[0].set_xlabel('Time')
             axs[0].set_ylabel('Position')
             axs[0].legend()
             axs[0].grid()
             
-            axs[1].plot(self.joint_velocity, label='', linewidth=line_width, linestyle='--', color='red')
+            axs[1].plot(self.joint_velocity[0,:], label='', linewidth=line_width, linestyle='--', color='red')
             axs[1].set_xlabel('Time')
             axs[1].set_ylabel('Velocity')
             axs[1].legend()
             axs[1].grid()
             
-            axs[2].plot(self.joint_effort, label='', linewidth=line_width, linestyle='--', color='red')
+            axs[2].plot(self.joint_effort[0,:], label='', linewidth=line_width, linestyle='--', color='red')
             axs[2].set_xlabel('Time')
             axs[2].set_ylabel('Effort')
             axs[2].legend()
@@ -444,7 +446,7 @@ class DDP_Controller(Node):
             self.init_counter = 0
 
         # rclpy.logging.get_logger('rclpy.node').info(f'joint pos: {self.joint_position}')
-        self.get_logger().info(f'init_counter: {self.init_counter}')
+        # self.get_logger().info(f'init_counter: {self.init_counter}')
 
         self.init_counter += 1         
         
