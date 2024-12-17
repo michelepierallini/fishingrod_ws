@@ -18,17 +18,17 @@ import example_robot_data
 import pinocchio
 import crocoddyl
 from termcolor import colored
+from ballistic_motion import GetBallistMotion 
+import crocoddyl
+import aslr_to
 
 class DDP_Controller(Node):
     '''
-    This class creates a ROS2 node that is used to publish the joint states from the DDP controller to the robot.
-    Next, it pusblishes positions, velocities and torques to the robot.
-    Optionally it allows to implement the ILC controller.
+    This class creates a ROS2 node that is used to publish the joint state from the DDP controller to the fihsing rod robot.
+    Next, it pusblishes positions, velocities and torques to the robot. Optionally, it allows to implement the ILC controller.
     '''
     def __init__(self):
-        '''
-        Initialize the node and the parameters.
-        '''
+        '''Initialize the node and the parameters.'''
         super().__init__('ddp_controller_publisher')
         
         # ============================ Parameters ============================ #
@@ -36,7 +36,6 @@ class DDP_Controller(Node):
         self.declare_parameters(
             namespace='',
             parameters=[
-                ('csv_filename', 'big_data_vince_0.47'), # X init
                 ('parent_folder', 'step_jump'),
                 ('rate', 1.),
                 ('topic_name', '/PD_control/command'),
@@ -46,33 +45,50 @@ class DDP_Controller(Node):
                 ('ilc_Kp', 0.5),
                 ('ilc_Kd', 0.05),
                 ('homing_duration', 5.0),
-                ('robot_name', 'mulinex12'),                
-                ('K', 500.),
-                ('config', 'standing'),
+                ('robot_name', 'fishing_rod_four'),                
                 ('iter_ddp', 200),
                 ('thres_ddp', 1e-2),
+                ('X_des', 20),
+                ('Z_des', 0),
+                ('v_des', 10),
+                ('T_f_des', 10), 
+                ('steps', 7000),
+                ('u_max',  10),
+                ('L0', 2.687), 
             ]
         )
-                
-        
+              
         self.rate = self.get_parameter('rate').get_parameter_value().double_value
         topic_name = self.get_parameter('topic_name').get_parameter_value().string_value
         simulation = self.get_parameter('simulation').get_parameter_value().bool_value
-        
+        self.homing_duration = self.get_parameter('homing_duration').get_parameter_value().double_value # for experiments
+
         self.ilc = self.get_parameter('ilc').get_parameter_value().bool_value
         self.iter_number = self.get_parameter('iter_number').get_parameter_value().integer_value
         self.ilc_Kp = self.get_parameter('ilc_Kp').get_parameter_value().double_value
         self.ilc_Kd = self.get_parameter('ilc_Kd').get_parameter_value().double_value
         
-        self.homing_duration = self.get_parameter('homing_duration').get_parameter_value().double_value
-        
-        self.stiffness = self.get_parameter('K').get_parameter_value().double_value
-        self.config = self.get_parameter('config').get_parameter_value().string_value
         self.robot_name = self.get_parameter('robot_name').get_parameter_value().string_value
         
         self.iter_ddp = self.get_parameter('iter_ddp').get_parameter_value().integer_value
         self.thres_ddp = self.get_parameter('thres_ddp').get_parameter_value().double_value
-              
+        
+        self.X_des = self.get_parameter('X_des').get_parameter_value().double_value
+        self.v_des = self.get_parameter('v_des').get_parameter_value().double_value
+        self.Z_des = self.get_parameter('Z_des').get_parameter_value().double_value
+        self.T_f_des = self.get_parameter('T_f_des').get_parameter_value().double_value
+        
+        self.k_ii = 4 * np.array([0, 63.1656, 30.8417, 15.1807, 10.1850, 8.8447,
+            6.3321, 5.2807, 4.7269, 4.4887, 4.1110, 4.0055, 3.8352, 3.2700, 
+            2.6058, 1.7932, 1.3104, 1.0466, 0.9186, 0.6518, 0.3424])
+
+        self.d_ii = 1e1 * np.array([0.087, 0.016, 0.0127, 0.0082, 0.007, 0.0075,
+            0.0060, 0.0042, 0.0040, 0.0036, 0.0032, 0.0028, 0.0027, 0.0025, 0.0024,
+            0.0020, 0.0018, 0.0016, 0.0015, 0.0012, 0.001])
+
+        self.D = np.diag(self.d_ii) # + np.diag(d_ii[:-1]/2e1, k=-1) + np.diag(d_ii[:-1]/2e1, k=1) 
+        self.K = np.diag(self.k_ii) + np.diag(self.k_ii[:-1] / 2e1, k=-1) + np.diag(self.k_ii[:-1] / 2e1, k=1)
+        
         # Check the correctness of the topics
         sim_condition = (simulation == True) and (topic_name == '/PD_control/command')
         real_condition = (simulation == False) and (topic_name == '/joint_controller/command')
@@ -104,25 +120,31 @@ class DDP_Controller(Node):
         self.iter = 0
         self.j = 0  # index for the measured joint states
         
-        self.timer_period = 0.002  # seconds
+        self.timer_period = 0.001 # seconds
         self.time = 0
         
-        self.joint_names_x = ["LF_HFE",
-                            "LF_KFE",
-                            "LH_HFE",
-                            "LH_KFE",
-                            "RF_HFE",
-                            "RF_KFE",
-                            "RH_HFE",
-                            "RH_KFE"]
-    
-        
-        self.joint_names = self.joint_names_x
-                    
-        self.jnt_num = 8
+        self.joint_names = ['Joint_1', ]
+                                
+        self.jnt_num = 1
         self.simulation = simulation
         self.topic_name = topic_name        
         self.nan_counter = 0
+        
+        test_motion = GetBallistMotion(self.X_des, self.Z_des, self.v_des, self.T_f_des)
+        try_res = test_motion.getXZvt()
+        state_des = try_res.x
+        v_0x, X_0, Z_0, v_0z = try_res.x
+        
+        print('=============================================================================================')
+        print('v_0x: {:.3}\nX_0: {:.3}\t\t X_des: {}\nZ_0: {}\t\t Z_des: {}\nv_0z: {:.3}\ntheta_0: {:.3}\nT: {}'\
+            .format(v_0x, state_des[0], self.X_des, state_des[1], self.Z_des, v_0z, np.arctan(v_0x/v_0z), test_motion.T))
+        err_X = abs(self.X_des - X_0 - v_0x * test_motion.T)
+        err_Z = abs(self.Z_des - Z_0 - v_0z * test_motion.T + 0.5 * test_motion.GRAVITY * (test_motion.T) ** 2)
+        print('=============================================================================================')
+        print('err_X: {:.3}\nerr_Z: {:.3}'.format(err_X, err_Z))
+        if try_res.success:
+            print(colored('Success','green'))
+            print('X_des: {}\nv_des: {}'.format(self.X_des, self.v_des))
         
         # ============================ DDP optimization ============================ #
         
@@ -157,75 +179,28 @@ class DDP_Controller(Node):
         self.mulinex.q0 = q0
         v0 = pinocchio.utils.zero(self.mulinex.model.nv)
         x0 = np.concatenate([q0, v0])
-        
-        lfFoot, rfFoot, lhFoot, rhFoot = "LF_FOOT", "RF_FOOT", "LH_FOOT", "RH_FOOT"
-        
-        if self.robot_name == 'mulinex12':
-            nA = 12
-            self.K = self.stiffness * np.eye(nA)
-            gait = SimpleMulinexGaitProblem(self.mulinex.model, lfFoot, rfFoot, lhFoot, rhFoot, self.K, x0, nA=nA, robot_name=self.robot_name, node='ddp')
             
-            GAITPHASES = [{"com_move_mp": {"comGoTo": 0.5, 'versor': [1.0, 0., 0.], "timeStep": self.timer_period, "numKnots": 140, "stepLength":0.05, "stepHeight":0.03}}]
         
-        else:
-            self.K = self.stiffness * np.eye(self.jnt_num)
-            gait = SimpleMulinexGaitProblem(self.mulinex.model, lfFoot, rfFoot, lhFoot, rhFoot, self.K, x0)
-            GAITPHASES = [
-                    {"walking": {"stepLength": 0.15, "stepHeight": 0.05, "timeStep": self.timer_period, "stepKnots": 200, "supportKnots": 1}},
-                    {"walking": {"stepLength": 0.10, "stepHeight": 0.05, "timeStep": self.timer_period, "stepKnots": 200, "supportKnots": 1}}
-                ]
-        self.solver = [None] * len(GAITPHASES)
-        for i, phase in enumerate(GAITPHASES):
-            for key, value in phase.items():
-                if key == "walking":
-                    print(colored(f"[INFO]:\t Walking phase", 'yellow'))
-                    self.solver[i] = crocoddyl.SolverFDDP(gait.createWalkingProblem(x0, value["stepLength"], value["stepHeight"], value["timeStep"], value["stepKnots"], value["supportKnots"]))
-                elif key == "trotting":
-                    print(colored(f"[INFO]:\t Trotting phase", 'yellow'))
-                    self.solver[i] = crocoddyl.SolverFDDP(gait.createTrottingProblem(x0, value["stepLength"], value["stepHeight"], value["timeStep"], value["stepKnots"], value["supportKnots"]))
-                elif key == "pacing":
-                    print(colored(f"[INFO]:\t Pacing phase", 'yellow'))
-                    self.solver[i] = crocoddyl.SolverFDDP(gait.createPacingProblem(x0, value["stepLength"], value["stepHeight"], value["timeStep"], value["stepKnots"], value["supportKnots"]))
-                elif key == "bounding":
-                    print(colored(f"[INFO]:\t Bounding phase", 'yellow'))
-                    self.solver[i] = crocoddyl.SolverFDDP(gait.createBoundingProblem(x0, value["stepLength"], value["stepHeight"], value["timeStep"], value["stepKnots"], value["supportKnots"]))
-                elif key == "jumping":
-                    print(colored(f"[INFO]:\t Jumping phase", 'yellow'))
-                    #  crocoddyl.self.solverBoxFDDP
-                    self.solver[i] = crocoddyl.SolverFDDP(gait.createJumpingProblem(x0, value["jumpHeight"], value["jumpLength"], value["timeStep"], value["groundKnots"], value["flyingKnots"]))
-                elif key == "com_move_mp":
-                    print(colored(f"[INFO]:\t CoM Move phase", 'yellow'))
-                    self.solver[i] = crocoddyl.SolverFDDP(gait.createCoMProblemWalkingVersor(x0, value["comGoTo"], value["versor"], value["timeStep"], value["numKnots"], stepLength=value["stepLength"], stepHeight=value["stepHeight"]))    
-                else:
-                    raise ValueError("Unknown phase name.")   
-            self.solver[i].problem.nthreads = 1
-            self.solver[i].th_stop = self.thres_ddp # 1e-5         
-            
-            xs = [x0] * (self.solver[i].problem.T + 1)
-            us = self.solver[i].problem.quasiStatic([x0] * self.solver[i].problem.T)
-            self.solver[i].solve(xs, us, self.iter_ddp, False)
-            
-            if self.robot_name == 'mulinex12':
-                print(colored(f"[INFO]:\t DDP Opt. completed for {self.robot_name}", 'cyan'))
-                big_data, data_q_ddp, data_q_vel_ddp, data_ff_ddp, data_fb_ddp = dataCallBacks(self.solver[i], 
-                                                                                            self.mulinex, 
-                                                                                            self.K, 
-                                                                                            dtDDP=self.timer_period,
-                                                                                            robot_name=self.robot_name, 
-                                                                                            nA=12, 
-                                                                                            nState=19)
-            else:
-                print(colored(f"[INFO]:\t DDP Opt. completed for {self.robot_name}", 'cyan'))
-                big_data, data_q_ddp, data_q_vel_ddp, data_ff_ddp, data_fb_ddp = dataCallBacks(self.solver[i], 
-                                                                                            self.mulinex, 
-                                                                                            self.K, 
-                                                                                            dtDDP=self.timer_period)
+        
+        print(colored(f"[INFO]:\t CoM Move phase", 'yellow'))
+        self.solver[i] = crocoddyl.SolverFDDP(gait.createCoMProblemWalkingVersor(x0, value["comGoTo"], value["versor"], value["timeStep"], value["numKnots"], stepLength=value["stepLength"], stepHeight=value["stepHeight"]))    
                 
-            self.big_data.extend(big_data)
-            self.data_q_ddp.extend(data_q_ddp)
-            self.data_q_vel_ddp.extend(data_q_vel_ddp)
-            self.data_ff_ddp.extend(data_ff_ddp)
-            self.data_fb_ddp.extend(data_fb_ddp)
+        self.solver[i].problem.nthreads = 1
+        self.solver[i].th_stop = self.thres_ddp # 1e-5         
+        
+        xs = [x0] * (self.solver[i].problem.T + 1)
+        us = self.solver[i].problem.quasiStatic([x0] * self.solver[i].problem.T)
+        self.solver[i].solve(xs, us, self.iter_ddp, False)
+            
+        print(colored(f"[INFO]:\t DDP Opt. completed for {self.robot_name}", 'cyan'))
+        big_data, data_q_ddp, data_q_vel_ddp, data_ff_ddp, data_fb_ddp = dataCallBacks(self.solver[i], 
+                                                                                    self.mulinex, 
+                                                                                    self.K, 
+                                                                                    dtDDP=self.timer_period,
+                                                                                    robot_name=self.robot_name, 
+                                                                                    nA=12, 
+                                                                                    nState=19)
+            
 
     def reference_extract(self, wanna_plot=False):
         '''
@@ -288,10 +263,6 @@ class DDP_Controller(Node):
         Compute the smooth derivative of the given data using the Savitzky-Golay filter after interpolation.
         '''
         return savgol_filter(data, window_length, polyorder, deriv=1, delta=self.timer_period) 
-        # plt.plot(range(0,len(data)), data, label='Original')
-        # plt.plot(range(0,len(data)), data_interp, label='Interpolated')
-        # plt.figure()
-        # plt.plot(data, label='Filtered')
                  
     def update_ILC_controller(self):
         '''
