@@ -17,15 +17,15 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='michele',
+    maintainer='ros',
     maintainer_email='michele.pierallini@gmail.com',
     description='TODO: Package description',
     license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'ddp_controller_publisher_node = ddp_fishing.ddp_controller_publisher_node:main',
-            'bag_recorder = ddp_fishing.bag_recorder:main'
+            'ddp_controller_publishing_node = ddp_fishing.ddp_controller_publishing_node:main',
+            # 'bag_recorder = ddp_fishing.bag_recorder:main'
         ],
     },
 )

@@ -16,10 +16,10 @@ import example_robot_data
 import pinocchio
 import crocoddyl
 from termcolor import colored
-from ballistic_motion import GetBallistMotion 
+from .ballistic_motion import GetBallistMotion 
 import crocoddyl
 import aslr_to
-from utils import dataCallBacks
+from .utils import dataCallBacks
 
 class DDP_Controller(Node):
     
@@ -32,7 +32,7 @@ class DDP_Controller(Node):
         '''
         Initialize the node and the parameters.
         '''
-        super().__init__('ddp_controller_publisher')
+        super().__init__('ddp_controller_publisher_node')
         
         # ============================ Parameters ============================ #
         
@@ -107,10 +107,7 @@ class DDP_Controller(Node):
         
         if sim_condition == False and real_condition == False:
             raise KeyboardInterrupt('Wrong Simulation flag or topic name')
-    
-        if self.robot_name != 'mulinex' and self.robot_name != 'mulinex12':
-            raise KeyboardInterrupt('This Node just works with Mulinex or Mulinex12 ... Wrong robot name')
-            
+
         # ============================ Publishers ============================ #
         
         if simulation:
@@ -125,7 +122,7 @@ class DDP_Controller(Node):
         # ============================ Variables ============================ #
         
         self.big_data, self.data_q_ddp, self.data_q_vel_ddp, self.data_ff_ddp, self.data_fb_ddp = [], [], [], [], []
-                        
+        self.WANNA_TEST = False
         self.homing = False
         self.i = 0  # index for the commanded joint states
         self.init_counter = 0
@@ -143,21 +140,22 @@ class DDP_Controller(Node):
         self.topic_name = topic_name        
         self.nan_counter = 0
         
-        test_motion = GetBallistMotion(self.X_des, self.Z_des, self.v_des, self.T_f_des)
-        try_res = test_motion.getXZvt()
-        state_des = try_res.x
-        v_0x, X_0, Z_0, v_0z = try_res.x
-        
-        print('=============================================================================================')
-        print('v_0x: {:.3}\nX_0: {:.3}\t\t X_des: {}\nZ_0: {}\t\t Z_des: {}\nv_0z: {:.3}\ntheta_0: {:.3}\nT: {}'\
-            .format(v_0x, state_des[0], self.X_des, state_des[1], self.Z_des, v_0z, np.arctan(v_0x/v_0z), test_motion.T))
-        err_X = abs(self.X_des - X_0 - v_0x * test_motion.T)
-        err_Z = abs(self.Z_des - Z_0 - v_0z * test_motion.T + 0.5 * test_motion.GRAVITY * (test_motion.T) ** 2)
-        print('=============================================================================================')
-        print('err_X: {:.3}\nerr_Z: {:.3}'.format(err_X, err_Z))
-        if try_res.success:
-            print(colored('Success','green'))
-            print('X_des: {}\nv_des: {}'.format(self.X_des, self.v_des))
+        if self.WANNA_TEST:
+            test_motion = GetBallistMotion(self.X_des, self.Z_des, self.v_des, self.T_f_des)
+            try_res = test_motion.getXZvt()
+            state_des = try_res.x
+            v_0x, X_0, Z_0, v_0z = try_res.x
+            
+            print('=============================================================================================')
+            print('v_0x: {:.3}\nX_0: {:.3}\t\t X_des: {}\nZ_0: {}\t\t Z_des: {}\nv_0z: {:.3}\ntheta_0: {:.3}\nT: {}'\
+                .format(v_0x, state_des[0], self.X_des, state_des[1], self.Z_des, v_0z, np.arctan(v_0x/v_0z), test_motion.T))
+            err_X = abs(self.X_des - X_0 - v_0x * test_motion.T)
+            err_Z = abs(self.Z_des - Z_0 - v_0z * test_motion.T + 0.5 * test_motion.GRAVITY * (test_motion.T) ** 2)
+            print('=============================================================================================')
+            print('err_X: {:.3}\nerr_Z: {:.3}'.format(err_X, err_Z))
+            if try_res.success:
+                print(colored('Success','green'))
+                print('X_des: {}\nv_des: {}'.format(self.X_des, self.v_des))
                     
         # ============================ DDP optimization ============================ #
         
@@ -234,14 +232,14 @@ class DDP_Controller(Node):
 
         q0 = np.zeros(state.nv)
         x0 = np.concatenate([q0,pinocchio.utils.zero(state.nv)])
-        problem = crocoddyl.ShootingProblem(x0, [runningModel] * self.T, terminalModel)
+        problem = crocoddyl.ShootingProblem(x0, [runningModel] * self.steps_ddp, terminalModel)
 
         solver = crocoddyl.SolverBoxFDDP(problem)               
         solver.problem.nthreads = 1
         solver.th_stop = self.thres_ddp # 1e-5         
         
-        xs = [x0] * (self.solver.problem.T + 1)
-        us = self.solver.problem.quasiStatic([x0] * solver.problem.T)
+        xs = [x0] * (solver.problem.T + 1)
+        us = solver.problem.quasiStatic([x0] * solver.problem.T)
         solver.solve(xs, us, self.iter_ddp, False)
         
         # ============================ Results ============================ #
