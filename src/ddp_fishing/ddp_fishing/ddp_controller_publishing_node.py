@@ -346,10 +346,9 @@ class DDP_Controller(Node):
         if self.i < self.points:
             if self.iter < self.iter_number and self.j < self.points:
                 # Reorder the joint states
-                for k, joint_name in enumerate(msg.name):
-                    self.joint_position_meas[self.joint_names.index(joint_name), self.j, self.iter] = msg.position[k]
-                    self.joint_velocity_meas[self.joint_names.index(joint_name), self.j, self.iter] = msg.velocity[k]
-                    self.joint_effort_meas[self.joint_names.index(joint_name), self.j, self.iter] = msg.effort[k] 
+                self.joint_position_meas[0, self.j, self.iter] = msg.position[0]
+                self.joint_velocity_meas[0, self.j, self.iter] = msg.velocity[0]
+                self.joint_effort_meas[0, self.j, self.iter] = msg.effort[0] 
                 self.j += 1
                 # rclpy.logging.get_logger("states").info(f"Recording joint states: {self.joint_position_meas}")
         else:
@@ -456,7 +455,7 @@ class DDP_Controller(Node):
         fig, ax = plt.subplots(figsize=(20, 10))
         
         for iter in range(self.iter_number):
-            ax.plot(self.joint_position_meas[:, iter], label=f'Real {iter}', linewidth=1.5, linestyle='-', color='blue')
+            ax.plot(self.joint_position_meas[:, :, iter], label=f'Real {iter}', linewidth=1.5, linestyle='-', color='blue')
             ax.plot(self.joint_position[:, iter], label=f'Ref {iter}', linewidth=1.5, linestyle='--', color='red')
         
         ax.set_xlabel('Time')
