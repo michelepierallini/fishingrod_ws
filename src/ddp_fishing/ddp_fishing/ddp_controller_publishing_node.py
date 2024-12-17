@@ -58,7 +58,7 @@ class DDP_Controller(Node):
                 ('Z_des', 0.0),
                 ('v_des', 10.0),
                 ('T_f_des', 10.0), 
-                ('steps_ddp', 7000),
+                ('steps_ddp', 7000), 
                 ('u_max', 10.0),
                 ('L0', 2.687), 
                 ('alpha', np.pi / 2),
@@ -274,6 +274,7 @@ class DDP_Controller(Node):
             index = i * 3 * self.jnt_num
             pos = self.big_data[index : index + self.jnt_num]
             self.joint_position[:, i] = pos
+            # rclpy.logging.get_logger("states").info(f"joint des: {pos}")
             
             vel = self.big_data[index + self.jnt_num : index + 2 * self.jnt_num]
             self.joint_velocity[:, i] = vel
@@ -287,23 +288,21 @@ class DDP_Controller(Node):
         if wanna_plot: 
             line_width = 3.5
             fig, axs = plt.subplots(1, 3, figsize=(20, 10))  # Create a 1x3 grid for plotting
-            axs[0].plot(self.joint_position[0,:], label='', linewidth=line_width, linestyle='--', color='red')
-            axs[0].plot(self.joint_position[:,:], label='', linewidth=line_width, linestyle='--', color='green')
-            axs[0].plot(self.joint_position[:,0], label='', linewidth=line_width, linestyle='--', color='blue')
-            axs[0].set_xlabel('Time')
-            axs[0].set_ylabel('Position')
+            axs[0].plot(self.joint_position[0,:], label='Joint 1', linewidth=line_width, linestyle='--', color='red')
+            axs[0].set_xlabel('Time', fontsize=16)
+            axs[0].set_ylabel('Position', fontsize=16)
             axs[0].legend()
             axs[0].grid()
             
-            axs[1].plot(self.joint_velocity[0,:], label='', linewidth=line_width, linestyle='--', color='red')
-            axs[1].set_xlabel('Time')
-            axs[1].set_ylabel('Velocity')
+            axs[1].plot(self.joint_velocity[0,:], label='Joint 1', linewidth=line_width, linestyle='--', color='red')
+            axs[1].set_xlabel('Time', fontsize=16)
+            axs[1].set_ylabel('Velocity', fontsize=16)
             axs[1].legend()
             axs[1].grid()
             
-            axs[2].plot(self.joint_effort[0,:], label='', linewidth=line_width, linestyle='--', color='red')
-            axs[2].set_xlabel('Time')
-            axs[2].set_ylabel('Effort')
+            axs[2].plot(self.joint_effort[0,:], label='Joint 1', linewidth=line_width, linestyle='--', color='red')
+            axs[2].set_xlabel('Time', fontsize=16)
+            axs[2].set_ylabel('Effort', fontsize=16)
             axs[2].legend()
             axs[2].grid()
         
@@ -352,7 +351,8 @@ class DDP_Controller(Node):
                 self.joint_velocity_meas[0, self.j, self.iter] = msg.velocity[0]
                 self.joint_effort_meas[0, self.j, self.iter] = msg.effort[0] 
                 self.j += 1
-                # rclpy.logging.get_logger("states").info(f"Recording joint states: {self.joint_position_meas}")
+                
+                rclpy.logging.get_logger("states").info(f"joint_position_meas: {self.joint_position_meas[0, self.j, self.iter]}")
         else:
             self.j = 0    
                 
@@ -457,8 +457,9 @@ class DDP_Controller(Node):
         fig, ax = plt.subplots(figsize=(20, 10))
         
         for iter in range(self.iter_number):
-            ax.plot(self.joint_position_meas[:, :, iter], label=f'Real {iter}', linewidth=1.5, linestyle='-', color='blue')
-            ax.plot(self.joint_position[:, iter], label=f'Ref {iter}', linewidth=1.5, linestyle='--', color='red')
+            ## just the first joint is actuated in the fishing rod
+            ax.plot(self.joint_position_meas[0, :, iter], label=f'Real {iter}', linewidth=1.5, linestyle='-', color='blue')
+            ax.plot(self.joint_position[0, :], label=f'Ref {iter}', linewidth=1.5, linestyle='--', color='red')
         
         ax.set_xlabel('Time')
         ax.set_ylabel('Position')
