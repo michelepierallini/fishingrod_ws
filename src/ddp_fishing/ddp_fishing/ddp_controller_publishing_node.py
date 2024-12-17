@@ -54,16 +54,16 @@ class DDP_Controller(Node):
                 ('robot_name', 'fishing_rod_four'),                
                 ('iter_ddp', 200),
                 ('thres_ddp', 1e-2),
-                ('X_des', 20),
-                ('Z_des', 0),
-                ('v_des', 10),
-                ('T_f_des', 10), 
+                ('X_des', 20.0),
+                ('Z_des', 0.0),
+                ('v_des', 10.0),
+                ('T_f_des', 10.0), 
                 ('steps_ddp', 7000),
-                ('u_max', 10),
+                ('u_max', 10.0),
                 ('L0', 2.687), 
                 ('alpha', np.pi / 2),
                 ('timer_period', 0.001),
-                ('timer_period_ddp', 0.0001)            
+                ('timer_period_ddp', 0.001) # 0.0001   
             ]
         )
               
@@ -95,10 +95,9 @@ class DDP_Controller(Node):
         self.d_ii = 1e1 * np.array([0.087, 0.016, 0.0127, 0.0082, 0.007, 0.0075,
             0.0060, 0.0042, 0.0040, 0.0036, 0.0032, 0.0028, 0.0027, 0.0025, 0.0024,
             0.0020, 0.0018, 0.0016, 0.0015, 0.0012, 0.001])
-        self.fixed_length = 0.18
-
         self.D = np.diag(self.d_ii) # + np.diag(d_ii[:-1]/2e1, k=-1) + np.diag(d_ii[:-1]/2e1, k=1) 
         self.K = np.diag(self.k_ii) + np.diag(self.k_ii[:-1] / 2e1, k=-1) + np.diag(self.k_ii[:-1] / 2e1, k=1)
+        self.fixed_length = 0.18
         
         self.steps_ddp = self.get_parameter('steps_ddp').get_parameter_value().integer_value
         self.u_max = self.get_parameter('u_max').get_parameter_value().double_value
@@ -137,7 +136,7 @@ class DDP_Controller(Node):
         self.j = 0  # index for the measured joint states
         self.time = 0
         
-        self.joint_names = ['Joint_1', ]
+        self.joint_names = ['Joint_1']
                                 
         self.jnt_num = 1 # this is fixed
         self.simulation = simulation
@@ -212,7 +211,6 @@ class DDP_Controller(Node):
         xActivation = crocoddyl.ActivationModelWeightedQuad(np.array([1e1] * state.nv + [1e0] * state.nv)) # 1e1
         xResidual = crocoddyl.ResidualModelState(state, state.zero(), nu)
         xRegCost = crocoddyl.CostModelResidual(state, xActivation, xResidual)
-
         goalTrackingCost = crocoddyl.CostModelResidual(state, framePlacementResidual)
         goalVelCost = crocoddyl.CostModelResidual(state, framePlacementVelocity)
         xRegCost = crocoddyl.CostModelResidual(state, xResidual)
@@ -225,21 +223,23 @@ class DDP_Controller(Node):
         terminalCostModel.addCost("gripperVel", goalVelCost, 1e1)
                 
         runningModel = crocoddyl.IntegratedActionModelEuler(
-                                aslr_to.DAM2(state, actuation, runningCostModel, self.K, self.D), self.timer_period_ddp)
+                                aslr_to.DAM2(state, actuation, runningCostModel, self.K, self.D), 
+                                self.timer_period_ddp
+                            )
         terminalModel = crocoddyl.IntegratedActionModelEuler(
-                                aslr_to.DAM2(state, actuation, terminalCostModel, self.K, self.D), 0) # dt) # need to rescale the problem
+                                aslr_to.DAM2(state, actuation, terminalCostModel, self.K, self.D), 
+                                0
+                            ) # dt) # need to rescale the problem
 
-        runningModel.u_lb = np.array([-self.u_max])
-        runningModel.u_ub = np.array([self.u_max])
+        runningModel.u_lb, runningModel.u_ub = np.array([-self.u_max]), np.array([self.u_max])
 
         q0 = np.zeros(state.nv)
         x0 = np.concatenate([q0,pinocchio.utils.zero(state.nv)])
         problem = crocoddyl.ShootingProblem(x0, [runningModel] * int(self.steps_ddp), terminalModel)
-
         solver = crocoddyl.SolverBoxFDDP(problem)  
                     
         solver.problem.nthreads = 1
-        solver.th_stop = self.thres_ddp # 1e-5         
+        solver.th_stop = self.thres_ddp         
         
         xs = [x0] * (solver.problem.T + 1)
         us = [np.zeros(1)] * (solver.problem.T)
@@ -249,10 +249,10 @@ class DDP_Controller(Node):
         
         # ============================ Results ============================ #
         
-        pos_final = solver.problem.terminalData.differential.multibody.pinocchio.oMf[robot_model.getFrameId(
-        "Link_EE")].translation.T
-        vel_final = pinocchio.getFrameVelocity(solver.problem.terminalModel.differential.state.pinocchio,\
-            solver.problem.terminalData.differential.multibody.pinocchio, robot_model.getFrameId("Link_EE")).linear
+        pos_final = solver.problem.terminalData.differential.multibody.pinocchio.oMf[robot_model.getFrameId("Link_EE")].translation.T
+        vel_final = pinocchio.getFrameVelocity(solver.problem.terminalModel.differential.state.pinocchio, 
+                                                solver.problem.terminalData.differential.multibody.pinocchio, 
+                                                robot_model.getFrameId("Link_EE")).linear
 
         self.get_logger().info('Reached Pos: {}\tReached Vel: {}'.format(np.round(pos_final, 3), np.round(vel_final, 3)))
         self.get_logger().info('Desired Pos: {}\tDesired Vel: {}'.format(np.round(self.target_pos_ddp, 3), np.round(self.target_vel_ddp, 3)))
@@ -285,21 +285,21 @@ class DDP_Controller(Node):
             self.joint_effort[:, i] = np.zeros((self.jnt_num))
             
         if wanna_plot: 
-            
+            line_width = 1.5
             fig, axs = plt.subplots(1, 3, figsize=(20, 10))  # Create a 1x3 grid for plotting
-            axs[0].plot(self.joint_position, label='Ref', linewidth=1.5, linestyle='--', color='red')
+            axs[0].plot(self.joint_position, label='', linewidth=line_width, linestyle='--', color='red')
             axs[0].set_xlabel('Time')
             axs[0].set_ylabel('Position')
             axs[0].legend()
             axs[0].grid()
             
-            axs[1].plot(self.joint_velocity, label='Ref', linewidth=1.5, linestyle='--', color='red')
+            axs[1].plot(self.joint_velocity, label='', linewidth=line_width, linestyle='--', color='red')
             axs[1].set_xlabel('Time')
             axs[1].set_ylabel('Velocity')
             axs[1].legend()
             axs[1].grid()
             
-            axs[2].plot(self.joint_effort, label='Ref', linewidth=1.5, linestyle='--', color='red')
+            axs[2].plot(self.joint_effort, label='', linewidth=line_width, linestyle='--', color='red')
             axs[2].set_xlabel('Time')
             axs[2].set_ylabel('Effort')
             axs[2].legend()
