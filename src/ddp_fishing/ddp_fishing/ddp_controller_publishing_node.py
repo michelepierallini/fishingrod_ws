@@ -58,7 +58,7 @@ class DDP_Controller(Node):
                 ('Z_des', 0),
                 ('v_des', 10),
                 ('T_f_des', 10), 
-                ('steps_ddp', 3000), # 7000
+                ('steps_ddp', 7000),
                 ('u_max', 10),
                 ('L0', 2.687), 
                 ('alpha', np.pi / 2),
@@ -223,9 +223,7 @@ class DDP_Controller(Node):
         runningCostModel.addCost("uReg", uRegCost, 1e0) # increase to decrease the cost of the control
         terminalCostModel.addCost("gripperPose", goalTrackingCost, 1e2) 
         terminalCostModel.addCost("gripperVel", goalVelCost, 1e1)
-        
-        print(colored(f"[INFO]:\t CoM Move phase", 'yellow'))
-        
+                
         runningModel = crocoddyl.IntegratedActionModelEuler(
                                 aslr_to.DAM2(state, actuation, runningCostModel, self.K, self.D), self.timer_period_ddp)
         terminalModel = crocoddyl.IntegratedActionModelEuler(
@@ -246,7 +244,7 @@ class DDP_Controller(Node):
         xs = [x0] * (solver.problem.T + 1)
         us = [np.zeros(1)] * (solver.problem.T)
         
-        self.get_logger().info(colored(f"[INFO]:\t DDP Opt. starting for {self.robot_name}", 'cyan'))
+        self.get_logger().info(colored(f"DDP Opt. starting for {self.robot_name}", 'cyan'))
         solver.solve(xs, us, self.iter_ddp, False)
         
         # ============================ Results ============================ #
@@ -256,10 +254,10 @@ class DDP_Controller(Node):
         vel_final = pinocchio.getFrameVelocity(solver.problem.terminalModel.differential.state.pinocchio,\
             solver.problem.terminalData.differential.multibody.pinocchio, robot_model.getFrameId("Link_EE")).linear
 
-        self.get_logger().info('[INFO]: Reached Pos: {}\nReached Vel: {}'.format(np.round(pos_final, 3), np.round(vel_final, 3)))
-        self.get_logger().info('[INFO]: Desired Pos: {}\nDesired Vel: {}'.format(np.round(self.target_pos_ddp, 3), np.round(self.target_vel_ddp, 3)))
+        self.get_logger().info('Reached Pos: {}\tReached Vel: {}'.format(np.round(pos_final, 3), np.round(vel_final, 3)))
+        self.get_logger().info('Desired Pos: {}\tDesired Vel: {}'.format(np.round(self.target_pos_ddp, 3), np.round(self.target_vel_ddp, 3)))
         
-        self.get_logger().info(colored(f"[INFO]:\t DDP Opt. completed for {self.robot_name}", 'cyan'))
+        self.get_logger().info(colored(f"DDP Opt. completed for {self.robot_name}", 'cyan'))
         self.big_data, self.data_q_ddp, self.data_q_vel_ddp, self.data_ff_ddp = dataCallBacks(solver, fishing_rod)
         
     def reference_extract(self, wanna_plot=False):

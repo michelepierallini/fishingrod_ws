@@ -62,6 +62,8 @@ def dataCallBacks(solver,
     q0 = robot.q0
     u = solver.us.tolist()
     xs = solver.xs.tolist()
+    
+    print(colored(f'[INFO]:\t Init {len(q0)}, Data u: {len(u)}, Data xs: {len(xs)}', 'cyan'))
     K_fb = solver.K.tolist()
     K_fb_all, big_data = [], []
 
@@ -92,7 +94,7 @@ def dataCallBacks(solver,
             
     N_new = int(fROS * dtDDP * len(stateOut))
     # print(colored(f'[INFO]:\t From {dtDDP} to dt = 2e-3 sec, data len {len(data_q_new)} --> {N_new}', 'cyan'))
-    data_q_new = interpolate_matrix(data_q_new, N_new).tolist()
+    data_q_new = interpolate_matrix(stateOut, N_new).tolist()
     data_ff_new = interpolate_matrix(uContrlOut, N_new).tolist()
     # data_fb_new = interpolate_matrix(K_fb_all, N_new).tolist()
     data_q_vel_new = interpolate_matrix(velOut, N_new).tolist()
