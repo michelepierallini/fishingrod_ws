@@ -1,4 +1,4 @@
-Fishingrod workspace. 
+Fishingrod workspace the robot model can be found [here](https://github.com/michelepierallini/example-robot-data/tree/devel)
 
 The actuator module at the base is the SEA EM-ACT presented in [Paper](https://ieeexplore.ieee.org/abstract/document/10529546)
 
@@ -40,7 +40,7 @@ export ROS_DOMAIN_ID=10
 ros2 launch test_experiments test_sim.launch.py
 ```
 
-Model based controller DDP from [aslr_to](https://github.com/michelepierallini/aslr_to)
+Model based controller DDP from [aslr_to](https://github.com/michelepierallini/aslr_to) this [branch](https://github.com/michelepierallini/aslr_to/tree/my-fishing-rod-update)
 
 ```
 source /opt/ros/humble/setup.bash
