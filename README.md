@@ -59,9 +59,9 @@ mkdir build && cd build
 cmake .. && make -j4 && sudo make install 
 ```
 
-if the SEA plugin returns error please run 
+if the SEA plugin returns error please run (```. install/setup.bash```) 
 ``` 
-export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:~/michele_try_ws/fishingrod_ws/install/serial_elastic_plugin/lib
+export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:~/install/serial_elastic_plugin/lib
 
 ```
 
