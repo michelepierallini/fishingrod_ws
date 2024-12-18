@@ -40,6 +40,15 @@ export ROS_DOMAIN_ID=10
 ros2 launch test_experiments test_sim.launch.py
 ```
 
+Model based controller DDP from (aslr_to)[https://github.com/michelepierallini/aslr_to]
+
+```
+source /opt/ros/humble/setup.bash
+colcon build --symlink-install && . install/setup.bash
+export ROS_DOMAIN_ID=10
+ros2 launch ddp_fishing ddp_sim.launch.py 
+```
+
 # Usage of the SEA plugin
 
 Compile the ```sea_plugin```
