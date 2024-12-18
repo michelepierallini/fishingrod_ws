@@ -97,8 +97,8 @@ colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_E
 1) Implement the camera sensor 
 2) `throw_experiment` package. If I will try experiments. Not planned yet
 3) Creates the reel module
-4) Implement a DDP-like or, in general, model-based, controller
+4) Add IMU to control loop in the DDP-framework
 -----------------------------------------------------------------------------------------------
--) Retrain the Network with smart observation and/or implementing a curriculum learning. 
+-) *Doing* Retrain the Network with smart observation and/or implementing a curriculum learning. 
 
 
