@@ -13,6 +13,7 @@ from termcolor import colored
 Simulations node.
 This node subscribes to the joint states and tip features topic, and publishes the target joint positions.
 first, joint_pos, tip pos, tip vel, (time) --> | inference_controller | --> joint_target_pos --> PD contr
+This class works (has the observation of) for the policy FishingRodPos_X_022_real_pos_vel.pth
 """
 
 class InferenceController(Node):
