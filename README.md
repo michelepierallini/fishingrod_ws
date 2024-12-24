@@ -1,6 +1,6 @@
-Fishingrod workspace the robot model can be found [here](https://github.com/michelepierallini/example-robot-data/tree/devel)
+Fishingrod workspace the robot model can be found [here](https://github.com/michelepierallini/example-robot-data/tree/devel).
 
-The actuator module at the base is the SEA EM-ACT presented in [Paper](https://ieeexplore.ieee.org/abstract/document/10529546)
+The actuator module at the base is the SEA EM-ACT presented in [Paper](https://ieeexplore.ieee.org/abstract/document/10529546).
 
 The fishingrod is discretized using a classic pseudo-rigid model with spring and damper.
 The $K$ and $D$ matrixes in ```fishingrod.urdf``` has been experimentally estiamted via load tests. We use a plugin for simulating the SEA passive joints.
@@ -8,9 +8,9 @@ The $K$ and $D$ matrixes in ```fishingrod.urdf``` has been experimentally estiam
 We have _src/test_experiments_ for testing basic trajectory on the first (and only) active joints.
 
 We have a _src/rlq_quad_controller_ for implementing PPO.
-Training has been done by implementing RL-baseline PPO via the NVIDIA Omniverse framework [fishing_rod_real_pos.py](https://github.com/michelepierallini/OmniIsaacGymEnvs/blob/main/omniisaacgymenvs/tasks/fishing_rod_real_pos.py)
+Training has been done by implementing RL-baseline PPO via the NVIDIA Omniverse framework [fishing_rod_real_pos.py](https://github.com/michelepierallini/OmniIsaacGymEnvs/blob/main/omniisaacgymenvs/tasks/fishing_rod_real_pos.py).
 
-The interference Node is mainly adapted from [loco_sim](https://github.com/CentroEPiaggio/locosim_ws)
+The interference Node is mainly adapted from [loco_sim](https://github.com/CentroEPiaggio/locosim_ws).
 
 # Usage in Simulations Interference and Classic Trajectory
 (i)
@@ -40,7 +40,7 @@ export ROS_DOMAIN_ID=10
 ros2 launch test_experiments test_sim.launch.py
 ```
 
-Model based controller DDP from [aslr_to](https://github.com/michelepierallini/aslr_to) this [branch](https://github.com/michelepierallini/aslr_to/tree/my-fishing-rod-update)
+Model based controller DDP from [aslr_to](https://github.com/michelepierallini/aslr_to) this [branch](https://github.com/michelepierallini/aslr_to/tree/my-fishing-rod-update).
 
 ```
 source /opt/ros/humble/setup.bash

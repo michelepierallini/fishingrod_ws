@@ -158,7 +158,11 @@ class InferenceController(Node):
             np.fromiter(list(self.err_vel), dtype=float).reshape((1, 1)) / self.velocity_scale,
             np.array([list(self.acc_tip_lin)[0]], dtype=float).reshape((self.njoint, 1)) / self._acc_scale,
             np.array([list(self.acc_tip_lin_previous)[0]], dtype=float).reshape((self.njoint, 1)) / self._acc_scale,
+            # FishingRodPos_X_001_pos_new_2_vel_cv.pth has the previous action
             np.array([(self.timeEpisode - (rclpy.clock.Clock().now().nanoseconds / 1e9 - self.startup_time_obs.nanoseconds / 1e9)) / self.timeEpisode]).reshape((1,1)) 
+            # # FishingRodPos_X_002_pos_new_2_vel_cv.pth has the previous action
+            # np.array([list(self.previous_action)[0]], dtype=float).reshape((self.njoint, 1)) / self.action_scale,
+            # np.array([(self.timeEpisode - (rclpy.clock.Clock().now().nanoseconds / 1e9 - self.startup_time_obs.nanoseconds / 1e9)) / self.timeEpisode]).reshape((1,1)) 
         )).reshape((1, self.num_obs))
         
         obs_list = np.clip(obs_list, [-self.clip_obs] * self.num_obs, [self.clip_obs] * self.num_obs)         
